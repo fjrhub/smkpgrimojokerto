@@ -1,7 +1,8 @@
 {
   "name": "smkpgrimojokerto",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "description": "SMK PGRI Mojokerto school website built with Next.js and deployed on Vercel.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -22,5 +23,16 @@
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fjrhub/smkpgrimojokerto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fjrhub/smkpgrimojokerto/issues"
+  },
+  "homepage": "https://github.com/fjrhub/smkpgrimojokerto#readme",
+  "keywords": ["school-website"],
+  "author": "Muhammad Fajrul Falah (fjrhub)",
+  "license": "ISC"
 }
