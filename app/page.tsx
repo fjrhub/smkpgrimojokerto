@@ -977,7 +977,7 @@ export default function Home() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="overflow-hidden" ref={emblaRefPartners}>
-            <div className="flex gap-12">
+            <div className="flex gap-12 px-8">
               {partners.map((partner, index) => (
                 <div key={index} className="flex-[0_0_auto]">
                   <div className="w-40 h-24 bg-white rounded-lg shadow-sm flex items-center justify-center p-4 hover:shadow-md transition-shadow">
