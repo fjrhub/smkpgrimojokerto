@@ -1,35 +1,25 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { ReactNode } from "react";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
+export const metadata = {
   title: "SMK PGRI Mojokerto",
   description:
-    "Website resmi SMK PGRI Mojokerto yang menyediakan informasi dan pengumuman sekolah.",
+    "SMK Telkom Malang adalah pelopor Sekolah menengah kejuruan pertama di Indonesia di bidang Teknologi dan Informatika. Berpengalaman dari tahun 1992 yang telah terakreditasi A dan mempunyai standart mutu ISO 9001:2015.",
+  keywords:
+    "moklet, smk telkom malang, sekolah it, teknik komputer dan jaringan, tkj, rekayasa perangkat lunak, rpl, pengembangan gim, coding, smk coding, programmer",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="id" className="scroll-smooth">
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
