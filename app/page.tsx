@@ -192,14 +192,13 @@ export default function Home() {
         }`}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-13">
             {/* Logo */}
             <motion.a
               href="#home"
-              className="text-2xl font-bold text-orange-600"
-              whileHover={{ scale: 1.05 }}
+              className="text-1xl font-bold text-orange-600"
             >
-              SMK Telkom Malang
+              SMK PGRI MOJOKERTO
             </motion.a>
 
             {/* Desktop Menu */}
