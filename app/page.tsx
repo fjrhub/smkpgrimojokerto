@@ -192,11 +192,15 @@ export default function Home() {
         }`}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-13">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <a href="#home" className="text-xl font-bold text-orange-600">
-              SMK PGRI MOJOKERTO
-            </a>
+            <motion.a
+              href="#home"
+              className="text-2xl font-bold text-orange-600"
+              whileHover={{ scale: 1.05 }}
+            >
+              SMK Telkom Malang
+            </motion.a>
 
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center space-x-8">
@@ -350,9 +354,9 @@ export default function Home() {
               className="relative"
             >
               <img
-                src="https://images.pexels.com/photos/35545651/pexels-photo-35545651.jpeg"
+                src="image_depan_new.png"
                 alt="Students"
-                className="rounded-2xl shadow-2xl"
+                className="rounded-2xl"
               />
             </motion.div>
           </div>
@@ -442,7 +446,7 @@ export default function Home() {
             </motion.div>
             <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
               <img
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a"
+                src="image1001.png"
                 alt="Headmaster"
                 className="rounded-2xl shadow-xl"
               />
