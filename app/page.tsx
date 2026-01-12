@@ -605,7 +605,14 @@ export default function Home() {
                   <br />
                   seperti aplikasi web dan aplikasi mobile.
                 </p>
-                <Accordion type="single" collapsible className="space-y-4">
+
+                {/* Tambahkan defaultValue="web" di sini */}
+                <Accordion
+                  type="single"
+                  collapsible
+                  defaultValue="web"
+                  className="space-y-4"
+                >
                   <AccordionItem value="web" className="border rounded-lg px-4">
                     <AccordionTrigger className="hover:no-underline">
                       <div className="flex items-center gap-3">
