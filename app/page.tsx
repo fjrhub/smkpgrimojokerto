@@ -448,7 +448,7 @@ export default function Home() {
               <img
                 src="image1001.png"
                 alt="Headmaster"
-                className="rounded-2xl shadow-xl"
+                className="rounded-2xl"
               />
             </motion.div>
           </div>
