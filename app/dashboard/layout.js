@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Sidebar from '@/components/dashboard/Sidebar'
-import { Menu, X } from 'lucide-react'
+import { useState } from "react";
+import Sidebar from "@/components/dashboard/Sidebar";
+import { Menu, X } from "lucide-react";
 
 export default function DashboardLayout({ children }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -24,18 +24,17 @@ export default function DashboardLayout({ children }) {
 
       {/* Main content */}
       <div className="lg:ml-64">
-        <main className="p-4 lg:p-8 pt-20 lg:pt-8">
-          {children}
-        </main>
+        <main className="p-4 lg:p-8 pt-20 lg:pt-8">{children}</main>
       </div>
 
       {/* Overlay for mobile */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+          className="fixed inset-0 bg-black/20 backdrop-blur-xs z-30 lg:hidden"
           onClick={() => setSidebarOpen(false)}
+          aria-hidden="true"
         />
       )}
     </div>
-  )
+  );
 }
