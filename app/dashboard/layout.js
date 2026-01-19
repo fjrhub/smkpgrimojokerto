@@ -1,11 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "@/components/dashboard/Sidebar";
 import { Menu, X } from "lucide-react";
 
 export default function DashboardLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showMenuButton, setShowMenuButton] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // Logika untuk menyembunyikan/munculkan tombol menu saat discroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scroll ke bawah: sembunyikan tombol
+        setShowMenuButton(false);
+      } else {
+        // Scroll ke atas: tampilkan tombol
+        setShowMenuButton(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -17,15 +42,17 @@ export default function DashboardLayout({ children }) {
         <main className="p-4 lg:p-8 pt-4 lg:pt-8">{children}</main>
       </div>
 
-      {/* Floating menu button (mobile only) */}
-      <div className="lg:hidden fixed top-3 right-3 z-40">
-        <button
-          onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors"
-        >
-          {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </div>
+      {/* Tombol menu yang muncul/hilang saat discroll */}
+      {showMenuButton && (
+        <div className="lg:hidden fixed top-3 right-3 z-40">
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="p-2 rounded-md bg-white text-gray-600 hover:bg-gray-100 shadow-sm transition-colors"
+          >
+            {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      )}
 
       {/* Overlay for mobile */}
       {sidebarOpen && (
