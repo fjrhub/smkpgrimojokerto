@@ -9,16 +9,18 @@ export default function DashboardLayout({ children }) {
   const [showMenuButton, setShowMenuButton] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Logika untuk menyembunyikan/munculkan tombol menu saat discroll
+  // Logika scroll yang lebih sensitif
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const scrollDifference = currentScrollY - lastScrollY;
 
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scroll ke bawah: sembunyikan tombol
+      // Jika discroll ke bawah (bahkan sedikit), sembunyikan tombol
+      if (scrollDifference > 0) {
         setShowMenuButton(false);
-      } else {
-        // Scroll ke atas: tampilkan tombol
+      }
+      // Jika discroll ke atas (bahkan sedikit), tampilkan tombol
+      else if (scrollDifference < 0) {
         setShowMenuButton(true);
       }
 
