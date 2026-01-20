@@ -539,7 +539,7 @@ export default function Home() {
               </p>
               <Button
                 variant="outline"
-                className="border-orange-600 text-[#0552A2] hover:bg-orange-50"
+                className="border-[#0552A2] text-[#0552A2] hover:bg-blue-50"
               >
                 Detail
               </Button>
