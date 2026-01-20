@@ -115,10 +115,8 @@ export default function Home() {
 
   const newsItems = [
     {
-      image:
-        "IMG-20260119-WA0049.jpg",
-      title:
-        "Pelaksanaan Isra mi'raj bersama sama",
+      image: "IMG-20260119-WA0049.jpg",
+      title: "Pelaksanaan Isra mi'raj bersama sama",
       date: "18 December 2025",
     },
     {
@@ -194,9 +192,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <div
-              className="text-2xl font-bold text-orange-600"
-            >
+            <div className="text-2xl font-bold text-orange-600">
               SMK PGRI MOJOKERTO
             </div>
 
@@ -803,44 +799,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Gallery */}
-      <section className="py-20 bg-gradient-to-br from-orange-600 to-orange-700 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div {...fadeInUp}>
-            <span className="text-orange-200 text-lg">
-              Yuk, pelajari lebih dalam tentang Moklet
-            </span>
-            <h2 className="text-4xl lg:text-5xl font-bold mt-2">
-              Galeri Foto Aktivitas Mokleter.
-            </h2>
-          </motion.div>
-        </div>
+      {/* CTA Gallery (Minimalist) */}
+      <section className="py-12 bg-orange-600 text-white text-center">
+        <h2 className="text-3xl font-bold">Galeri Mokleter</h2>
       </section>
 
-      {/* Gallery */}
+      {/* Gallery (Minimalist) */}
       <section id="galeri" className="py-0 bg-gray-900">
-        <div className="overflow-hidden" ref={emblaRefGallery}>
-          <div className="flex">
-            {galleryImages.map((image, index) => (
-              <div
-                key={index}
-                className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 relative group"
-              >
-                <div className="relative overflow-hidden aspect-square">
-                  <img
-                    src={image.url}
-                    alt={image.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div className="p-6 text-white">
-                      <h3 className="text-xl font-semibold">{image.title}</h3>
-                    </div>
-                  </div>
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
+          {galleryImages.map((image, index) => (
+            <div key={index} className="relative group">
+              <img
+                src={image.url}
+                alt={image.title}
+                loading="lazy"
+                className="w-full h-64 object-cover"
+              />
+              <div className="absolute inset-0 bg-black/30 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                <h3 className="text-white text-lg font-medium">
+                  {image.title}
+                </h3>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -985,7 +966,7 @@ export default function Home() {
             <div className="flex gap-12 px-8">
               {partners.map((partner, index) => (
                 <div key={index} className="flex-[0_0_auto]">
-                  <div className="w-40 h-24 bg-white rounded-lg shadow-sm flex items-center justify-center p-4 hover:shadow-md transition-shadow">
+                  <div className="w-40 h-24 rounded-lg flex items-center justify-center p-4 hover:shadow-md transition-shadow">
                     <img
                       src={partner}
                       alt="Partner"
