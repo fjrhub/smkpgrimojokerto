@@ -328,7 +328,7 @@ export default function Home() {
               className="relative"
             >
               <img
-                src="image_depan_new.png"
+                src="image_depan.png"
                 alt="Students"
                 className="rounded-2xl"
               />
