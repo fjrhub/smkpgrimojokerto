@@ -82,33 +82,18 @@ export default function Home() {
 
   const galleryImages = [
     {
-      url: "https://images.pexels.com/photos/8363017/pexels-photo-8363017.jpeg",
+      url: "IMG-20260119-WA0033.jpg",
       title: "Upacara Kemerdekaan",
       link: "#",
     },
     {
-      url: "https://images.pexels.com/photos/5428003/pexels-photo-5428003.jpeg",
+      url: "IMG-20260119-WA0027.jpg",
       title: "Go international in Thailand",
       link: "#",
     },
     {
-      url: "https://images.unsplash.com/photo-1581155250362-73d66954fc01",
+      url: "IMG-20260119-WA0040.jpg",
       title: "Temu Alumni di Jakarta",
-      link: "#",
-    },
-    {
-      url: "https://images.pexels.com/photos/7868892/pexels-photo-7868892.jpeg",
-      title: "Robotic",
-      link: "#",
-    },
-    {
-      url: "https://images.pexels.com/photos/35545651/pexels-photo-35545651.jpeg",
-      title: "MPLS 2025",
-      link: "#",
-    },
-    {
-      url: "https://images.pexels.com/photos/35545648/pexels-photo-35545648.jpeg",
-      title: "Moklet Youth Digitallent",
       link: "#",
     },
   ];
@@ -182,21 +167,26 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
+      <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           scrolled ? "bg-white shadow-lg" : "bg-white/95 backdrop-blur-sm"
         }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <div className="text-2xl font-bold text-orange-600">
-              SMK PGRI MOJOKERTO
+            {/* LOGO */}
+            <div className="flex items-center gap-3">
+              <img
+                src="logo-smk.png"
+                alt="Logo SMK PGRI Kota Mojokerto"
+                className="w-11 h-11 md:w-10 md:h-10 object-contain"
+              />
+              <span className="text-base md:text-lg font-bold text-[#0552A2]">
+                SMK PGRI KOTA MOJOKERTO
+              </span>
             </div>
 
-            {/* Desktop Menu */}
+            {/* DESKTOP MENU */}
             <div className="hidden lg:flex items-center space-x-8">
               <DropdownMenu
                 title="Beranda"
@@ -233,25 +223,22 @@ export default function Home() {
               />
               <a
                 href="#contact"
-                className="text-gray-700 hover:text-orange-600 transition-colors"
+                className="text-gray-700 hover:text-[#0552A2] transition-colors"
               >
                 Hubungi Kami
               </a>
-              <Button className="bg-orange-600 hover:bg-orange-700">
-                PPDB
-              </Button>
+              <Button className="bg-[#0552A2] hover:bg-[#003164]">PPDB</Button>
               <div className="flex items-center space-x-3">
-                {" "}
-                <SocialIcon icon={<Facebook size={18} />} />{" "}
-                <SocialIcon icon={<Instagram size={18} />} />{" "}
-                <SocialIcon icon={<Twitter size={18} />} />{" "}
-                <SocialIcon icon={<Youtube size={18} />} />{" "}
+                <SocialIcon icon={<Facebook size={18} />} />
+                <SocialIcon icon={<Instagram size={18} />} />
+                <SocialIcon icon={<Twitter size={18} />} />
+                <SocialIcon icon={<Youtube size={18} />} />
               </div>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* MOBILE BUTTON */}
             <button
-              className="lg:hidden text-gray-700 hover:text-orange-600"
+              className="lg:hidden text-gray-700 hover:text-[#0552A2]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -259,57 +246,50 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden bg-white border-t"
-            >
-              <div className="container mx-auto px-4 py-4 space-y-4">
-                <MobileDropdown
-                  title="Beranda"
-                  items={[
-                    { label: "Sambutan Kepala Sekolah", href: "#sambutan" },
-                    { label: "Video Profil Sekolah", href: "#video" },
-                    { label: "Berita Terbaru", href: "#berita" },
-                  ]}
-                />
-                <MobileDropdown
-                  title="Tentang Kami"
-                  items={[
-                    { label: "Profil Sekolah", href: "#about" },
-                    { label: "Visi & Misi", href: "#" },
-                  ]}
-                />
-                <a
-                  href="#program"
-                  className="block text-gray-700 hover:text-orange-600"
-                >
-                  Program
-                </a>
-                <a
-                  href="#testmonials"
-                  className="block text-gray-700 hover:text-orange-600"
-                >
-                  Alumni
-                </a>
-                <a
-                  href="#contact"
-                  className="block text-gray-700 hover:text-orange-600"
-                >
-                  Hubungi Kami
-                </a>
-                <Button className="w-full bg-orange-600 hover:bg-orange-700">
-                  PPDB
-                </Button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.nav>
+        {/* MOBILE MENU */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden bg-white border-t">
+            <div className="container mx-auto px-4 py-4 space-y-4">
+              <MobileDropdown
+                title="Beranda"
+                items={[
+                  { label: "Sambutan Kepala Sekolah", href: "#sambutan" },
+                  { label: "Video Profil Sekolah", href: "#video" },
+                  { label: "Berita Terbaru", href: "#berita" },
+                ]}
+              />
+              <MobileDropdown
+                title="Tentang Kami"
+                items={[
+                  { label: "Profil Sekolah", href: "#about" },
+                  { label: "Visi & Misi", href: "#" },
+                ]}
+              />
+              <a
+                href="#program"
+                className="block text-gray-700 hover:text-[#0552A2]"
+              >
+                Program
+              </a>
+              <a
+                href="#testmonials"
+                className="block text-gray-700 hover:text-[#0552A2]"
+              >
+                Alumni
+              </a>
+              <a
+                href="#contact"
+                className="block text-gray-700 hover:text-[#0552A2]"
+              >
+                Hubungi Kami
+              </a>
+              <Button className="w-full bg-[#0552A2] hover:bg-[#003164]">
+                PPDB
+              </Button>
+            </div>
+          </div>
+        )}
+      </nav>
 
       {/* Hero Section */}
       <section
@@ -327,7 +307,7 @@ export default function Home() {
               <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
                 The Real
                 <br />
-                <span className="text-orange-600">Informatics School.</span>
+                <span className="text-[#0552A2]">Informatics School.</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8">
                 Pelopor SMK bidang Teknologi dan
@@ -336,7 +316,7 @@ export default function Home() {
               </p>
               <Button
                 size="lg"
-                className="bg-orange-600 hover:bg-orange-700 text-lg px-8"
+                className="bg-[#0552A2] hover:bg-[#003164] text-lg px-8"
               >
                 Join Now
               </Button>
@@ -365,11 +345,11 @@ export default function Home() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-              Kenapa harus moklet?
+              Kenapa harus Skagrimo?
             </h2>
             <p className="text-gray-600 text-lg">
-              Alasan kenapa kalian semua harus bergabung dengan SMK Telkom
-              Malang.
+              Alasan kenapa kalian semua harus bergabung dengan SMK PGRI KOTA
+              MOJOKERTO
             </p>
           </motion.div>
 
@@ -383,25 +363,25 @@ export default function Home() {
             <FeatureCard
               icon={<Laptop className="w-12 h-12" />}
               title="Fasilitas Lengkap"
-              description="Penunjang belajar dengan kualitas premium."
+              description="Mendukung kegiatan belajar dan praktik siswa."
               color="bg-blue-500"
             />
             <FeatureCard
               icon={<School className="w-12 h-12" />}
               title="Lingkungan Nyaman"
-              description="Berada di lingkungan yang asri, aman, dan kondusif."
+              description="Lingkungan sekolah aman dan kondusif."
               color="bg-yellow-500"
             />
             <FeatureCard
               icon={<Users className="w-12 h-12" />}
               title="Pengajar Kompeten"
-              description="Guru yang up-to-date dengan perkembangan industri."
+              description="Didukung guru berpengalaman di bidangnya."
               color="bg-red-500"
             />
             <FeatureCard
               icon={<Building className="w-12 h-12" />}
               title="Kerjasama Luas"
-              description="Memperbesar kesempatan bekerja sebelum lulus."
+              description="Memiliki relasi dengan dunia industri."
               color="bg-gray-700"
             />
           </motion.div>
@@ -416,7 +396,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div {...fadeInUp}>
-              <span className="text-orange-600 font-semibold text-sm uppercase tracking-wide">
+              <span className="text-[#0552A2] font-semibold text-sm uppercase tracking-wide">
                 Sambutan
               </span>
               <h2 className="text-4xl font-bold mt-2 mb-6">Kepala Sekolah</h2>
@@ -466,14 +446,14 @@ export default function Home() {
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-20 h-20 bg-orange-600 rounded-full flex items-center justify-center"
+                  className="w-20 h-20 text-[#0552A2] rounded-full flex items-center justify-center"
                 >
                   <Play className="w-8 h-8 text-white ml-1" fill="white" />
                 </motion.div>
               </div>
             </motion.div>
             <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
-              <span className="text-orange-600 font-semibold text-sm uppercase tracking-wide">
+              <span className="text-[#0552A2] font-semibold text-sm uppercase tracking-wide">
                 Kuy, nonton!
               </span>
               <h2 className="text-4xl font-bold mt-2 mb-6">
@@ -559,7 +539,7 @@ export default function Home() {
               </p>
               <Button
                 variant="outline"
-                className="border-orange-600 text-orange-600 hover:bg-orange-50"
+                className="border-orange-600 text-[#0552A2] hover:bg-orange-50"
               >
                 Detail
               </Button>
@@ -800,7 +780,7 @@ export default function Home() {
       </section>
 
       {/* CTA Gallery (Minimalist) */}
-      <section className="py-12 bg-orange-600 text-white text-center">
+      <section className="py-12 text-[#0552A2] text-white text-center">
         <h2 className="text-3xl font-bold">Galeri Mokleter</h2>
       </section>
 
@@ -857,7 +837,7 @@ export default function Home() {
                     />
                   </div>
                   <CardContent className="p-6">
-                    <h3 className="font-semibold text-lg mb-3 line-clamp-3 group-hover:text-orange-600 transition-colors">
+                    <h3 className="font-semibold text-lg mb-3 line-clamp-3 group-hover:text-[#0552A2] transition-colors">
                       {item.title}
                     </h3>
                     <p className="text-sm text-gray-500 flex items-center gap-2">
@@ -985,11 +965,12 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
             <div>
               <h3 className="text-2xl font-bold mb-6 text-orange-500">
-                SMK PGRI MOJOKERTO
+                SMK PGRI KOTA MOJOKERTO
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                Pelopor SMK bidang Teknologi dan Informatika di Indonesia sejak
-                tahun 1992.
+                SMK PGRI Kota Mojokerto adalah SMK swasta terakreditasi A di
+                Kota Mojokerto yang berdiri sejak 1987 dan menyelenggarakan
+                pendidikan kejuruan di berbagai bidang teknik, termasuk TKJ.
               </p>
             </div>
             <div>
@@ -1069,7 +1050,8 @@ export default function Home() {
             <div>
               <h4 className="font-semibold text-lg mb-4">Alamat</h4>
               <p className="text-gray-400 leading-relaxed mb-4">
-                Jl. Ketidur No.55, Mergelo, Surodinawan, Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61328
+                Jl. Ketidur No.55, Mergelo, Surodinawan, Kec. Prajurit Kulon,
+                Kota Mojokerto, Jawa Timur 61328
               </p>
               <div className="flex gap-3">
                 <SocialIcon icon={<Facebook size={20} />} dark />
@@ -1117,12 +1099,8 @@ function DropdownMenu({ title, items }: DropdownMenuProps) {
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
-      <button className="flex items-center gap-1 text-gray-700 hover:text-orange-600 transition-colors">
+      <button className="flex items-center gap-1 text-gray-700 hover:text-[#0552A2] transition-colors">
         {title}
-        <ChevronDown
-          size={16}
-          className={`transition-transform ${isOpen ? "rotate-180" : ""}`}
-        />
       </button>
 
       <AnimatePresence>
@@ -1137,7 +1115,7 @@ function DropdownMenu({ title, items }: DropdownMenuProps) {
               <a
                 key={index}
                 href={item.href}
-                className="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+                className="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-[#0552A2] transition-colors"
               >
                 {item.label}
               </a>
@@ -1160,7 +1138,7 @@ function MobileDropdown({ title, items }: MobileDropdownProps) {
     <div>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full text-gray-700 hover:text-orange-600"
+        className="flex items-center justify-between w-full text-gray-700 hover:text-[#0552A2]"
       >
         {title}
         <ChevronDown
@@ -1181,7 +1159,7 @@ function MobileDropdown({ title, items }: MobileDropdownProps) {
               <a
                 key={index}
                 href={item.href}
-                className="block text-sm text-gray-600 hover:text-orange-600"
+                className="block text-sm text-gray-600 hover:text-[#0552A2]"
               >
                 {item.label}
               </a>
@@ -1275,8 +1253,8 @@ function SocialIcon({ icon, dark = false }: SocialIconProps) {
       whileTap={{ scale: 0.9 }}
       className={`w-10 h-10 ${
         dark
-          ? "bg-gray-800 hover:bg-orange-600"
-          : "bg-gray-100 hover:bg-orange-600"
+          ? "bg-gray-800 hover:text-[#0552A2]"
+          : "bg-gray-100 hover:text-[#0552A2]"
       } rounded-full flex items-center justify-center ${
         dark
           ? "text-gray-400 hover:text-white"
