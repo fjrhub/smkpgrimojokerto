@@ -248,7 +248,7 @@ export default function Home() {
 
         {/* MOBILE MENU */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t">
+          <div className="lg:hidden bg-white border-t pt-4">
             <div className="container mx-auto px-4 py-4 space-y-4">
               <MobileDropdown
                 title="Beranda"
@@ -283,7 +283,7 @@ export default function Home() {
               >
                 Hubungi Kami
               </a>
-              <Button className="w-full bg-[#0552A2] hover:bg-[#003164]">
+              <Button className="w-full mb-3 bg-[#0552A2] hover:bg-[#003164]">
                 PPDB
               </Button>
             </div>
@@ -391,7 +391,7 @@ export default function Home() {
       {/* Headmaster Welcome */}
       <section
         id="sambutan"
-        className="py-20 bg-gradient-to-br from-orange-50 to-white"
+        className="py-20 from-orange-50 to-white"
       >
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
