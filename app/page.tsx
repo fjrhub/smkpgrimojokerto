@@ -959,9 +959,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Partners */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section className="py-10 bg-gray-50">
+        <div className="w-full px-4">
           <div className="overflow-hidden" ref={emblaRefPartners}>
             <div className="flex gap-12 px-8">
               {partners.map((partner, index) => (
