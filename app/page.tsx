@@ -178,10 +178,10 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <img
                 src="logo-smk.png"
-                alt="Logo SMK PGRI Kota Mojokerto"
+                alt="Logo SMK PGRI KOTA MOJOKERTO"
                 className="w-11 h-11 md:w-10 md:h-10 object-contain"
               />
-              <span className="text-base md:text-lg font-bold text-[#0552A2]">
+              <span className="text-base md:text-xl font-bold text-[#0552A2]">
                 SMK PGRI KOTA MOJOKERTO
               </span>
             </div>
