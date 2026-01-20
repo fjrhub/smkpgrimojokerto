@@ -49,8 +49,8 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [studentData, setStudentData] = useState({
-    rpl: 1060,
-    tkj: 334,
+    tkj: 1060,
+    tei: 334,
     male: 1029,
     female: 435,
   });
@@ -116,9 +116,9 @@ export default function Home() {
   const newsItems = [
     {
       image:
-        "https://images.pexels.com/photos/5427825/pexels-photo-5427825.jpeg",
+        "IMG-20260119-WA0049.jpg",
       title:
-        "Kunjungan BoC dan BoD Telkom Indonesia di Malang, SMK Telkom Malang Teguhkan Peran School of Global Digitalent",
+        "Pelaksanaan Isra mi'raj bersama sama",
       date: "18 December 2025",
     },
     {
@@ -194,13 +194,11 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <motion.a
-              href="#home"
+            <div
               className="text-2xl font-bold text-orange-600"
-              whileHover={{ scale: 1.05 }}
             >
-              SMK Telkom Malang
-            </motion.a>
+              SMK PGRI MOJOKERTO
+            </div>
 
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center space-x-8">
@@ -528,13 +526,13 @@ export default function Home() {
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             <StatCard
-              number={studentData.rpl}
-              label="RPL"
+              number={studentData.tkj}
+              label="TKJ"
               color="from-blue-400 to-blue-600"
             />
             <StatCard
-              number={studentData.tkj}
-              label="TKJ"
+              number={studentData.tei}
+              label="TEI"
               color="from-yellow-400 to-yellow-600"
             />
             <StatCard
@@ -924,7 +922,7 @@ export default function Home() {
             </motion.div>
             <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
               <img
-                src="https://images.pexels.com/photos/5428003/pexels-photo-5428003.jpeg"
+                src="IMG-20260119-WA0034.jpg"
                 alt="Agenda"
                 className="rounded-2xl shadow-xl"
               />
