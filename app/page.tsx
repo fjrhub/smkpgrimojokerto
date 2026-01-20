@@ -1253,8 +1253,8 @@ function SocialIcon({ icon, dark = false }: SocialIconProps) {
       whileTap={{ scale: 0.9 }}
       className={`w-10 h-10 ${
         dark
-          ? "bg-gray-800 hover:text-[#0552A2]"
-          : "bg-gray-100 hover:text-[#0552A2]"
+          ? "bg-gray-800 hover:bg-[#0552A2]"
+          : "bg-gray-100 hover:bg-[#0552A2]"
       } rounded-full flex items-center justify-center ${
         dark
           ? "text-gray-400 hover:text-white"

@@ -1,6 +1,6 @@
 {
   "name": "smkpgrimojokerto",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "private": true,
   "description": "SMK PGRI Mojokerto school website built with Next.js and deployed on Vercel.",
   "scripts": {
