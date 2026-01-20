@@ -985,7 +985,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
             <div>
               <h3 className="text-2xl font-bold mb-6 text-orange-500">
-                SMK Telkom Malang
+                SMK PGRI MOJOKERTO
               </h3>
               <p className="text-gray-400 leading-relaxed">
                 Pelopor SMK bidang Teknologi dan Informatika di Indonesia sejak
@@ -1069,8 +1069,7 @@ export default function Home() {
             <div>
               <h4 className="font-semibold text-lg mb-4">Alamat</h4>
               <p className="text-gray-400 leading-relaxed mb-4">
-                Jl. Danau Ranau, Sawojajar, Kec. Kedungkandang, Kota Malang,
-                Jawa Timur 65139
+                Jl. Ketidur No.55, Mergelo, Surodinawan, Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61328
               </p>
               <div className="flex gap-3">
                 <SocialIcon icon={<Facebook size={20} />} dark />
