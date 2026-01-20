@@ -187,7 +187,7 @@ export default function Home() {
             </div>
 
             {/* DESKTOP MENU */}
-            <div className="hidden lg:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center space-x-5">
               <DropdownMenu
                 title="Beranda"
                 items={[
