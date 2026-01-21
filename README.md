@@ -19,3 +19,9 @@ The website includes an **announcement management system** that allows administr
 
 ## Purpose
 This project was developed as a **PKK (Produk Kreatif dan Kewirausahaan)** project for the **Computer and Network Engineering (TKJ)** major.
+
+## License
+This project is licensed under the **MIT License**.  
+You are free to use, modify, and distribute this project as long as the original license is included.
+
+See the [LICENSE](./LICENSE) file for more details.
