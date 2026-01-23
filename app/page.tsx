@@ -246,49 +246,59 @@ export default function Home() {
           </div>
         </div>
 
-        {/* MOBILE MENU */}
+      {/* MOBILE MENU */}
+      <AnimatePresence>
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t pt-4">
-            <div className="container mx-auto px-4 py-4 space-y-4">
-              <MobileDropdown
-                title="Beranda"
-                items={[
-                  { label: "Sambutan Kepala Sekolah", href: "#sambutan" },
-                  { label: "Video Profil Sekolah", href: "#video" },
-                  { label: "Berita Terbaru", href: "#berita" },
-                ]}
-              />
-              <MobileDropdown
-                title="Tentang Kami"
-                items={[
-                  { label: "Profil Sekolah", href: "#about" },
-                  { label: "Visi & Misi", href: "#" },
-                ]}
-              />
-              <a
-                href="#program"
-                className="block text-gray-700 hover:text-[#0552A2]"
-              >
-                Program
-              </a>
-              <a
-                href="#testmonials"
-                className="block text-gray-700 hover:text-[#0552A2]"
-              >
-                Alumni
-              </a>
-              <a
-                href="#contact"
-                className="block text-gray-700 hover:text-[#0552A2]"
-              >
-                Hubungi Kami
-              </a>
-              <Button className="w-full mb-3 bg-[#0552A2] hover:bg-[#003164]">
-                PPDB
-              </Button>
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }} // Durasi animasi slide up/down
+            className="lg:hidden overflow-hidden" // Tambahkan overflow-hidden agar animasi height berjalan halus
+          >
+            <div className="bg-white border-t pt-4"> {/* Wrapper konten menu */}
+              <div className="container mx-auto px-4 py-4 space-y-4">
+                <MobileDropdown
+                  title="Beranda"
+                  items={[
+                    { label: "Sambutan Kepala Sekolah", href: "#sambutan" },
+                    { label: "Video Profil Sekolah", href: "#video" },
+                    { label: "Berita Terbaru", href: "#berita" },
+                  ]}
+                />
+                <MobileDropdown
+                  title="Tentang Kami"
+                  items={[
+                    { label: "Profil Sekolah", href: "#about" },
+                    { label: "Visi & Misi", href: "#" },
+                  ]}
+                />
+                <a
+                  href="#program"
+                  className="block text-gray-700 hover:text-[#0552A2]"
+                >
+                  Program
+                </a>
+                <a
+                  href="#testmonials"
+                  className="block text-gray-700 hover:text-[#0552A2]"
+                >
+                  Alumni
+                </a>
+                <a
+                  href="#contact"
+                  className="block text-gray-700 hover:text-[#0552A2]"
+                >
+                  Hubungi Kami
+                </a>
+                <Button className="w-full mb-3 bg-[#0552A2] hover:bg-[#003164]">
+                  PPDB
+                </Button>
+              </div>
             </div>
-          </div>
+          </motion.div>
         )}
+      </AnimatePresence>
       </nav>
 
       {/* Hero Section */}
