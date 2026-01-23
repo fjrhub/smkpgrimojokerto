@@ -138,17 +138,18 @@ export default function Home() {
 
   const partners = [
     "image.png",
-    "image.png",
-    "image.png",
-    "image.png",
-    "image.png",
-    "image.png",
-    "image.png",
-    "image.png",
-    "image.png",
-    "image.png",
-    "image.png",
-    "image.png",
+    "tjiwi.png",
+    "ahm.png",
+    "bsi.png",
+    "unesa.png",
+    "digiware.png",
+    "dutaasia.png",
+    "imm.png",
+    "st.png",
+    "tam.png",
+    "plc.png",
+    "maxx.png",
+    "mitsubishi.png",
   ];
 
   const fadeInUp = {
@@ -246,59 +247,61 @@ export default function Home() {
           </div>
         </div>
 
-      {/* MOBILE MENU */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }} // Durasi animasi slide up/down
-            className="lg:hidden overflow-hidden" // Tambahkan overflow-hidden agar animasi height berjalan halus
-          >
-            <div className="bg-white border-t pt-4"> {/* Wrapper konten menu */}
-              <div className="container mx-auto px-4 py-4 space-y-4">
-                <MobileDropdown
-                  title="Beranda"
-                  items={[
-                    { label: "Sambutan Kepala Sekolah", href: "#sambutan" },
-                    { label: "Video Profil Sekolah", href: "#video" },
-                    { label: "Berita Terbaru", href: "#berita" },
-                  ]}
-                />
-                <MobileDropdown
-                  title="Tentang Kami"
-                  items={[
-                    { label: "Profil Sekolah", href: "#about" },
-                    { label: "Visi & Misi", href: "#" },
-                  ]}
-                />
-                <a
-                  href="#program"
-                  className="block text-gray-700 hover:text-[#0552A2]"
-                >
-                  Program
-                </a>
-                <a
-                  href="#testmonials"
-                  className="block text-gray-700 hover:text-[#0552A2]"
-                >
-                  Alumni
-                </a>
-                <a
-                  href="#contact"
-                  className="block text-gray-700 hover:text-[#0552A2]"
-                >
-                  Hubungi Kami
-                </a>
-                <Button className="w-full mb-3 bg-[#0552A2] hover:bg-[#003164]">
-                  PPDB
-                </Button>
+        {/* MOBILE MENU */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }} // Durasi animasi slide up/down
+              className="lg:hidden overflow-hidden" // Tambahkan overflow-hidden agar animasi height berjalan halus
+            >
+              <div className="bg-white border-t pt-4">
+                {" "}
+                {/* Wrapper konten menu */}
+                <div className="container mx-auto px-4 py-4 space-y-4">
+                  <MobileDropdown
+                    title="Beranda"
+                    items={[
+                      { label: "Sambutan Kepala Sekolah", href: "#sambutan" },
+                      { label: "Video Profil Sekolah", href: "#video" },
+                      { label: "Berita Terbaru", href: "#berita" },
+                    ]}
+                  />
+                  <MobileDropdown
+                    title="Tentang Kami"
+                    items={[
+                      { label: "Profil Sekolah", href: "#about" },
+                      { label: "Visi & Misi", href: "#" },
+                    ]}
+                  />
+                  <a
+                    href="#program"
+                    className="block text-gray-700 hover:text-[#0552A2]"
+                  >
+                    Program
+                  </a>
+                  <a
+                    href="#testmonials"
+                    className="block text-gray-700 hover:text-[#0552A2]"
+                  >
+                    Alumni
+                  </a>
+                  <a
+                    href="#contact"
+                    className="block text-gray-700 hover:text-[#0552A2]"
+                  >
+                    Hubungi Kami
+                  </a>
+                  <Button className="w-full mb-3 bg-[#0552A2] hover:bg-[#003164]">
+                    PPDB
+                  </Button>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       {/* Hero Section */}
@@ -337,11 +340,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <img
-                src="image_depan.png"
-                alt="Students"
-                className="rounded-2xl"
-              />
+              <img src="page.png" alt="Students" className="rounded-2xl" />
             </motion.div>
           </div>
         </div>
@@ -399,10 +398,7 @@ export default function Home() {
       </section>
 
       {/* Headmaster Welcome */}
-      <section
-        id="sambutan"
-        className="py-20 from-orange-50 to-white"
-      >
+      <section id="sambutan" className="py-20 from-orange-50 to-white">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div {...fadeInUp}>
@@ -467,7 +463,7 @@ export default function Home() {
                 Kuy, nonton!
               </span>
               <h2 className="text-4xl font-bold mt-2 mb-6">
-                Video Profil Moklet
+                Video Profil Skagrimo
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
                 Video profil sekolah memperkenalkan kepada kalian hal-hal
@@ -476,8 +472,8 @@ export default function Home() {
                 banyak lagi.
               </p>
               <p className="text-gray-600 leading-relaxed">
-                Biar kalian tidak penasaran apa saja yang ada di dalam SMK
-                Telkom Malang, segera tonton video profilnya.
+                Biar kalian tidak penasaran apa saja yang ada di dalam SMK PGRI
+                KOTA MOJOKERTO, segera tonton video profilnya.
               </p>
             </motion.div>
           </div>
@@ -542,9 +538,9 @@ export default function Home() {
             <motion.div {...fadeInUp}>
               <h2 className="text-4xl font-bold mb-6">Program Keahlian</h2>
               <p className="text-gray-600 leading-relaxed mb-8">
-                SMK Telkom Malang memiliki dua program keahlian yang bisa kalian
-                pilih. Kedua program keahlian ini saling berkaitan satu sama
-                lain. Sehingga dengan dukungan guru-guru kami yang keren
+                SMK PGRI KOTA MOJOKERTO memiliki dua program keahlian yang bisa
+                kalian pilih. Kedua program keahlian ini saling berkaitan satu
+                sama lain. Sehingga dengan dukungan guru-guru kami yang keren
                 nantinya kalian bisa mempelajari keduanya.
               </p>
               <Button
@@ -561,17 +557,27 @@ export default function Home() {
             >
               <ProgramTimeline
                 icon={<Code />}
-                title="Rekayasa Perangkat Lunak (RPL)"
+                title="Teknik Pemesinan"
                 color="bg-yellow-500"
               />
               <ProgramTimeline
                 icon={<Network />}
-                title="Teknik Komputer dan Jaringan (TKJ)"
+                title="Teknik Kendaraan Ringan"
                 color="bg-red-500"
               />
               <ProgramTimeline
                 icon={<Gamepad2 />}
-                title="Pengembangan Gim"
+                title="Teknik Sepeda Motor"
+                color="bg-blue-500"
+              />
+              <ProgramTimeline
+                icon={<Gamepad2 />}
+                title="Teknik Komputer dan Jaringan"
+                color="bg-blue-500"
+              />
+              <ProgramTimeline
+                icon={<Gamepad2 />}
+                title="Teknik Elektronika Industri"
                 color="bg-blue-500"
               />
             </motion.div>
