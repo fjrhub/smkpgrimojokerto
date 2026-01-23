@@ -14,19 +14,28 @@ export default function AllAnnouncementsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      {/* Header — vertikal, tombol di kiri bawah */}
+      <div className="flex flex-col gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">All Announcements</h1>
-          <p className="text-gray-600 mt-2">Manage your school announcements</p>
+          <p className="text-gray-600 mt-1">Manage your school announcements</p>
         </div>
-        <Link href="/dashboard/announcements/add">
-          <Button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700">
-            <Plus size={18} />
-            Add Announcement
-          </Button>
-        </Link>
+
+        {/* Tombol Add — di KIRI, di bawah judul & deskripsi */}
+        <div className="flex justify-start">
+          <Link href="/dashboard/announcements/add">
+            <Button 
+              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 whitespace-nowrap px-3 py-2 rounded-md text-sm"
+            >
+              <Plus size={16} />
+              <span className="hidden sm:inline">Add Announcement</span>
+              <span className="sm:hidden">Add Announcement</span>
+            </Button>
+          </Link>
+        </div>
       </div>
 
+      {/* Daftar Pengumuman */}
       <Card>
         <CardContent className="p-6">
           <div className="space-y-4">
