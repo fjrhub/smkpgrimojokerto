@@ -2,14 +2,17 @@ import mongoose from 'mongoose'
 
 const UserSchema = new mongoose.Schema(
   {
-    name: {
+    username: {
       type: String,
       required: true,
+      unique: true,
+      trim: true,
     },
     email: {
       type: String,
       required: true,
       unique: true,
+      lowercase: true,
     },
     password: {
       type: String,
@@ -25,7 +28,10 @@ const UserSchema = new mongoose.Schema(
       default: true,
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 )
 
-export default mongoose.models.User || mongoose.model('User', UserSchema)
+export default mongoose.models.User ||
+  mongoose.model('User', UserSchema)
