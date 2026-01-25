@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard,
@@ -16,6 +17,7 @@ import {
   Settings,
   ChevronDown,
   ChevronRight,
+  LogOut,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -82,6 +84,7 @@ const menuItems = [
 
 export default function Sidebar({ isOpen, onClose }) {
   const pathname = usePathname()
+  const router = useRouter()
   const [expandedMenus, setExpandedMenus] = useState(['News', 'Announcements'])
 
   const toggleMenu = (title) => {
@@ -91,6 +94,22 @@ export default function Sidebar({ isOpen, onClose }) {
   }
 
   const isActive = (href) => pathname === href
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('/api/auth/logout', {
+        method: 'POST',
+      });
+
+      if (response.ok) {
+        router.push('/login');
+      } else {
+        console.error('Gagal logout:', response.status, await response.text());
+      }
+    } catch (err) {
+      console.error('Network Error:', err);
+    }
+  };
 
   return (
     <aside
@@ -184,6 +203,14 @@ export default function Sidebar({ isOpen, onClose }) {
               <p className="text-blue-200 text-xs">admin@school.edu</p>
             </div>
           </div>
+          {/* Tombol Logout */}
+          <button
+            onClick={handleLogout}
+            className="mt-4 w-full flex items-center gap-3 px-3 py-2 rounded-lg text-red-200 hover:bg-red-900 transition-colors"
+          >
+            <LogOut size={20} />
+            <span className="font-medium">Logout</span>
+          </button>
         </div>
       </div>
     </aside>
