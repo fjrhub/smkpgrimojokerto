@@ -35,27 +35,42 @@ export async function POST(request) {
       )
     }
 
-    // Buat token JWT yang tidak menyertakan _id
+    // Buat token JWT yang menyertakan username dan email
     const payload = {
       userId: user._id.toString(),
       username: user.username,
+      email: user.email,
       role: user.role,
     }
     const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '7d' })
 
-    // Set cookie dengan token JWT
+    // Set cookie dengan token JWT (httpOnly)
     const res = NextResponse.json(
       {
         username: user.username,
+        email: user.email,
         role: user.role,
       },
       { status: 200 }
     )
 
+    // Set cookie JWT dengan httpOnly
     res.cookies.set('auth', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       maxAge: 7 * 24 * 60 * 60, // 7 hari
+      path: '/',
+      sameSite: 'strict',
+    })
+
+    // Set cookie tambahan untuk data publik (bisa diakses JS)
+    res.cookies.set('userData', JSON.stringify({
+      username: user.username,
+      email: user.email,
+    }), {
+      httpOnly: false, // Agar bisa diakses JavaScript
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 7 * 24 * 60 * 60, // Harus sama dengan JWT
       path: '/',
       sameSite: 'strict',
     })
