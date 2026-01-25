@@ -30,7 +30,7 @@ export default function AdminUsersPage() {
   /* =========================
      FETCH USERS
   ========================== */
-  const fetchUsers = async () => {
+const fetchUsers = async () => {
     try {
       const res = await fetch('/api/admin/users', {
         cache: 'no-store',
@@ -44,7 +44,15 @@ export default function AdminUsersPage() {
       const text = await res.text()
       const data = text ? JSON.parse(text) : []
 
-      setUsers(Array.isArray(data) ? data : [])
+      // Urutkan berdasarkan role: Super Admin > Admin > Editor
+      const sortedData = Array.isArray(data) 
+        ? data.sort((a, b) => {
+            const roleOrder = { superadmin: 3, admin: 2, editor: 1 }
+            return (roleOrder[b.role] || 0) - (roleOrder[a.role] || 0)
+          })
+        : []
+
+      setUsers(sortedData)
     } catch (err) {
       console.error(err)
       setUsers([])
