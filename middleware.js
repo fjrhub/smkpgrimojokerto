@@ -1,15 +1,32 @@
 import { NextResponse } from 'next/server'
+import { jwtVerify } from 'jose'
 
-export function middleware(request) {
-  const auth = request.cookies.get('auth')
+const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret'
 
-  const isDashboard = request.nextUrl.pathname.startsWith('/dashboard')
+export async function middleware(request) {
+  const token = request.cookies.get('auth')?.value
 
-  if (isDashboard && !auth) {
+  if (!token) {
+    if (request.nextUrl.pathname.startsWith('/dashboard')) {
+      return NextResponse.redirect(new URL('/login', request.url))
+    }
+    return NextResponse.next()
+  }
+
+  try {
+    const secret = new TextEncoder().encode(JWT_SECRET)
+    await jwtVerify(token, secret)
+
+    if (request.nextUrl.pathname === '/login') {
+      return NextResponse.redirect(new URL('/dashboard', request.url))
+    }
+  } catch (error) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
+
+  return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*'],
+  matcher: ['/dashboard/:path*', '/login']
 }
