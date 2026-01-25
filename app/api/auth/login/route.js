@@ -63,10 +63,11 @@ export async function POST(request) {
       sameSite: 'strict',
     })
 
-    // Set cookie tambahan untuk data publik (bisa diakses JS)
+    // Set cookie tambahan untuk data publik (bisa diakses JS) - PERHATIKAN BARIS INI
     res.cookies.set('userData', JSON.stringify({
       username: user.username,
       email: user.email,
+      role: user.role, // <-- TAMBAHKAN BARIS INI
     }), {
       httpOnly: false, // Agar bisa diakses JavaScript
       secure: process.env.NODE_ENV === 'production',
