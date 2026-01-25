@@ -33,15 +33,28 @@ const TableFooter = React.forwardRef(({ className, ...props }, ref) => (
 ))
 TableFooter.displayName = "TableFooter"
 
-const TableRow = React.forwardRef(({ className, ...props }, ref) => (
-  <tr
-    ref={ref}
-    className={cn(
-      "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
-      className
-    )}
-    {...props} />
-))
+const TableRow = React.forwardRef(({ className, children, ...props }, ref) => {
+  // Filter out text nodes that are just whitespace
+  const filteredChildren = React.Children.toArray(children).filter(child => {
+    if (typeof child === 'string') {
+      return child.trim() !== '' // Hilangkan string yang hanya berisi whitespace
+    }
+    return true // Biarkan elemen lain
+  })
+
+  return (
+    <tr
+      ref={ref}
+      className={cn(
+        "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
+        className
+      )}
+      {...props}
+    >
+      {filteredChildren}
+    </tr>
+  )
+})
 TableRow.displayName = "TableRow"
 
 const TableHead = React.forwardRef(({ className, ...props }, ref) => (
