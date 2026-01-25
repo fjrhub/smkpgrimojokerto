@@ -89,7 +89,13 @@ const fetchUsers = async () => {
         return
       }
 
-      setUsers(prev => [...prev, data])
+      // Gabungkan data baru ke list dan urutkan ulang
+      const updatedUsers = [...users, data].sort((a, b) => {
+        const roleOrder = { superadmin: 3, admin: 2, editor: 1 }
+        return (roleOrder[b.role] || 0) - (roleOrder[a.role] || 0)
+      })
+
+      setUsers(updatedUsers)
       setForm({ username: '', email: '', password: '', role: 'editor' })
       setShowForm(false)
     } catch (err) {
