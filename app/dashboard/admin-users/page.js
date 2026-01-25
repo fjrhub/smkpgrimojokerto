@@ -19,6 +19,7 @@ export default function AdminUsersPage() {
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
   const [search, setSearch] = useState('')
+  const [currentUserRole, setCurrentUserRole] = useState(null)
 
   const [form, setForm] = useState({
     username: '',
@@ -28,9 +29,25 @@ export default function AdminUsersPage() {
   })
 
   /* =========================
-     FETCH USERS
+     FETCH CURRENT USER & USERS
   ========================== */
-const fetchUsers = async () => {
+  const fetchCurrentUser = async () => {
+    try {
+      // Ambil role dari cookie userData (non-httpOnly)
+      const cookies = document.cookie.split('; ')
+      const userDataCookie = cookies.find(c => c.startsWith('userData='))
+      if (userDataCookie) {
+        const userData = JSON.parse(decodeURIComponent(userDataCookie.split('=')[1]))
+        setCurrentUserRole(userData.role)
+      } else {
+        console.warn('userData cookie not found')
+      }
+    } catch (err) {
+      console.error('Error parsing userData cookie:', err)
+    }
+  }
+
+  const fetchUsers = async () => {
     try {
       const res = await fetch('/api/admin/users', {
         cache: 'no-store',
@@ -44,8 +61,7 @@ const fetchUsers = async () => {
       const text = await res.text()
       const data = text ? JSON.parse(text) : []
 
-      // Urutkan berdasarkan role: Super Admin > Admin > Editor
-      const sortedData = Array.isArray(data) 
+      const sortedData = Array.isArray(data)
         ? data.sort((a, b) => {
             const roleOrder = { superadmin: 3, admin: 2, editor: 1 }
             return (roleOrder[b.role] || 0) - (roleOrder[a.role] || 0)
@@ -62,15 +78,28 @@ const fetchUsers = async () => {
   }
 
   useEffect(() => {
+    fetchCurrentUser()
     fetchUsers()
-  }, [])
+  }, []) // Hanya dijalankan sekali saat mount
 
   /* =========================
      CREATE USER
   ========================== */
   const handleSubmit = async () => {
     if (!form.username || !form.email || !form.password) {
-      alert('Username, email, dan password wajib diisi')
+      alert('Username, email, and password are required')
+      return
+    }
+
+    // Cegah penambahan role yang lebih tinggi dari pengguna saat ini
+    const allowedRoles = {
+      superadmin: ['superadmin', 'admin', 'editor'],
+      admin: ['admin', 'editor'],
+      editor: [],
+    }
+
+    if (!allowedRoles[currentUserRole]?.includes(form.role)) {
+      alert(`You cannot assign the role: ${form.role}`)
       return
     }
 
@@ -85,11 +114,10 @@ const fetchUsers = async () => {
       const data = text ? JSON.parse(text) : null
 
       if (!res.ok) {
-        alert(data?.message || 'Gagal menambah admin')
+        alert(data?.message || 'Failed to add admin')
         return
       }
 
-      // Gabungkan data baru ke list dan urutkan ulang
       const updatedUsers = [...users, data].sort((a, b) => {
         const roleOrder = { superadmin: 3, admin: 2, editor: 1 }
         return (roleOrder[b.role] || 0) - (roleOrder[a.role] || 0)
@@ -100,7 +128,7 @@ const fetchUsers = async () => {
       setShowForm(false)
     } catch (err) {
       console.error(err)
-      alert('Terjadi kesalahan')
+      alert('An error occurred')
     }
   }
 
@@ -112,13 +140,16 @@ const fetchUsers = async () => {
     u.email?.toLowerCase().includes(search.toLowerCase())
   )
 
+  // Tampilkan tombol hanya jika role adalah superadmin atau admin
+  const canAddAdmin = currentUserRole === 'superadmin' || currentUserRole === 'admin'
+
   return (
     <div className="space-y-8">
       {/* HEADER */}
       <div>
         <h1 className="text-3xl font-bold">Admin Users</h1>
         <p className="text-muted-foreground">
-          Kelola akun administrator website sekolah
+          Manage school website administrator accounts
         </p>
       </div>
 
@@ -131,13 +162,13 @@ const fetchUsers = async () => {
           </CardContent>
         </Card>
         <Card>
-          <CardHeader><CardTitle>Aktif</CardTitle></CardHeader>
+          <CardHeader><CardTitle>Active</CardTitle></CardHeader>
           <CardContent className="text-2xl font-bold">
             {users.filter(u => u.isActive !== false).length}
           </CardContent>
         </Card>
         <Card>
-          <CardHeader><CardTitle>Nonaktif</CardTitle></CardHeader>
+          <CardHeader><CardTitle>Inactive</CardTitle></CardHeader>
           <CardContent className="text-2xl font-bold">
             {users.filter(u => u.isActive === false).length}
           </CardContent>
@@ -149,24 +180,26 @@ const fetchUsers = async () => {
         <div className="relative w-full md:w-72">
           <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Cari admin..."
+            placeholder="Search admin..."
             className="pl-9"
             value={search}
             onChange={e => setSearch(e.target.value)}
           />
         </div>
 
-        <Button onClick={() => setShowForm(!showForm)} className="gap-2">
-          <Plus className="h-4 w-4" />
-          Tambah Admin
-        </Button>
+        {canAddAdmin && (
+          <Button onClick={() => setShowForm(!showForm)} className="gap-2">
+            <Plus className="h-4 w-4" />
+            Add Admin
+          </Button>
+        )}
       </div>
 
       {/* FORM */}
-      {showForm && (
+      {showForm && canAddAdmin && (
         <Card>
           <CardHeader>
-            <CardTitle>Tambah Admin Baru</CardTitle>
+            <CardTitle>Add New Admin</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <Input
@@ -199,12 +232,18 @@ const fetchUsers = async () => {
                 setForm({ ...form, role: e.target.value })
               }
             >
-              <option value="superadmin">Super Admin</option>
-              <option value="admin">Admin</option>
-              <option value="editor">Editor</option>
+              {currentUserRole === 'superadmin' && (
+                <option value="superadmin">Super Admin</option>
+              )}
+              {(currentUserRole === 'superadmin' || currentUserRole === 'admin') && (
+                <option value="admin">Admin</option>
+              )}
+              {(currentUserRole === 'superadmin' || currentUserRole === 'admin') && (
+                <option value="editor">Editor</option>
+              )}
             </select>
 
-            <Button onClick={handleSubmit}>Simpan</Button>
+            <Button onClick={handleSubmit}>Save</Button>
           </CardContent>
         </Card>
       )}
@@ -212,13 +251,13 @@ const fetchUsers = async () => {
       {/* TABLE */}
       <Card>
         <CardHeader>
-          <CardTitle>Daftar Admin</CardTitle>
+          <CardTitle>Admin List</CardTitle>
         </CardHeader>
         <CardContent>
           {loading ? (
-            <p className="text-muted-foreground">Memuat data...</p>
+            <p className="text-muted-foreground">Loading data...</p>
           ) : filteredUsers.length === 0 ? (
-            <p className="text-muted-foreground">Belum ada data admin</p>
+            <p className="text-muted-foreground">No admin data available</p>
           ) : (
             <Table>
               <TableHeader>
