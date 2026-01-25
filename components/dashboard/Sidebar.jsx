@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { usePathname } from 'next/navigation'
@@ -20,6 +20,13 @@ import {
   LogOut,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+
+// Fungsi bantu untuk membaca cookie
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
 
 const menuItems = [
   {
@@ -86,6 +93,22 @@ export default function Sidebar({ isOpen, onClose }) {
   const pathname = usePathname()
   const router = useRouter()
   const [expandedMenus, setExpandedMenus] = useState(['News', 'Announcements'])
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    const userDataString = getCookie('userData');
+    if (userDataString) {
+      try {
+        const userData = JSON.parse(decodeURIComponent(userDataString));
+        setUser(userData);
+      } catch (e) {
+        console.error('Failed to parse userData cookie:', e);
+        router.push('/login');
+      }
+    } else {
+      router.push('/login');
+    }
+  }, [router]);
 
   const toggleMenu = (title) => {
     setExpandedMenus((prev) =>
@@ -97,11 +120,9 @@ export default function Sidebar({ isOpen, onClose }) {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('/api/auth/logout', {
-        method: 'POST',
-      });
-
+      const response = await fetch('/api/auth/logout', { method: 'POST' });
       if (response.ok) {
+        // Redirect ke login, middleware akan membersihkan cookie
         router.push('/login');
       } else {
         console.error('Gagal logout:', response.status, await response.text());
@@ -194,15 +215,20 @@ export default function Sidebar({ isOpen, onClose }) {
 
         {/* Footer */}
         <div className="px-6 py-4 border-t border-blue-700">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center font-bold">
-              A
+          {user ? (
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center font-bold">
+                {user.username.charAt(0).toUpperCase()}
+              </div>
+              <div>
+                <p className="font-medium text-sm">{user.username}</p>
+                <p className="text-blue-200 text-xs">{user.email}</p>
+              </div>
             </div>
-            <div>
-              <p className="font-medium text-sm">Admin User</p>
-              <p className="text-blue-200 text-xs">admin@school.edu</p>
-            </div>
-          </div>
+          ) : (
+            <p>Loading...</p>
+          )}
+
           {/* Tombol Logout */}
           <button
             onClick={handleLogout}
