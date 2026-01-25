@@ -1,13 +1,12 @@
 import { NextResponse } from 'next/server'
-import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { connectDB } from '@/lib/mongodb'
 import User from '@/models/User'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret'
 
-// Fungsi bantu untuk mendapatkan role dari token
-async function getCurrentUserRoleFromCookie(cookies) {
+// Fungsi bantu untuk mendapatkan role dari token dan memverifikasi isActive
+async function getCurrentUserDetailsFromCookie(cookies) {
   const token = cookies.get('auth')?.value
   if (!token) {
     console.warn('No auth token found in cookies')
@@ -16,14 +15,19 @@ async function getCurrentUserRoleFromCookie(cookies) {
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET)
-    const user = await User.findById(decoded.userId).select('role')
+    // Cari ulang user dari DB untuk memeriksa isActive
+    const user = await User.findById(decoded.userId).select('role isActive')
     if (!user) {
       console.warn('User not found for token')
       return null
     }
-    return user?.role || null
+    if (user.isActive === false) {
+      console.warn('User account is inactive')
+      return null // Atau throw error untuk memberi tahu middleware
+    }
+    return { role: user.role, isActive: user.isActive }
   } catch (err) {
-    console.error('JWT verification failed:', err.message)
+    console.error('JWT verification or user lookup failed:', err.message)
     return null
   }
 }
@@ -35,11 +39,11 @@ export async function GET(req) {
   try {
     await connectDB()
 
-    // Ambil role dari cookie
+    // Ambil role dan status aktif dari cookie
     const cookies = req.cookies
-    const currentUserRole = await getCurrentUserRoleFromCookie(cookies)
+    const currentUserDetails = await getCurrentUserDetailsFromCookie(cookies)
 
-    if (!currentUserRole || (currentUserRole !== 'superadmin' && currentUserRole !== 'admin')) {
+    if (!currentUserDetails || (currentUserDetails.role !== 'superadmin' && currentUserDetails.role !== 'admin')) {
       return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
     }
 
@@ -64,12 +68,16 @@ export async function POST(request) {
   try {
     await connectDB()
 
-    // Ambil role dari cookie
+    // Ambil role dan status aktif dari cookie
     const cookies = request.cookies
-    const currentUserRole = await getCurrentUserRoleFromCookie(cookies)
+    const currentUserDetails = await getCurrentUserDetailsFromCookie(cookies)
 
-    if (!currentUserRole) {
-      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
+    if (!currentUserDetails) {
+      return NextResponse.json({ message: 'Unauthorized or account inactive' }, { status: 401 })
+    }
+
+    if (currentUserDetails.role !== 'superadmin' && currentUserDetails.role !== 'admin') {
+      return NextResponse.json({ message: 'Forbidden' }, { status: 403 })
     }
 
     const body = await request.json()
@@ -82,7 +90,7 @@ export async function POST(request) {
       editor: [],
     }
 
-    if (!allowedRoles[currentUserRole]?.includes(role)) {
+    if (!allowedRoles[currentUserDetails.role]?.includes(role)) {
       return NextResponse.json(
         { message: `You cannot assign the role: ${role}` },
         { status: 403 }
@@ -144,3 +152,4 @@ export async function POST(request) {
     )
   }
 }
+// ...
