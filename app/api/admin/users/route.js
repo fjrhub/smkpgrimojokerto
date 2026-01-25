@@ -32,21 +32,30 @@ export async function POST(request) {
     await connectDB()
 
     const body = await request.json()
-    const { name, email, role } = body
+    const { username, email, role } = body
 
     // Validasi
-    if (!name || !email || !role) {
+    if (!username || !email || !role) {
       return NextResponse.json(
-        { message: 'Nama, email, dan role wajib diisi' },
+        { message: 'Username, email, dan role wajib diisi' },
         { status: 400 }
       )
     }
 
     // Cek email duplikat
-    const existingUser = await User.findOne({ email })
-    if (existingUser) {
+    const existingEmail = await User.findOne({ email })
+    if (existingEmail) {
       return NextResponse.json(
         { message: 'Email sudah terdaftar' },
+        { status: 409 }
+      )
+    }
+
+    // Cek username duplikat
+    const existingUsername = await User.findOne({ username })
+    if (existingUsername) {
+      return NextResponse.json(
+        { message: 'Username sudah digunakan' },
         { status: 409 }
       )
     }
@@ -55,24 +64,25 @@ export async function POST(request) {
     const hashedPassword = await bcrypt.hash('admin123', 10)
 
     const newUser = await User.create({
-      name,
+      username,
       email,
       password: hashedPassword,
       role,
       isActive: true,
     })
 
-    // Jangan kirim password ke frontend
-    const userResponse = {
-      _id: newUser._id,
-      name: newUser.name,
-      email: newUser.email,
-      role: newUser.role,
-      isActive: newUser.isActive,
-      createdAt: newUser.createdAt,
-    }
-
-    return NextResponse.json(userResponse, { status: 201 })
+    // Response tanpa password
+    return NextResponse.json(
+      {
+        _id: newUser._id,
+        username: newUser.username,
+        email: newUser.email,
+        role: newUser.role,
+        isActive: newUser.isActive,
+        createdAt: newUser.createdAt,
+      },
+      { status: 201 }
+    )
   } catch (error) {
     console.error('CREATE USER ERROR:', error)
     return NextResponse.json(
