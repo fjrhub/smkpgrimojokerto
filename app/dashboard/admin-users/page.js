@@ -1,95 +1,228 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 import { Plus, Search } from 'lucide-react'
 
-const users = [
-  { id: 1, name: 'Super Admin', email: 'admin@example.com', role: 'Super Admin', status: 'Active' },
-  { id: 2, name: 'Admin Keuangan', email: 'finance@example.com', role: 'Admin', status: 'Active' },
-  { id: 3, name: 'Admin Konten', email: 'content@example.com', role: 'Editor', status: 'Inactive' },
-]
-
 export default function AdminUsersPage() {
+  const [users, setUsers] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [showForm, setShowForm] = useState(false)
+  const [search, setSearch] = useState('')
+
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    role: 'editor',
+  })
+
+  /* =========================
+     FETCH USERS (ANTI ERROR)
+  ========================== */
+  const fetchUsers = async () => {
+    try {
+      const res = await fetch('/api/admin/users', {
+        cache: 'no-store',
+      })
+
+      if (!res.ok) {
+        console.error('API Error:', res.status)
+        setUsers([])
+        return
+      }
+
+      const text = await res.text()
+
+      if (!text) {
+        setUsers([])
+        return
+      }
+
+      const data = JSON.parse(text)
+      setUsers(Array.isArray(data) ? data : [])
+    } catch (err) {
+      console.error('Fetch error:', err)
+      setUsers([])
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchUsers()
+  }, [])
+
+  /* =========================
+     CREATE USER
+  ========================== */
+  const handleSubmit = async () => {
+    if (!form.name || !form.email) {
+      alert('Nama dan email wajib diisi')
+      return
+    }
+
+    try {
+      const res = await fetch('/api/admin/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      const text = await res.text()
+      const data = text ? JSON.parse(text) : null
+
+      if (!res.ok) {
+        alert(data?.message || 'Gagal menambah admin')
+        return
+      }
+
+      setUsers(prev => [...prev, data])
+      setForm({ name: '', email: '', role: 'editor' })
+      setShowForm(false)
+    } catch (err) {
+      console.error(err)
+      alert('Terjadi kesalahan')
+    }
+  }
+
+  /* =========================
+     FILTER SEARCH
+  ========================== */
+  const filteredUsers = users.filter(u =>
+    u.name?.toLowerCase().includes(search.toLowerCase()) ||
+    u.email?.toLowerCase().includes(search.toLowerCase())
+  )
+
   return (
     <div className="space-y-8">
-      {/* Header */}
-      <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-bold">Dashboard Admin Users</h1>
-        <p className="text-muted-foreground">Kelola akun administrator dan hak akses</p>
+      {/* HEADER */}
+      <div>
+        <h1 className="text-3xl font-bold">Admin Users</h1>
+        <p className="text-muted-foreground">
+          Kelola akun administrator website sekolah
+        </p>
       </div>
 
-      {/* Stats */}
+      {/* STATS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Card>
-          <CardHeader>
-            <CardTitle>Total Admin</CardTitle>
-          </CardHeader>
-          <CardContent className="text-2xl font-bold">{users.length}</CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Admin Aktif</CardTitle>
-          </CardHeader>
+          <CardHeader><CardTitle>Total Admin</CardTitle></CardHeader>
           <CardContent className="text-2xl font-bold">
-            {users.filter(u => u.status === 'Active').length}
+            {users.length}
           </CardContent>
         </Card>
         <Card>
-          <CardHeader>
-            <CardTitle>Nonaktif</CardTitle>
-          </CardHeader>
+          <CardHeader><CardTitle>Aktif</CardTitle></CardHeader>
           <CardContent className="text-2xl font-bold">
-            {users.filter(u => u.status === 'Inactive').length}
+            {users.filter(u => u.isActive !== false).length}
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader><CardTitle>Nonaktif</CardTitle></CardHeader>
+          <CardContent className="text-2xl font-bold">
+            {users.filter(u => u.isActive === false).length}
           </CardContent>
         </Card>
       </div>
 
-      {/* Actions */}
+      {/* ACTION */}
       <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
         <div className="relative w-full md:w-72">
           <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input placeholder="Cari admin..." className="pl-9" />
+          <Input
+            placeholder="Cari admin..."
+            className="pl-9"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
         </div>
-        <Button className="gap-2">
+
+        <Button onClick={() => setShowForm(!showForm)} className="gap-2">
           <Plus className="h-4 w-4" />
           Tambah Admin
         </Button>
       </div>
 
-      {/* Table */}
+      {/* FORM TAMBAH ADMIN */}
+      {showForm && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Tambah Admin Baru</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <Input
+              placeholder="Nama lengkap"
+              value={form.name}
+              onChange={e => setForm({ ...form, name: e.target.value })}
+            />
+            <Input
+              placeholder="Email"
+              value={form.email}
+              onChange={e => setForm({ ...form, email: e.target.value })}
+            />
+            <select
+              className="w-full border rounded-md p-2"
+              value={form.role}
+              onChange={e => setForm({ ...form, role: e.target.value })}
+            >
+              <option value="superadmin">Super Admin</option>
+              <option value="admin">Admin</option>
+              <option value="editor">Editor</option>
+            </select>
+
+            <Button onClick={handleSubmit}>Simpan</Button>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* TABLE */}
       <Card>
         <CardHeader>
           <CardTitle>Daftar Admin</CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Nama</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Role</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-right">Aksi</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {users.map(user => (
-                <TableRow key={user.id}>
-                  <TableCell className="font-medium">{user.name}</TableCell>
-                  <TableCell>{user.email}</TableCell>
-                  <TableCell>{user.role}</TableCell>
-                  <TableCell>{user.status}</TableCell>
-                  <TableCell className="text-right space-x-2">
-                    <Button variant="outline" size="sm">Edit</Button>
-                    <Button variant="destructive" size="sm">Hapus</Button>
-                  </TableCell>
+          {loading ? (
+            <p className="text-muted-foreground">Memuat data...</p>
+          ) : filteredUsers.length === 0 ? (
+            <p className="text-muted-foreground">Belum ada data admin</p>
+          ) : (
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Nama</TableHead>
+                  <TableHead>Email</TableHead>
+                  <TableHead>Role</TableHead>
+                  <TableHead>Status</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody>
+                {filteredUsers.map(user => (
+                  <TableRow key={user._id}>
+                    <TableCell className="font-medium">
+                      {user.name}
+                    </TableCell>
+                    <TableCell>{user.email}</TableCell>
+                    <TableCell className="capitalize">
+                      {user.role}
+                    </TableCell>
+                    <TableCell>
+                      {user.isActive === false ? 'Inactive' : 'Active'}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          )}
         </CardContent>
       </Card>
     </div>
