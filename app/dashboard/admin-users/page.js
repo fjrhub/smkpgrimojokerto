@@ -23,6 +23,7 @@ export default function AdminUsersPage() {
   const [form, setForm] = useState({
     username: '',
     email: '',
+    password: '',
     role: 'editor',
   })
 
@@ -60,8 +61,8 @@ export default function AdminUsersPage() {
      CREATE USER
   ========================== */
   const handleSubmit = async () => {
-    if (!form.username || !form.email) {
-      alert('Username dan email wajib diisi')
+    if (!form.username || !form.email || !form.password) {
+      alert('Username, email, dan password wajib diisi')
       return
     }
 
@@ -81,7 +82,7 @@ export default function AdminUsersPage() {
       }
 
       setUsers(prev => [...prev, data])
-      setForm({ username: '', email: '', role: 'editor' })
+      setForm({ username: '', email: '', password: '', role: 'editor' })
       setShowForm(false)
     } catch (err) {
       console.error(err)
@@ -163,9 +164,18 @@ export default function AdminUsersPage() {
             />
             <Input
               placeholder="Email"
+              type="email"
               value={form.email}
               onChange={e =>
                 setForm({ ...form, email: e.target.value })
+              }
+            />
+            <Input
+              placeholder="Password"
+              type="password"
+              value={form.password}
+              onChange={e =>
+                setForm({ ...form, password: e.target.value })
               }
             />
             <select
