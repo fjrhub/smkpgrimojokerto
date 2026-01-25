@@ -27,15 +27,26 @@ export async function POST(request) {
       )
     }
 
+    // --- VALIDASI UTAMA UNTUK LOGIN ---
+    // Periksa status aktif pengguna SEBELUM membandingkan password
+    if (user.isActive === false) {
+      return NextResponse.json(
+        { message: 'Akun Anda telah dinonaktifkan' },
+        { status: 403 } // Gunakan 403 Forbidden untuk akses ditolak karena alasan izin/status
+      )
+    }
+    // -----------------------------------
+
+    // Jika aktif, lanjutkan ke verifikasi password
     const isMatch = await bcrypt.compare(password, user.password)
     if (!isMatch) {
       return NextResponse.json(
         { message: 'Password salah' },
-        { status: 401 }
+        { status: 401 } // Gunakan 401 Unauthorized untuk kredensial salah
       )
     }
 
-    // Buat token JWT yang menyertakan username dan email
+    // Buat token JWT setelah semua validasi lolos
     const payload = {
       userId: user._id.toString(),
       username: user.username,
@@ -44,7 +55,7 @@ export async function POST(request) {
     }
     const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '7d' })
 
-    // Set cookie dengan token JWT (httpOnly)
+    // Siapkan response JSON
     const res = NextResponse.json(
       {
         username: user.username,
@@ -54,7 +65,7 @@ export async function POST(request) {
       { status: 200 }
     )
 
-    // Set cookie JWT dengan httpOnly
+    // Set cookie JWT httpOnly
     res.cookies.set('auth', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
@@ -63,11 +74,11 @@ export async function POST(request) {
       sameSite: 'strict',
     })
 
-    // Set cookie tambahan untuk data publik (bisa diakses JS) - PERHATIKAN BARIS INI
+    // Set cookie userData non-httpOnly untuk frontend
     res.cookies.set('userData', JSON.stringify({
       username: user.username,
       email: user.email,
-      role: user.role, // <-- TAMBAHKAN BARIS INI
+      role: user.role, // Pastikan role disertakan
     }), {
       httpOnly: false, // Agar bisa diakses JavaScript
       secure: process.env.NODE_ENV === 'production',
