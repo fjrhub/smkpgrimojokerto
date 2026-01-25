@@ -12,7 +12,10 @@ export async function GET() {
 
     const users = await User.find()
       .select('-password')
-      .sort({ createdAt: -1 })
+      .sort({ 
+        role: -1,    // Superadmin (z-a), Admin (y...), Editor (x...)
+        createdAt: -1 // Jika role sama, urutkan berdasarkan waktu dibuat
+      })
 
     return NextResponse.json(users, { status: 200 })
   } catch (error) {
