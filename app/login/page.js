@@ -1,65 +1,71 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 export default function LoginPage() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const router = useRouter()
 
-  async function handleLogin(e) {
+  useEffect(() => {
+    // Cek apakah pengguna sudah login
+    const storedUser = sessionStorage.getItem('user');
+    if (storedUser) {
+      router.push('/dashboard');
+    }
+  }, [router]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setLoading(true)
 
-    try {
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
-      })
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password }),
+    })
 
+    if (res.ok) {
       const data = await res.json()
-
-      if (!res.ok) {
-        alert(data.message || 'Login gagal')
-        return
-      }
-
+      sessionStorage.setItem('user', JSON.stringify(data)) // Simpan data ke sessionStorage
       router.push('/dashboard')
-    } catch (err) {
-      alert('Terjadi kesalahan koneksi')
-    } finally {
-      setLoading(false)
+    } else {
+      const errorData = await res.json()
+      setError(errorData.message)
     }
   }
 
   return (
-    <div className="flex h-screen items-center justify-center">
-      <form onSubmit={handleLogin} className="space-y-4 w-80">
-        <h1 className="text-2xl font-bold">Login Admin</h1>
-
-        <input
-          placeholder="Username"
-          className="border w-full p-2"
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-        />
-
-        <input
-          type="password"
-          placeholder="Password"
-          className="border w-full p-2"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-
-        <button
-          disabled={loading}
-          className="w-full bg-black text-white p-2 disabled:opacity-50"
-        >
-          {loading ? 'Memproses...' : 'Login'}
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-6 rounded shadow-md w-96"
+      >
+        <h2 className="text-xl font-bold mb-4">Login</h2>
+        {error && <p className="text-red-500 mb-2">{error}</p>}
+        <div className="mb-4">
+          <label className="block mb-1">Username</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="w-full p-2 border rounded"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block mb-1">Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-2 border rounded"
+            required
+          />
+        </div>
+        <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">
+          Login
         </button>
       </form>
     </div>
