@@ -1,7 +1,10 @@
 import { NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 import { connectDB } from '@/lib/mongodb'
 import User from '@/models/User'
+
+const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret'
 
 export async function POST(request) {
   try {
@@ -32,20 +35,29 @@ export async function POST(request) {
       )
     }
 
-    // ✅ SET COOKIE LOGIN
+    // Buat token JWT yang tidak menyertakan _id
+    const payload = {
+      userId: user._id.toString(),
+      username: user.username,
+      role: user.role,
+    }
+    const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '7d' })
+
+    // Set cookie dengan token JWT
     const res = NextResponse.json(
       {
-        _id: user._id,
         username: user.username,
         role: user.role,
       },
       { status: 200 }
     )
 
-    res.cookies.set('auth', user._id.toString(), {
+    res.cookies.set('auth', token, {
       httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 7 * 24 * 60 * 60, // 7 hari
       path: '/',
-      sameSite: 'lax',
+      sameSite: 'strict',
     })
 
     return res
