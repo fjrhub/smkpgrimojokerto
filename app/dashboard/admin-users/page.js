@@ -80,7 +80,7 @@ export default function AdminUsersPage() {
   useEffect(() => {
     fetchCurrentUser()
     fetchUsers()
-  }, []) // Hanya dijalankan sekali saat mount
+  }, [])
 
   /* =========================
      CREATE USER
@@ -129,6 +129,61 @@ export default function AdminUsersPage() {
     } catch (err) {
       console.error(err)
       alert('An error occurred')
+    }
+  }
+
+  /* =========================
+     UPDATE USER STATUS
+  ========================== */
+  const toggleUserStatus = async (userId, currentStatus) => {
+    const newStatus = !currentStatus
+    try {
+      const res = await fetch(`/api/admin/users/${userId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ isActive: newStatus }),
+      })
+
+      const result = await res.json()
+
+      if (!res.ok) {
+        alert(result.message || 'Gagal mengubah status pengguna')
+        return
+      }
+
+      // Update state lokal
+      setUsers(prev => prev.map(u => 
+        u._id === userId ? { ...u, isActive: newStatus } : u
+      ))
+    } catch (err) {
+      console.error('Toggle status error:', err)
+      alert('Terjadi kesalahan saat mengubah status')
+    }
+  }
+
+  /* =========================
+     DELETE USER
+  ========================== */
+  const deleteUser = async (userId) => {
+    if (!confirm('Apakah Anda yakin ingin menghapus pengguna ini?')) return
+
+    try {
+      const res = await fetch(`/api/admin/users/${userId}`, {
+        method: 'DELETE',
+      })
+
+      const result = await res.json()
+
+      if (!res.ok) {
+        alert(result.message || 'Gagal menghapus pengguna')
+        return
+      }
+
+      // Hapus dari state lokal
+      setUsers(prev => prev.filter(u => u._id !== userId))
+    } catch (err) {
+      console.error('Delete user error:', err)
+      alert('Terjadi kesalahan saat menghapus pengguna')
     }
   }
 
@@ -266,20 +321,25 @@ export default function AdminUsersPage() {
                   <TableHead>Email</TableHead>
                   <TableHead>Role</TableHead>
                   <TableHead>Status</TableHead>
+                  <TableHead>Actions</TableHead> {/* Kolom baru */}
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {filteredUsers.map(user => (
                   <TableRow key={user._id}>
-                    <TableCell className="font-medium">
-                      {user.username}
-                    </TableCell>
+                    <TableCell className="font-medium">{user.username}</TableCell>
                     <TableCell>{user.email}</TableCell>
-                    <TableCell className="capitalize">
-                      {user.role}
-                    </TableCell>
+                    <TableCell className="capitalize">{user.role}</TableCell>
+                    <TableCell>{user.isActive === false ? 'Inactive' : 'Active'}</TableCell>
                     <TableCell>
-                      {user.isActive === false ? 'Inactive' : 'Active'}
+                      <div className="flex gap-2">
+                        <Button variant="outline" size="sm" onClick={() => toggleUserStatus(user._id, user.isActive)}>
+                          {user.isActive ? 'Disable' : 'Enable'}
+                        </Button>
+                        <Button variant="destructive" size="sm" onClick={() => deleteUser(user._id)}>
+                          Delete
+                        </Button>
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}
