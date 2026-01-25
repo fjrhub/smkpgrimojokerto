@@ -32,12 +32,12 @@ export async function POST(request) {
     await connectDB()
 
     const body = await request.json()
-    const { username, email, role } = body
+    const { username, email, password, role } = body
 
     // Validasi
-    if (!username || !email || !role) {
+    if (!username || !email || !password || !role) {
       return NextResponse.json(
-        { message: 'Username, email, dan role wajib diisi' },
+        { message: 'Username, email, password, dan role wajib diisi' },
         { status: 400 }
       )
     }
@@ -60,8 +60,7 @@ export async function POST(request) {
       )
     }
 
-    // Password default
-    const hashedPassword = await bcrypt.hash('admin123', 10)
+    const hashedPassword = await bcrypt.hash(password, 10)
 
     const newUser = await User.create({
       username,
