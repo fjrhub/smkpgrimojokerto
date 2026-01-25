@@ -21,13 +21,13 @@ export default function AdminUsersPage() {
   const [search, setSearch] = useState('')
 
   const [form, setForm] = useState({
-    name: '',
+    username: '',
     email: '',
     role: 'editor',
   })
 
   /* =========================
-     FETCH USERS (ANTI ERROR)
+     FETCH USERS
   ========================== */
   const fetchUsers = async () => {
     try {
@@ -36,22 +36,16 @@ export default function AdminUsersPage() {
       })
 
       if (!res.ok) {
-        console.error('API Error:', res.status)
         setUsers([])
         return
       }
 
       const text = await res.text()
+      const data = text ? JSON.parse(text) : []
 
-      if (!text) {
-        setUsers([])
-        return
-      }
-
-      const data = JSON.parse(text)
       setUsers(Array.isArray(data) ? data : [])
     } catch (err) {
-      console.error('Fetch error:', err)
+      console.error(err)
       setUsers([])
     } finally {
       setLoading(false)
@@ -66,8 +60,8 @@ export default function AdminUsersPage() {
      CREATE USER
   ========================== */
   const handleSubmit = async () => {
-    if (!form.name || !form.email) {
-      alert('Nama dan email wajib diisi')
+    if (!form.username || !form.email) {
+      alert('Username dan email wajib diisi')
       return
     }
 
@@ -87,7 +81,7 @@ export default function AdminUsersPage() {
       }
 
       setUsers(prev => [...prev, data])
-      setForm({ name: '', email: '', role: 'editor' })
+      setForm({ username: '', email: '', role: 'editor' })
       setShowForm(false)
     } catch (err) {
       console.error(err)
@@ -99,7 +93,7 @@ export default function AdminUsersPage() {
      FILTER SEARCH
   ========================== */
   const filteredUsers = users.filter(u =>
-    u.name?.toLowerCase().includes(search.toLowerCase()) ||
+    u.username?.toLowerCase().includes(search.toLowerCase()) ||
     u.email?.toLowerCase().includes(search.toLowerCase())
   )
 
@@ -153,7 +147,7 @@ export default function AdminUsersPage() {
         </Button>
       </div>
 
-      {/* FORM TAMBAH ADMIN */}
+      {/* FORM */}
       {showForm && (
         <Card>
           <CardHeader>
@@ -161,19 +155,25 @@ export default function AdminUsersPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <Input
-              placeholder="Nama lengkap"
-              value={form.name}
-              onChange={e => setForm({ ...form, name: e.target.value })}
+              placeholder="Username"
+              value={form.username}
+              onChange={e =>
+                setForm({ ...form, username: e.target.value })
+              }
             />
             <Input
               placeholder="Email"
               value={form.email}
-              onChange={e => setForm({ ...form, email: e.target.value })}
+              onChange={e =>
+                setForm({ ...form, email: e.target.value })
+              }
             />
             <select
               className="w-full border rounded-md p-2"
               value={form.role}
-              onChange={e => setForm({ ...form, role: e.target.value })}
+              onChange={e =>
+                setForm({ ...form, role: e.target.value })
+              }
             >
               <option value="superadmin">Super Admin</option>
               <option value="admin">Admin</option>
@@ -199,7 +199,7 @@ export default function AdminUsersPage() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Nama</TableHead>
+                  <TableHead>Username</TableHead>
                   <TableHead>Email</TableHead>
                   <TableHead>Role</TableHead>
                   <TableHead>Status</TableHead>
@@ -209,7 +209,7 @@ export default function AdminUsersPage() {
                 {filteredUsers.map(user => (
                   <TableRow key={user._id}>
                     <TableCell className="font-medium">
-                      {user.name}
+                      {user.username}
                     </TableCell>
                     <TableCell>{user.email}</TableCell>
                     <TableCell className="capitalize">
