@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import jwt from 'jsonwebtoken'
 import { connectDB } from '@/lib/mongodb'
 import User from '@/models/User'
+import bcrypt from 'bcrypt'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret'
 
