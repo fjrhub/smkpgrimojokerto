@@ -47,6 +47,7 @@ export default function AddNewsPage() {
 
   const [showPreview, setShowPreview] = useState(false);
   const [fileName, setFileName] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const categories = [
     'Breaking News',
@@ -69,9 +70,60 @@ export default function AddNewsPage() {
     }
   };
 
-  const handleSave = () => {
-    console.log('Saving news:', formData);
-    alert('News saved successfully! (This is a demo – no backend connected)');
+  const handleSave = async () => {
+    try {
+      if (!formData.title || !formData.content || !formData.category || !formData.publishDate) {
+        alert('Title, content, category, and publish date are required');
+        return;
+      }
+
+      setLoading(true);
+
+      const newsData = {
+        title: formData.title,
+        content: formData.content,
+        category: formData.category,
+        publishDate: formData.publishDate,
+        status: formData.status,
+        ...(formData.attachment && {
+          attachment: {
+            originalName: formData.attachment.name,
+          }
+        }),
+      };
+
+      const response = await fetch('/api/news', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newsData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert('News saved successfully!');
+        console.log('Saved news ID:', result.newsId);
+        // Reset form
+        setFormData({
+          title: '',
+          content: '',
+          category: '',
+          publishDate: undefined,
+          status: 'draft',
+          attachment: null,
+        });
+        setFileName('');
+      } else {
+        alert(`Error: ${result.error}`);
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('An error occurred while saving the news.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const quillModules = {
@@ -87,7 +139,6 @@ export default function AddNewsPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div>
         <h1 className="text-3xl font-bold text-gray-900">Add News</h1>
         <p className="text-gray-600 mt-2">Create a new news article</p>
@@ -99,7 +150,6 @@ export default function AddNewsPage() {
         </CardHeader>
         <CardContent>
           <form className="space-y-6">
-            {/* Title */}
             <div className="space-y-2">
               <Label htmlFor="title">News Title *</Label>
               <Input
@@ -113,7 +163,6 @@ export default function AddNewsPage() {
               />
             </div>
 
-            {/* Category */}
             <div className="space-y-2">
               <Label htmlFor="category">Category *</Label>
               <Select
@@ -135,7 +184,6 @@ export default function AddNewsPage() {
               </Select>
             </div>
 
-            {/* Rich Text Editor */}
             <div className="space-y-2">
               <Label>News Content *</Label>
               <div className="bg-white border rounded-md">
@@ -151,7 +199,6 @@ export default function AddNewsPage() {
               </div>
             </div>
 
-            {/* Publish Date */}
             <div className="space-y-2">
               <Label>Publish Date *</Label>
               <Popover>
@@ -179,7 +226,6 @@ export default function AddNewsPage() {
               </Popover>
             </div>
 
-            {/* Status */}
             <div className="space-y-2">
               <Label>Status</Label>
               <Select
@@ -198,7 +244,6 @@ export default function AddNewsPage() {
               </Select>
             </div>
 
-            {/* File Upload */}
             <div className="space-y-2">
               <Label>Featured Image or Attachment (Optional)</Label>
               <div className="flex items-center gap-4">
@@ -222,7 +267,6 @@ export default function AddNewsPage() {
               </div>
             </div>
 
-            {/* Action Buttons */}
             <div className="flex gap-4 pt-4">
               <Button
                 type="button"
@@ -236,17 +280,17 @@ export default function AddNewsPage() {
               <Button
                 type="button"
                 onClick={handleSave}
+                disabled={loading}
                 className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700"
               >
                 <Save size={18} />
-                Save News
+                {loading ? 'Saving...' : 'Save News'}
               </Button>
             </div>
           </form>
         </CardContent>
       </Card>
 
-      {/* Preview Modal */}
       <Dialog open={showPreview} onOpenChange={setShowPreview}>
         <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
@@ -256,7 +300,6 @@ export default function AddNewsPage() {
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 pt-4">
-            {/* Preview Header */}
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">
@@ -276,7 +319,6 @@ export default function AddNewsPage() {
               </div>
             </div>
 
-            {/* Preview Content */}
             <div className="border-t pt-4">
               <div
                 className="prose max-w-none"
@@ -286,7 +328,6 @@ export default function AddNewsPage() {
               />
             </div>
 
-            {/* Preview Attachment */}
             {fileName && (
               <div className="border-t pt-4">
                 <p className="text-sm font-medium text-gray-700 mb-2">
