@@ -26,6 +26,10 @@ import {
   Twitter,
   Youtube,
   Phone,
+  Cog,
+  Car,
+  Bike,
+  Cpu,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -483,7 +487,7 @@ export default function Home() {
       {/* Student Statistics */}
       <section
         id="numbers"
-        className="py-20 bg-gradient-to-br from-orange-600 to-orange-700 text-white"
+        className="py-20 bg-gradient-to-br from-[#0552A2] to-[#003164] text-white"
       >
         <div className="container mx-auto px-4">
           <motion.div
@@ -556,29 +560,33 @@ export default function Home() {
               className="space-y-6"
             >
               <ProgramTimeline
-                icon={<Code />}
+                icon={<Cog />}
                 title="Teknik Pemesinan"
                 color="bg-yellow-500"
               />
+
               <ProgramTimeline
-                icon={<Network />}
+                icon={<Car />}
                 title="Teknik Kendaraan Ringan"
                 color="bg-red-500"
               />
+
               <ProgramTimeline
-                icon={<Gamepad2 />}
+                icon={<Bike />}
                 title="Teknik Sepeda Motor"
-                color="bg-blue-500"
+                color="bg-green-500"
               />
+
               <ProgramTimeline
-                icon={<Gamepad2 />}
+                icon={<Network />}
                 title="Teknik Komputer dan Jaringan"
                 color="bg-blue-500"
               />
+
               <ProgramTimeline
-                icon={<Gamepad2 />}
+                icon={<Cpu />}
                 title="Teknik Elektronika Industri"
-                color="bg-blue-500"
+                color="bg-purple-500"
               />
             </motion.div>
           </div>
