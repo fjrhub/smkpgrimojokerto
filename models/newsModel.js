@@ -38,19 +38,8 @@ const newsSchema = new mongoose.Schema({
       required: [true, 'Author username is required'],
     },
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
-
-// Alternatif: Gunakan pre save hook dengan async/await
-newsSchema.pre('save', async function() {
-  this.updatedAt = Date.now();
+}, {
+  timestamps: true, // Otomatis tambahkan createdAt dan updatedAt
 });
 
 export const News = mongoose.models.News || mongoose.model('News', newsSchema);

@@ -2,14 +2,11 @@
 import { connectDB } from '@/lib/mongodb';
 import { News } from '@/models/newsModel';
 import { NextResponse } from 'next/server';
-import { cookies } from 'next/headers'; // Import cookies
+import { cookies } from 'next/headers';
 
 // Fungsi untuk mendapatkan user dari cookie
 async function getCurrentUser() {
-  // Karena cookies() sekarang async, kita harus await
-  const cookieStore = await cookies(); // Tambahkan await di sini
-  
-  // Ambil cookie userData
+  const cookieStore = await cookies();
   const userDataCookie = cookieStore.get('userData')?.value;
   
   if (!userDataCookie) {
@@ -17,11 +14,9 @@ async function getCurrentUser() {
   }
 
   try {
-    // Decode URI component dan parse JSON
     const decodedUserData = decodeURIComponent(userDataCookie);
     const userData = JSON.parse(decodedUserData);
     
-    // Return data user
     return {
       username: userData.username,
       email: userData.email,
@@ -36,6 +31,18 @@ async function getCurrentUser() {
 export async function POST(request) {
   try {
     await connectDB();
+    
+    // Coba hapus index slug jika masih ada (ini hanya perlu dilakukan sekali)
+    try {
+      await News.collection.dropIndex('slug_1');
+      console.log('Removed slug index successfully');
+    } catch (indexError) {
+      // Index mungkin tidak ada, abaikan error
+      if (indexError.code !== 27) { // 27 = IndexNotFound
+        console.error('Error dropping slug index:', indexError);
+      }
+    }
+    
     const body = await request.json();
     const { title, content, category, publishDate, status, attachment } = body;
 
@@ -46,7 +53,6 @@ export async function POST(request) {
       );
     }
 
-    // Ambil user yang sedang login
     const currentUser = await getCurrentUser();
     if (!currentUser) {
       return NextResponse.json(
@@ -55,14 +61,13 @@ export async function POST(request) {
       );
     }
 
-    // Buat dokumen berita baru
     const newsData = {
       title,
       content,
       category,
       publishDate: new Date(publishDate),
       status: status || 'draft',
-      ...(attachment && { attachment }), // Hanya masukkan attachment jika ada
+      ...(attachment && { attachment }),
       author: {
         username: currentUser.username,
       },
@@ -93,7 +98,6 @@ export async function POST(request) {
   }
 }
 
-// Optional: Handler untuk GET semua berita
 export async function GET(request) {
   try {
     await connectDB();
@@ -109,10 +113,10 @@ export async function GET(request) {
     }
 
     const newsList = await News.find(filter)
-      .sort({ createdAt: -1 }) // Terbaru dulu
+      .sort({ createdAt: -1 })
       .limit(limit)
       .skip((page - 1) * limit)
-      .select('-__v'); // Hilangkan field internal
+      .select('-__v');
 
     const total = await News.countDocuments(filter);
 
