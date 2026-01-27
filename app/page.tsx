@@ -313,7 +313,7 @@ export default function Home() {
         id="home"
         className="relative min-h-screen flex items-center overflow-hidden pt-20"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-blue-50 -z-10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-50 -z-10" />
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -412,10 +412,10 @@ export default function Home() {
               <h2 className="text-4xl font-bold mt-2 mb-6">Kepala Sekolah</h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  Selamat datang di website SMK Telkom Malang yang saya tujukan
-                  untuk seluruh unsur pimpinan, guru, karyawan dan siswa serta
-                  khalayak umum guna dapat mengakses seluruh informasi tentang
-                  sekolah kami.
+                  Selamat datang di website SMK PGRI KOTA MOJOKERTO yang saya
+                  tujukan untuk seluruh unsur pimpinan, guru, karyawan dan siswa
+                  serta khalayak umum guna dapat mengakses seluruh informasi
+                  tentang sekolah kami.
                 </p>
                 <p>
                   Saya berharap Website ini dapat dijadikan wahana interaksi
@@ -424,16 +424,12 @@ export default function Home() {
                   disegala unsur.
                 </p>
                 <p className="font-semibold text-gray-900">
-                  - Rahmat Dwi Djatmiko, S.Kom.
+                  - Khoirul Anwar, M.Pd
                 </p>
               </div>
             </motion.div>
             <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
-              <img
-                src="image1001.png"
-                alt="Headmaster"
-                className="rounded-2xl"
-              />
+              <img src="kepala.jpg" alt="Headmaster" className="rounded-2xl" />
             </motion.div>
           </div>
         </div>
@@ -446,9 +442,18 @@ export default function Home() {
       >
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div {...fadeInUp} className="relative group cursor-pointer">
+            <motion.div
+              {...fadeInUp}
+              className="relative group cursor-pointer"
+              onClick={() =>
+                window.open(
+                  "https://www.youtube.com/watch?v=Kde6NvpPtJg",
+                  "_blank",
+                )
+              }
+            >
               <img
-                src="https://images.pexels.com/photos/7868892/pexels-photo-7868892.jpeg"
+                src="tubnail.webp"
                 alt="Video"
                 className="rounded-2xl shadow-xl"
               />
@@ -1001,17 +1006,14 @@ export default function Home() {
               <h4 className="font-semibold text-lg mb-4">Menu Utama</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-orange-500 transition-colors"
-                  >
+                  <a href="#" className="hover:text-blue-500 transition-colors">
                     Beranda
                   </a>
                 </li>
                 <li>
                   <a
                     href="#about"
-                    className="hover:text-orange-500 transition-colors"
+                    className="hover:text-blue-500 transition-colors"
                   >
                     Tentang Kami
                   </a>
@@ -1019,16 +1021,13 @@ export default function Home() {
                 <li>
                   <a
                     href="#program"
-                    className="hover:text-orange-500 transition-colors"
+                    className="hover:text-blue-500 transition-colors"
                   >
                     Profil Jurusan
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-orange-500 transition-colors"
-                  >
+                  <a href="#" className="hover:text-blue-500 transition-colors">
                     PPDB
                   </a>
                 </li>
@@ -1038,34 +1037,22 @@ export default function Home() {
               <h4 className="font-semibold text-lg mb-4">Hubungi Kami</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-orange-500 transition-colors"
-                  >
+                  <a href="#" className="hover:text-blue-500 transition-colors">
                     FAQ
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-orange-500 transition-colors"
-                  >
+                  <a href="#" className="hover:text-blue-500 transition-colors">
                     Layanan Orang Tua
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-orange-500 transition-colors"
-                  >
+                  <a href="#" className="hover:text-blue-500 transition-colors">
                     Kotak Pertanyaan
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-orange-500 transition-colors"
-                  >
+                  <a href="#" className="hover:text-blue-500 transition-colors">
                     Pusat Bantuan
                   </a>
                 </li>
@@ -1139,7 +1126,7 @@ function DropdownMenu({ title, items }: DropdownMenuProps) {
               <a
                 key={index}
                 href={item.href}
-                className="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-[#0552A2] transition-colors"
+                className="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-[#0552A2] transition-colors"
               >
                 {item.label}
               </a>
