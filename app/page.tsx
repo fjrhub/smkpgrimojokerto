@@ -30,6 +30,10 @@ import {
   Car,
   Bike,
   Cpu,
+  Wrench,
+  Zap,
+  Settings,
+  Thermometer,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -87,17 +91,17 @@ export default function Home() {
   const galleryImages = [
     {
       url: "IMG-20260119-WA0033.jpg",
-      title: "Upacara Kemerdekaan",
+      title: "Informasi & Pengumuman",
       link: "#",
     },
     {
       url: "IMG-20260119-WA0027.jpg",
-      title: "Go international in Thailand",
+      title: "Gedung Utama Sekolah",
       link: "#",
     },
     {
       url: "IMG-20260119-WA0040.jpg",
-      title: "Temu Alumni di Jakarta",
+      title: "Lingkungan Belajar yang Nyaman ",
       link: "#",
     },
   ];
@@ -503,7 +507,7 @@ export default function Home() {
               Siswa Kami Lebih dari 1000+
             </h2>
             <p className="text-orange-100 text-lg">
-              Mayoritas siswa kami tidak hanya dari Malang, namun juga dari
+              Mayoritas siswa kami tidak hanya dari Mojokerto, namun juga dari
               berbagai daerah.
               <br />
               Semuanya berkesempatan bergabung dengan kami.
@@ -547,10 +551,10 @@ export default function Home() {
             <motion.div {...fadeInUp}>
               <h2 className="text-4xl font-bold mb-6">Program Keahlian</h2>
               <p className="text-gray-600 leading-relaxed mb-8">
-                SMK PGRI KOTA MOJOKERTO memiliki dua program keahlian yang bisa
-                kalian pilih. Kedua program keahlian ini saling berkaitan satu
-                sama lain. Sehingga dengan dukungan guru-guru kami yang keren
-                nantinya kalian bisa mempelajari keduanya.
+                SMK PGRI KOTA MOJOKERTO memiliki lima program keahlian unggulan
+                yang bisa kalian pilih. Setiap program dirancang untuk
+                mempersiapkan siswa dengan keterampilan praktis dan teori yang
+                relevan dengan industri.
               </p>
               <Button
                 variant="outline"
@@ -569,25 +573,21 @@ export default function Home() {
                 title="Teknik Pemesinan"
                 color="bg-yellow-500"
               />
-
               <ProgramTimeline
                 icon={<Car />}
                 title="Teknik Kendaraan Ringan"
                 color="bg-red-500"
               />
-
               <ProgramTimeline
                 icon={<Bike />}
                 title="Teknik Sepeda Motor"
                 color="bg-green-500"
               />
-
               <ProgramTimeline
                 icon={<Network />}
                 title="Teknik Komputer dan Jaringan"
                 color="bg-blue-500"
               />
-
               <ProgramTimeline
                 icon={<Cpu />}
                 title="Teknik Elektronika Industri"
@@ -596,64 +596,181 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* RPL Details */}
+          {/* Teknik Pemesinan Details */}
+          {/* <motion.div {...fadeInUp} className="mb-20">
+      <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 className="text-4xl font-bold mb-6">Teknik Pemesinan</h2>
+          <p className="text-gray-600 mb-8">
+            Mempelajari proses produksi dan perawatan mesin industri,
+            <br />
+            termasuk pembubutan, penggilingan, dan pengelasan.
+          </p>
+          <Accordion type="single" collapsible className="space-y-4">
+            <AccordionItem value="mesin" className="border rounded-lg px-4">
+              <AccordionTrigger className="hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                    <Cog className="w-5 h-5 text-yellow-600" />
+                  </div>
+                  <span className="font-semibold">Proses Produksi</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600 pt-4">
+                Siswa akan belajar mengoperasikan mesin bubut, frais, gerinda, dan CNC, serta memahami standar keselamatan dan kualitas produksi.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="perawatan" className="border rounded-lg px-4">
+              <AccordionTrigger className="hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                    <Wrench className="w-5 h-5 text-yellow-600" />
+                  </div>
+                  <span className="font-semibold">Perawatan Mesin</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600 pt-4">
+                Mempelajari teknik perawatan dan perbaikan mesin industri untuk memastikan kinerja optimal dan umur panjang mesin.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="career-mesin" className="border rounded-lg px-4">
+              <AccordionTrigger className="hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                    <Users className="w-5 h-5 text-green-600" />
+                  </div>
+                  <span className="font-semibold">Kesempatan Kerja</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600 pt-4">
+                Lulusan Teknik Pemesinan banyak bekerja sebagai operator mesin, teknisi perawatan, quality control, atau berwirausaha di bidang jasa pemesinan.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+        <div>
+          <img
+            src="https://images.pexels.com/photos/3912478/pexels-photo-3912478.jpeg"
+            alt="Teknik Pemesinan"
+            className="rounded-2xl shadow-xl"
+          />
+        </div>
+      </div>
+    </motion.div> */}
+
+          {/* Teknik Kendaraan Ringan Details */}
+          {/* <motion.div {...fadeInUp} className="mb-20">
+      <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="order-2 lg:order-1">
+          <img
+            src="https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg"
+            alt="Teknik Kendaraan Ringan"
+            className="rounded-2xl shadow-xl"
+          />
+        </div>
+        <div className="order-1 lg:order-2">
+          <h2 className="text-4xl font-bold mb-6">Teknik Kendaraan Ringan</h2>
+          <p className="text-gray-600 mb-8">
+            Mempelajari perbaikan, perawatan, dan modifikasi kendaraan bermotor roda empat,
+            <br />
+            serta sistem kelistrikan dan elektronika otomotif.
+          </p>
+          <Accordion type="single" collapsible className="space-y-4">
+            <AccordionItem value="engine" className="border rounded-lg px-4">
+              <AccordionTrigger className="hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                    <Car className="w-5 h-5 text-red-600" />
+                  </div>
+                  <span className="font-semibold">Mesin dan Chassis</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600 pt-4">
+                Siswa akan belajar tentang sistem mesin, transmisi, rem, suspensi, dan kemudi kendaraan ringan.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="listrik" className="border rounded-lg px-4">
+              <AccordionTrigger className="hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                    <Zap className="w-5 h-5 text-red-600" />
+                  </div>
+                  <span className="font-semibold">Kelistrikan Otomotif</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600 pt-4">
+                Mempelajari sistem kelistrikan, elektronika, dan diagnostik kendaraan modern menggunakan alat scan dan multimeter.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="career-tkr" className="border rounded-lg px-4">
+              <AccordionTrigger className="hover:no-underline">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                    <Users className="w-5 h-5 text-green-600" />
+                  </div>
+                  <span className="font-semibold">Kesempatan Kerja</span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-600 pt-4">
+                Lulusan TKR banyak bekerja di bengkel, dealer mobil, industri otomotif, atau berwirausaha sebagai mekanik atau konsultan otomotif.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      </div>
+    </motion.div> */}
+
+          {/* Teknik Sepeda Motor Details */}
           <motion.div {...fadeInUp} className="mb-20">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-4xl font-bold mb-6">
-                  Rekayasa Perangkat Lunak
-                </h2>
+                <h2 className="text-4xl font-bold mb-6">Teknik Sepeda Motor</h2>
                 <p className="text-gray-600 mb-8">
-                  Mempelajari seluruh aspek produksi software
+                  Mempelajari perbaikan, perawatan, dan modifikasi sepeda motor,
                   <br />
-                  seperti aplikasi web dan aplikasi mobile.
+                  serta teknologi terbaru di bidang otomotif roda dua.
                 </p>
-
-                {/* Tambahkan defaultValue="web" di sini */}
-                <Accordion
-                  type="single"
-                  collapsible
-                  defaultValue="web"
-                  className="space-y-4"
-                >
-                  <AccordionItem value="web" className="border rounded-lg px-4">
-                    <AccordionTrigger className="hover:no-underline">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                          <Code className="w-5 h-5 text-blue-600" />
-                        </div>
-                        <span className="font-semibold">Web Dev.</span>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-gray-600 pt-4">
-                      Siswa nantinya akan belajar dan dituntut untuk bisa
-                      membuat aplikasi berbasis web dengan teknologi pemrograman
-                      sesuai standar industri. Back-end menggunakan Node
-                      JS/Laravel, dan Front-end menggunakan React JS/Vue JS.
-                    </AccordionContent>
-                  </AccordionItem>
+                <Accordion type="single" collapsible className="space-y-4">
                   <AccordionItem
-                    value="mobile"
+                    value="mesin-motor"
                     className="border rounded-lg px-4"
                   >
                     <AccordionTrigger className="hover:no-underline">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
-                          <Laptop className="w-5 h-5 text-yellow-600" />
+                        <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                          <Bike className="w-5 h-5 text-green-600" />
                         </div>
-                        <span className="font-semibold">Mobile Dev.</span>
+                        <span className="font-semibold">
+                          Mesin dan Transmisi
+                        </span>
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-600 pt-4">
-                      Siswa nantinya akan belajar dan dituntut untuk bisa
-                      membuat aplikasi berbasis mobile dengan teknologi
-                      pemrograman sesuai standar industri. Bahasa pemrograman
-                      yang dipelajari meliputi Java, Kotlin, Swift (iOS), React
-                      Native, dan Flutter.
+                      Siswa akan belajar tentang mesin 2-tak dan 4-tak, sistem
+                      transmisi, dan perawatan rutin sepeda motor.
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem
-                    value="career"
+                    value="modifikasi"
+                    className="border rounded-lg px-4"
+                  >
+                    <AccordionTrigger className="hover:no-underline">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                          <Settings className="w-5 h-5 text-green-600" />
+                        </div>
+                        <span className="font-semibold">
+                          Modifikasi dan Tuning
+                        </span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600 pt-4">
+                      Mempelajari teknik modifikasi mesin, karburasi, dan sistem
+                      injeksi untuk meningkatkan performa sepeda motor.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem
+                    value="career-tsm"
                     className="border rounded-lg px-4"
                   >
                     <AccordionTrigger className="hover:no-underline">
@@ -665,30 +782,30 @@ export default function Home() {
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-600 pt-4">
-                      Lulusan RPL banyak bekerja pada posisi mobile developer,
-                      web developer, database engineer, system analyst, UI/UX
-                      designer, freelancer/kerja remote, dan berwirausaha
-                      dibidang IT.
+                      Lulusan TSM banyak bekerja di bengkel motor, dealer resmi,
+                      atau berwirausaha sebagai mekanik, tuner, atau konsultan
+                      modifikasi.
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
               </div>
               <div>
                 <img
-                  src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg"
-                  alt="RPL"
+                  // https://smkn2jiwan.sch.id/fasilitas/bengkel-otomotif/?
+                  src="bengkel.png"
+                  alt="Teknik Sepeda Motor"
                   className="rounded-2xl shadow-xl"
                 />
               </div>
             </div>
           </motion.div>
 
-          {/* TKJ Details */}
+          {/* Teknik Komputer dan Jaringan Details */}
           <motion.div {...fadeInUp} className="mb-20">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="order-2 lg:order-1">
                 <img
-                  src="https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg"
+                  src="tkj2.jpg"
                   alt="TKJ"
                   className="rounded-2xl shadow-xl"
                 />
@@ -764,19 +881,59 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Game Dev Details */}
+          {/* Teknik Elektronika Industri Details */}
           <motion.div {...fadeInUp}>
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-4xl font-bold mb-6">Pengembangan Gim</h2>
+                <h2 className="text-4xl font-bold mb-6">
+                  Teknik Elektronika Industri
+                </h2>
                 <p className="text-gray-600 mb-8">
-                  Mempelajari seluruh aspek pengembangan gim
+                  Mempelajari instalasi, perbaikan, dan pemeliharaan sistem
+                  elektronika industri,
                   <br />
-                  seperti desain, pengembangan, dan perilisan game.
+                  termasuk PLC, sensor, dan sistem kontrol otomatis.
                 </p>
                 <Accordion type="single" collapsible className="space-y-4">
+                  <AccordionItem value="plc" className="border rounded-lg px-4">
+                    <AccordionTrigger className="hover:no-underline">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                          <Cpu className="w-5 h-5 text-purple-600" />
+                        </div>
+                        <span className="font-semibold">
+                          PLC dan Otomatisasi
+                        </span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600 pt-4">
+                      Siswa akan belajar memprogram dan mengoperasikan PLC
+                      (Programmable Logic Controller) untuk mengendalikan mesin
+                      dan proses industri.
+                    </AccordionContent>
+                  </AccordionItem>
                   <AccordionItem
-                    value="career-game"
+                    value="sensor"
+                    className="border rounded-lg px-4"
+                  >
+                    <AccordionTrigger className="hover:no-underline">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                          <Thermometer className="w-5 h-5 text-purple-600" />
+                        </div>
+                        <span className="font-semibold">
+                          Sensor dan Instrumentasi
+                        </span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600 pt-4">
+                      Mempelajari berbagai jenis sensor, aktuator, dan sistem
+                      instrumentasi untuk monitoring dan kontrol proses
+                      industri.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem
+                    value="career-tei"
                     className="border rounded-lg px-4"
                   >
                     <AccordionTrigger className="hover:no-underline">
@@ -788,18 +945,17 @@ export default function Home() {
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-600 pt-4">
-                      Lulusan Pengembangan Gim banyak bekerja pada posisi game
-                      developer, game designer, game artist, game audio
-                      engineer, game producer, quality assurance tester,
-                      freelancer/kerja remote, dan berwirausaha dibidang IT.
+                      Lulusan TEI banyak bekerja sebagai teknisi elektronika,
+                      engineer kontrol, atau berwirausaha di bidang instalasi
+                      dan perawatan sistem otomatisasi.
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
               </div>
               <div>
                 <img
-                  src="https://images.pexels.com/photos/682933/pexels-photo-682933.jpeg"
-                  alt="Game Dev"
+                  src="tei.jpg"
+                  alt="Teknik Elektronika Industri"
                   className="rounded-2xl shadow-xl"
                 />
               </div>
@@ -922,7 +1078,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section id="testmonials" className="py-20">
+      {/* <section id="testmonials" className="py-20">
         <div className="container mx-auto px-4">
           <div className="overflow-hidden" ref={emblaRefTestimonials}>
             <div className="flex">
@@ -966,7 +1122,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="py-10 bg-gray-50">
         <div className="w-full px-4">
@@ -1065,10 +1221,10 @@ export default function Home() {
                 Kota Mojokerto, Jawa Timur 61328
               </p>
               <div className="flex gap-3">
-                <SocialIcon icon={<Facebook size={20} />} dark />
-                <SocialIcon icon={<Instagram size={20} />} dark />
-                <SocialIcon icon={<Twitter size={20} />} dark />
-                <SocialIcon icon={<Youtube size={20} />} dark />
+<SocialIcon icon={<Facebook size={18} />} dark url="https://facebook.com/skagrimo" />
+<SocialIcon icon={<Instagram size={18} />} dark url="https://instagram.com/smktelkom" />
+<SocialIcon icon={<Twitter size={18} />} dark url="https://twitter.com/smktelkom" />
+<SocialIcon icon={<Youtube size={18} />} dark url="https://youtube.com/smktelkom" />
               </div>
             </div>
           </div>
@@ -1254,12 +1410,15 @@ function ProgramTimeline({ icon, title, color }: ProgramTimelineProps) {
 interface SocialIconProps {
   icon: ReactNode;
   dark?: boolean;
+  url?: string; // Tambahkan properti url
 }
 
-function SocialIcon({ icon, dark = false }: SocialIconProps) {
+function SocialIcon({ icon, dark = false, url }: SocialIconProps) {
+  const href = url || "#"; // Gunakan URL yang diberikan, jika tidak ada gunakan "#"
+
   return (
     <motion.a
-      href="#"
+      href={href} // Gunakan href dari props
       whileHover={{ scale: 1.2, rotate: 5 }}
       whileTap={{ scale: 0.9 }}
       className={`w-10 h-10 ${
@@ -1271,6 +1430,8 @@ function SocialIcon({ icon, dark = false }: SocialIconProps) {
           ? "text-gray-400 hover:text-white"
           : "text-gray-600 hover:text-white"
       } transition-colors`}
+      target={url ? "_blank" : undefined} // Tambahkan target _blank jika URL disediakan
+      rel={url ? "noopener noreferrer" : undefined} // Tambahkan rel jika target _blank
     >
       {icon}
     </motion.a>
