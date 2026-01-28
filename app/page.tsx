@@ -1258,7 +1258,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>2026 © Copyright Moklet All rights Reserved.</p>
+            <p>2026 © Copyright Skagrimo All rights Reserved.</p>
           </div>
         </div>
       </footer>
