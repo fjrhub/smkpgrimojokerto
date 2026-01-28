@@ -239,10 +239,22 @@ export default function Home() {
               </a>
               <Button className="bg-[#0552A2] hover:bg-[#003164]">PPDB</Button>
               <div className="flex items-center space-x-3">
-                <SocialIcon icon={<Facebook size={18} />} />
-                <SocialIcon icon={<Instagram size={18} />} />
-                <SocialIcon icon={<Twitter size={18} />} />
-                <SocialIcon icon={<Youtube size={18} />} />
+                <SocialIcon
+                  icon={<Facebook size={18} />}
+                  url="https://facebook.com/skagrimo"
+                />
+                <SocialIcon
+                  icon={<Instagram size={18} />}
+                  url="https://www.instagram.com/skagrimo"
+                />
+                <SocialIcon
+                  icon={<TikTokIcon className="w-5 h-5" />}
+                  url="https://tiktok.com/@skagrimo"
+                />
+                <SocialIcon
+                  icon={<Youtube size={18} />}
+                  url="https://www.youtube.com/@skagrimo"
+                />
               </div>
             </div>
 
@@ -1221,12 +1233,28 @@ export default function Home() {
                 Jl. Ketidur No.55, Mergelo, Surodinawan, Kec. Prajurit Kulon,
                 Kota Mojokerto, Jawa Timur 61328
               </p>
-<div className="flex gap-3">
-  <SocialIcon icon={<Facebook size={18} />} dark url="https://facebook.com/skagrimo" />
-  <SocialIcon icon={<Instagram size={18} />} dark url="https://www.instagram.com/skagrimo" />
-  <SocialIcon icon={<TikTokIcon className="w-5 h-5" />} dark url="https://tiktok.com/@skagrimo" />
-  <SocialIcon icon={<Youtube size={18} />} dark url="https://www.youtube.com/@skagrimo" />
-</div>
+              <div className="flex gap-3">
+                <SocialIcon
+                  icon={<Facebook size={18} />}
+                  dark
+                  url="https://facebook.com/skagrimo"
+                />
+                <SocialIcon
+                  icon={<Instagram size={18} />}
+                  dark
+                  url="https://www.instagram.com/skagrimo"
+                />
+                <SocialIcon
+                  icon={<TikTokIcon className="w-5 h-5" />}
+                  dark
+                  url="https://tiktok.com/@skagrimo"
+                />
+                <SocialIcon
+                  icon={<Youtube size={18} />}
+                  dark
+                  url="https://www.youtube.com/@skagrimo"
+                />
+              </div>
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
