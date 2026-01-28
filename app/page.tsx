@@ -1222,10 +1222,10 @@ export default function Home() {
                 Kota Mojokerto, Jawa Timur 61328
               </p>
               <div className="flex gap-3">
-<SocialIcon icon={<Facebook size={18} />} dark url="https://facebook.com/smktelkom" />
-<SocialIcon icon={<Instagram size={18} />} dark url="https://instagram.com/smktelkom" />
+<SocialIcon icon={<Facebook size={18} />} dark url="https://facebook.com/skagrimo" />
+<SocialIcon icon={<Instagram size={18} />} dark url="https://www.instagram.com/skagrimo" />
 <SocialIcon icon={<Twitter size={18} />} dark url="https://twitter.com/smktelkom" />
-<SocialIcon icon={<Youtube size={18} />} dark url="https://youtube.com/smktelkom" />
+<SocialIcon icon={<Youtube size={18} />} dark url="https://www.youtube.com/@skagrimo" />
               </div>
             </div>
           </div>
