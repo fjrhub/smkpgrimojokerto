@@ -45,7 +45,7 @@ import {
 } from "@/components/ui/accordion";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import TiktokIcon from "@/public/tiktok.svg";
+import TikTokIcon from "@/public/tiktok";
 
 import { ReactNode } from "react";
 
@@ -1221,12 +1221,12 @@ export default function Home() {
                 Jl. Ketidur No.55, Mergelo, Surodinawan, Kec. Prajurit Kulon,
                 Kota Mojokerto, Jawa Timur 61328
               </p>
-              <div className="flex gap-3">
-<SocialIcon icon={<Facebook size={18} />} dark url="https://facebook.com/skagrimo" />
-<SocialIcon icon={<Instagram size={18} />} dark url="https://www.instagram.com/skagrimo" />
-<SocialIcon icon={<Twitter size={18} />} dark url="https://twitter.com/smktelkom" />
-<SocialIcon icon={<Youtube size={18} />} dark url="https://www.youtube.com/@skagrimo" />
-              </div>
+<div className="flex gap-3">
+  <SocialIcon icon={<Facebook size={18} />} dark url="https://facebook.com/skagrimo" />
+  <SocialIcon icon={<Instagram size={18} />} dark url="https://www.instagram.com/skagrimo" />
+  <SocialIcon icon={<TikTokIcon className="w-5 h-5" />} dark url="https://tiktok.com/@skagrimo" />
+  <SocialIcon icon={<Youtube size={18} />} dark url="https://www.youtube.com/@skagrimo" />
+</div>
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
