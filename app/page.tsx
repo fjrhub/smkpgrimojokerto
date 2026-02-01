@@ -694,8 +694,7 @@ export default function Home() {
               </div>
               <div>
                 <img
-                  // https://smkn2jiwan.sch.id/fasilitas/bengkel-otomotif/?
-                  src="bengkel.png"
+                  src="praktekTbsm.png"
                   alt="Teknik Sepeda Motor"
                   className="rounded-2xl shadow-xl"
                 />
@@ -857,7 +856,7 @@ export default function Home() {
               </div>
               <div>
                 <img
-                  src="tei.jpg"
+                  src="praktekTei.jpg"
                   alt="Teknik Elektronika Industri"
                   className="rounded-2xl shadow-xl"
                 />
