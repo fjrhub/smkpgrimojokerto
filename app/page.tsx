@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import {
   motion,
@@ -46,7 +45,6 @@ import {
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import TikTokIcon from "@/public/tiktok";
-
 import { ReactNode } from "react";
 
 interface MenuItem {
@@ -63,6 +61,7 @@ export default function Home() {
     male: 1029,
     female: 435,
   });
+
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
@@ -72,6 +71,25 @@ export default function Home() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // State untuk jumlah gambar yang ditampilkan di galeri
+  const [visibleCount, setVisibleCount] = useState(2); // default mobile
+
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      if (window.innerWidth >= 1024) {
+        setVisibleCount(3); // lg+
+      } else if (window.innerWidth >= 768) {
+        setVisibleCount(2); // md+
+      } else {
+        setVisibleCount(2); // sm-
+      }
+    };
+
+    updateVisibleCount();
+    window.addEventListener('resize', updateVisibleCount);
+    return () => window.removeEventListener('resize', updateVisibleCount);
   }, []);
 
   // Carousel untuk Gallery
@@ -91,8 +109,8 @@ export default function Home() {
 
   const galleryImages = [
     {
-      url: "IMG-20260119-WA0033.jpg",
-      title: "Informasi & Pengumuman",
+      url: "IMG-20260119-WA0040.jpg",
+      title: "Lingkungan Belajar yang Nyaman ",
       link: "#",
     },
     {
@@ -101,8 +119,8 @@ export default function Home() {
       link: "#",
     },
     {
-      url: "IMG-20260119-WA0040.jpg",
-      title: "Lingkungan Belajar yang Nyaman ",
+      url: "Fasilitas_Kantin_Sekolah.jpg",
+      title: "Fasilitas Kantin Sekolah",
       link: "#",
     },
   ];
@@ -195,7 +213,6 @@ export default function Home() {
                 SMK PGRI KOTA MOJOKERTO
               </span>
             </div>
-
             {/* DESKTOP MENU */}
             <div className="hidden lg:flex items-center space-x-5">
               <DropdownMenu
@@ -257,7 +274,6 @@ export default function Home() {
                 />
               </div>
             </div>
-
             {/* MOBILE BUTTON */}
             <button
               className="lg:hidden text-gray-700 hover:text-[#0552A2]"
@@ -267,7 +283,6 @@ export default function Home() {
             </button>
           </div>
         </div>
-
         {/* MOBILE MENU */}
         <AnimatePresence>
           {mobileMenuOpen && (
@@ -382,7 +397,6 @@ export default function Home() {
               MOJOKERTO
             </p>
           </motion.div>
-
           <motion.div
             variants={staggerContainer}
             initial="initial"
@@ -465,7 +479,7 @@ export default function Home() {
               onClick={() =>
                 window.open(
                   "https://www.youtube.com/watch?v=Kde6NvpPtJg",
-                  "_blank",
+                  "_blank"
                 )
               }
             >
@@ -608,130 +622,6 @@ export default function Home() {
               />
             </motion.div>
           </div>
-
-          {/* Teknik Pemesinan Details */}
-          {/* <motion.div {...fadeInUp} className="mb-20">
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 className="text-4xl font-bold mb-6">Teknik Pemesinan</h2>
-          <p className="text-gray-600 mb-8">
-            Mempelajari proses produksi dan perawatan mesin industri,
-            <br />
-            termasuk pembubutan, penggilingan, dan pengelasan.
-          </p>
-          <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="mesin" className="border rounded-lg px-4">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
-                    <Cog className="w-5 h-5 text-yellow-600" />
-                  </div>
-                  <span className="font-semibold">Proses Produksi</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600 pt-4">
-                Siswa akan belajar mengoperasikan mesin bubut, frais, gerinda, dan CNC, serta memahami standar keselamatan dan kualitas produksi.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="perawatan" className="border rounded-lg px-4">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
-                    <Wrench className="w-5 h-5 text-yellow-600" />
-                  </div>
-                  <span className="font-semibold">Perawatan Mesin</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600 pt-4">
-                Mempelajari teknik perawatan dan perbaikan mesin industri untuk memastikan kinerja optimal dan umur panjang mesin.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="career-mesin" className="border rounded-lg px-4">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                    <Users className="w-5 h-5 text-green-600" />
-                  </div>
-                  <span className="font-semibold">Kesempatan Kerja</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600 pt-4">
-                Lulusan Teknik Pemesinan banyak bekerja sebagai operator mesin, teknisi perawatan, quality control, atau berwirausaha di bidang jasa pemesinan.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
-        <div>
-          <img
-            src="https://images.pexels.com/photos/3912478/pexels-photo-3912478.jpeg"
-            alt="Teknik Pemesinan"
-            className="rounded-2xl shadow-xl"
-          />
-        </div>
-      </div>
-    </motion.div> */}
-
-          {/* Teknik Kendaraan Ringan Details */}
-          {/* <motion.div {...fadeInUp} className="mb-20">
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
-        <div className="order-2 lg:order-1">
-          <img
-            src="https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg"
-            alt="Teknik Kendaraan Ringan"
-            className="rounded-2xl shadow-xl"
-          />
-        </div>
-        <div className="order-1 lg:order-2">
-          <h2 className="text-4xl font-bold mb-6">Teknik Kendaraan Ringan</h2>
-          <p className="text-gray-600 mb-8">
-            Mempelajari perbaikan, perawatan, dan modifikasi kendaraan bermotor roda empat,
-            <br />
-            serta sistem kelistrikan dan elektronika otomotif.
-          </p>
-          <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="engine" className="border rounded-lg px-4">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                    <Car className="w-5 h-5 text-red-600" />
-                  </div>
-                  <span className="font-semibold">Mesin dan Chassis</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600 pt-4">
-                Siswa akan belajar tentang sistem mesin, transmisi, rem, suspensi, dan kemudi kendaraan ringan.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="listrik" className="border rounded-lg px-4">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                    <Zap className="w-5 h-5 text-red-600" />
-                  </div>
-                  <span className="font-semibold">Kelistrikan Otomotif</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600 pt-4">
-                Mempelajari sistem kelistrikan, elektronika, dan diagnostik kendaraan modern menggunakan alat scan dan multimeter.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="career-tkr" className="border rounded-lg px-4">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                    <Users className="w-5 h-5 text-green-600" />
-                  </div>
-                  <span className="font-semibold">Kesempatan Kerja</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600 pt-4">
-                Lulusan TKR banyak bekerja di bengkel, dealer mobil, industri otomotif, atau berwirausaha sebagai mekanik atau konsultan otomotif.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
-      </div>
-    </motion.div> */}
 
           {/* Teknik Sepeda Motor Details */}
           <motion.div {...fadeInUp} className="mb-20">
@@ -982,10 +872,10 @@ export default function Home() {
         <h2 className="text-3xl font-bold">Galeri Mokleter</h2>
       </section>
 
-      {/* Gallery (Minimalist) */}
+      {/* Gallery (Minimalist) - MODIFIED */}
       <section id="galeri" className="py-0 bg-gray-900">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
-          {galleryImages.map((image, index) => (
+          {galleryImages.slice(0, visibleCount).map((image, index) => (
             <div key={index} className="relative group">
               <img
                 src={image.url}
@@ -1018,7 +908,6 @@ export default function Home() {
               Malang.
             </p>
           </motion.div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {newsItems.map((item, index) => (
               <motion.div
@@ -1211,17 +1100,26 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blue-500 transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-blue-500 transition-colors"
+                  >
                     Layanan Orang Tua
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blue-500 transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-blue-500 transition-colors"
+                  >
                     Kotak Pertanyaan
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blue-500 transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-blue-500 transition-colors"
+                  >
                     Pusat Bantuan
                   </a>
                 </li>
@@ -1298,7 +1196,6 @@ function DropdownMenu({ title, items }: DropdownMenuProps) {
       <button className="flex items-center gap-1 text-gray-700 hover:text-[#0552A2] transition-colors">
         {title}
       </button>
-
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -1322,6 +1219,7 @@ function DropdownMenu({ title, items }: DropdownMenuProps) {
     </div>
   );
 }
+
 interface MobileDropdownProps {
   title: string;
   items: MenuItem[];
@@ -1342,7 +1240,6 @@ function MobileDropdown({ title, items }: MobileDropdownProps) {
           className={`transition-transform ${isOpen ? "rotate-180" : ""}`}
         />
       </button>
-
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -1366,6 +1263,7 @@ function MobileDropdown({ title, items }: MobileDropdownProps) {
     </div>
   );
 }
+
 interface FeatureCardProps {
   icon: ReactNode;
   title: string;
@@ -1395,6 +1293,7 @@ function FeatureCard({ icon, title, description, color }: FeatureCardProps) {
     </motion.div>
   );
 }
+
 interface StatCardProps {
   number: string | number;
   label: string;
@@ -1416,6 +1315,7 @@ function StatCard({ number, label, color }: StatCardProps) {
     </motion.div>
   );
 }
+
 interface ProgramTimelineProps {
   icon: ReactNode;
   title: string;
@@ -1436,6 +1336,7 @@ function ProgramTimeline({ icon, title, color }: ProgramTimelineProps) {
     </div>
   );
 }
+
 interface SocialIconProps {
   icon: ReactNode;
   dark?: boolean;
