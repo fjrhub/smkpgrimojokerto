@@ -1067,7 +1067,7 @@ export default function Home() {
                   Tidak ada agenda mendatang!
                 </p>
               </div>
-              <div className="mt-8 flex items-start gap-4 p-6 border rounded-lg hover:border-orange-600 transition-colors cursor-pointer">
+              <div className="mt-8 flex items-start gap-4 p-6 border rounded-lg hover:border-blue-600 transition-colors cursor-pointer">
                 <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Calendar className="w-6 h-6 text-gray-600" />
                 </div>
