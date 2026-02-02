@@ -46,6 +46,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import TikTokIcon from "@/public/tiktok";
 import { ReactNode } from "react";
+import Testimonials from '@/components/Testimonial';
 
 interface MenuItem {
   label: string;
@@ -145,23 +146,23 @@ export default function Home() {
     },
   ];
 
-  const testimonials = [
-    {
-      image:
-        "https://images.pexels.com/photos/35439332/pexels-photo-35439332.jpeg",
-      quote:
-        "Kurikulum yang selalu up-to-date dan menyesuaikan kebutuhan pasar industri membuat lulusan SMK Telkom dapat bersaing dan diandalkan oleh perusahaan.",
-      name: "Iqbal Wahyu Septian",
-      position: "Telkom Akses Malang",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2",
-      quote:
-        "Saya bangga menjadi bagian dari SMK Telkom Malang. Karena selalu mendukung dalam memberikan fasilitas dan kemudahan dalam menunjang pembelajaran serta menerapkan pendidikan attitude yang baik.",
-      name: "Dandy Purba Cantaka",
-      position: "SIP Jakarta",
-    },
-  ];
+  // const testimonials = [
+  //   {
+  //     image:
+  //       "https://images.pexels.com/photos/35439332/pexels-photo-35439332.jpeg",
+  //     quote:
+  //       "Kurikulum yang selalu up-to-date dan menyesuaikan kebutuhan pasar industri membuat lulusan SMK Telkom dapat bersaing dan diandalkan oleh perusahaan.",
+  //     name: "Iqbal Wahyu Septian",
+  //     position: "Telkom Akses Malang",
+  //   },
+  //   {
+  //     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2",
+  //     quote:
+  //       "Saya bangga menjadi bagian dari SMK Telkom Malang. Karena selalu mendukung dalam memberikan fasilitas dan kemudahan dalam menunjang pembelajaran serta menerapkan pendidikan attitude yang baik.",
+  //     name: "Dandy Purba Cantaka",
+  //     position: "SIP Jakarta",
+  //   },
+  // ];
 
   const partners = [
     "nale.png",
@@ -1024,6 +1025,8 @@ export default function Home() {
           </div>
         </div>
       </section> */}
+
+      <Testimonials />
 
       <section className="py-10 bg-gray-50">
         <div className="w-full px-4">
