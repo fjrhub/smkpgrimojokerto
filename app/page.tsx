@@ -47,6 +47,7 @@ import Autoplay from "embla-carousel-autoplay";
 import TikTokIcon from "@/public/tiktok";
 import { ReactNode } from "react";
 import Testimonials from "@/components/Testimonial";
+import AgendaHome from "@/components/Agenda";
 
 interface MenuItem {
   label: string;
@@ -939,7 +940,7 @@ export default function Home() {
       </section>
 
       {/* School Agenda */}
-      <section
+      {/* <section
         id="agenda"
         className="py-20 bg-gradient-to-br from-blue-50 to-white"
       >
@@ -976,7 +977,10 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
+      <AgendaHome />
+
+
 
       {/* Testimonials */}
       {/* <section id="testmonials" className="py-20">
