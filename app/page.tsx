@@ -46,7 +46,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import TikTokIcon from "@/public/tiktok";
 import { ReactNode } from "react";
-import Testimonials from '@/components/Testimonial';
+import Testimonials from "@/components/Testimonial";
 
 interface MenuItem {
   label: string;
@@ -89,8 +89,8 @@ export default function Home() {
     };
 
     updateVisibleCount();
-    window.addEventListener('resize', updateVisibleCount);
-    return () => window.removeEventListener('resize', updateVisibleCount);
+    window.addEventListener("resize", updateVisibleCount);
+    return () => window.removeEventListener("resize", updateVisibleCount);
   }, []);
 
   // Carousel untuk Gallery
@@ -128,21 +128,20 @@ export default function Home() {
 
   const newsItems = [
     {
-      image: "IMG-20260119-WA0049.jpg",
-      title: "Pelaksanaan Isra mi'raj bersama sama",
-      date: "18 December 2025",
+      image: "spmb.jpg",
+      title: "Pendaftaran SPMB SMK PGRI Kota Mojokerto 2026/2027",
+      date: "23 Januari 2026",
     },
     {
       image:
-        "https://images.pexels.com/photos/10638070/pexels-photo-10638070.jpeg",
-      title: "Class Meet dan Tantangan Membentuk Generasi Pemikir",
-      date: "12 December 2025",
+        "israMiraj.jpg",
+      title: "Peringatan Isra’ Mi’raj Nabi Muhammad SAW 1447 H",
+      date: "21 December 2026",
     },
     {
-      image:
-        "https://images.pexels.com/photos/8363017/pexels-photo-8363017.jpeg",
-      title: "Rombongan Disdikbud Kabupaten Madiun Kunjungi SMK Telkom Malang",
-      date: "05 December 2025",
+      image: "backtoschool.png",
+      title: "Waktunya Kembali ke Sekolah: Semester Genap 2025/2026",
+      date: "05 Januari 2026",
     },
   ];
 
@@ -480,7 +479,7 @@ export default function Home() {
               onClick={() =>
                 window.open(
                   "https://www.youtube.com/watch?v=Kde6NvpPtJg",
-                  "_blank"
+                  "_blank",
                 )
               }
             >
@@ -1102,26 +1101,17 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-blue-500 transition-colors"
-                  >
+                  <a href="#" className="hover:text-blue-500 transition-colors">
                     Layanan Orang Tua
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-blue-500 transition-colors"
-                  >
+                  <a href="#" className="hover:text-blue-500 transition-colors">
                     Kotak Pertanyaan
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-blue-500 transition-colors"
-                  >
+                  <a href="#" className="hover:text-blue-500 transition-colors">
                     Pusat Bantuan
                   </a>
                 </li>
