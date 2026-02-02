@@ -5,11 +5,11 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "SMK PGRI Mojokerto",
+  title: "SMK PGRI Kota Mojokerto",
   description:
-    "SMK Telkom Malang adalah pelopor Sekolah menengah kejuruan pertama di Indonesia di bidang Teknologi dan Informatika. Berpengalaman dari tahun 1992 yang telah terakreditasi A dan mempunyai standart mutu ISO 9001:2015.",
+    "SMK PGRI Kota Mojokerto merupakan sekolah menengah kejuruan yang menyediakan berbagai program keahlian seperti Teknik Pemesinan, Teknik dan Bisnis Sepeda Motor, Teknik Elektronika Industri, Teknik Komputer dan Jaringan, serta Teknik Kendaraan Ringan untuk menyiapkan lulusan siap kerja dan berkompetensi.",
   keywords:
-    "moklet, smk telkom malang, sekolah it, teknik komputer dan jaringan, tkj, rekayasa perangkat lunak, rpl, pengembangan gim, coding, smk coding, programmer",
+    "smk pgri kota mojokerto, smk pgri mojokerto, sekolah kejuruan mojokerto, teknik pemesinan, tp, teknik dan bisnis sepeda motor, tbsm, teknik elektronika industri, tei, teknik komputer dan jaringan, tkj, teknik kendaraan ringan, tkr, smk teknik mojokerto",
 };
 
 export default function RootLayout({
@@ -23,26 +23,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-// import type { ReactNode } from 'react'
-// import { Inter } from 'next/font/google'
-// import './globals.css'
-
-// const inter = Inter({ subsets: ['latin'] })
-
-// export const metadata = {
-//   title: 'School Admin Dashboard',
-//   description: 'School website administration dashboard',
-// }
-
-// export default function RootLayout({
-//   children,
-// }: {
-//   children: ReactNode
-// }) {
-//   return (
-//     <html lang="en">
-//       <body className={inter.className}>{children}</body>
-//     </html>
-//   )
-// }
