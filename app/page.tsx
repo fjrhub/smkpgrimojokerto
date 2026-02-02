@@ -164,7 +164,7 @@ export default function Home() {
   ];
 
   const partners = [
-    "image.png",
+    "nale.png",
     "tjiwi.png",
     "ahm.png",
     "bsi.png",
