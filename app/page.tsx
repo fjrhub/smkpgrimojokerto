@@ -109,12 +109,12 @@ export default function Home() {
 
   const galleryImages = [
     {
-      url: "IMG-20260119-WA0040.jpg",
+      url: "LingkunganSekolah.jpg",
       title: "Lingkungan Belajar yang Nyaman ",
       link: "#",
     },
     {
-      url: "IMG-20260119-WA0027.jpg",
+      url: "Agenda.jpg",
       title: "Gedung Utama Sekolah",
       link: "#",
     },
@@ -969,7 +969,7 @@ export default function Home() {
             </motion.div>
             <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
               <img
-                src="IMG-20260119-WA0034.jpg"
+                src="Agenda.jpg"
                 alt="Agenda"
                 className="rounded-2xl shadow-xl"
               />
