@@ -139,7 +139,7 @@ export default function Home() {
       date: "21 December 2026",
     },
     {
-      image: "backtoschool.png",
+      image: "backtoschool.jpg",
       title: "Waktunya Kembali ke Sekolah: Semester Genap 2025/2026",
       date: "05 Januari 2026",
     },
