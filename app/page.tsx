@@ -66,8 +66,9 @@ export default function Home() {
   const [studentData, setStudentData] = useState({
     tkj: 1060,
     tei: 334,
-    male: 1029,
-    female: 435,
+    tp: 109,
+    tkr: 109,
+    tbsm: 500,
   });
 
   const { scrollY } = useScroll();
@@ -644,7 +645,7 @@ export default function Home() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-              Siswa Kami Lebih dari 1000+
+              Siswa Kami Lebih dari 600+
             </h2>
             <p className="text-orange-100 text-lg">
               Mayoritas siswa kami tidak hanya dari Mojokerto, namun juga dari
@@ -658,7 +659,7 @@ export default function Home() {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid md:grid-cols-2 lg:grid-cols-5 gap-8" /* Mengubah menjadi 5 kolom */
           >
             <StatCard
               number={studentData.tkj}
@@ -666,18 +667,27 @@ export default function Home() {
               color="from-blue-400 to-blue-600"
             />
             <StatCard
+              number={studentData.tp} /* Pastikan data ini ada di studentData */
+              label="TP"
+              color="from-green-400 to-green-600"
+            />
+            <StatCard
               number={studentData.tei}
               label="TEI"
               color="from-yellow-400 to-yellow-600"
             />
             <StatCard
-              number={studentData.male}
-              label="Laki-Laki"
+              number={
+                studentData.tkr
+              } /* Pastikan data ini ada di studentData */
+              label="TKR"
               color="from-red-400 to-red-600"
             />
             <StatCard
-              number={studentData.female}
-              label="Perempuan"
+              number={
+                studentData.tbsm
+              } /* Pastikan data ini ada di studentData */
+              label="TBSM"
               color="from-purple-400 to-purple-600"
             />
           </motion.div>
