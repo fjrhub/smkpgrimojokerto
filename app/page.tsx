@@ -134,8 +134,7 @@ export default function Home() {
       date: "23 Januari 2026",
     },
     {
-      image:
-        "israMiraj.jpg",
+      image: "israMiraj.jpg",
       title: "Peringatan Isra’ Mi’raj Nabi Muhammad SAW 1447 H",
       date: "21 December 2026",
     },
@@ -718,14 +717,15 @@ export default function Home() {
                   Teknik Komputer dan Jaringan
                 </h2>
                 <p className="text-gray-600 mb-8">
-                  Mempelajari cara merakit, instalasi, dan perbaikan komputer,
-                  <br />
-                  instalasi jaringan Local Area Network (LAN) dan Wide Area
-                  Network (WAN), serta internet of things (IoT).
+                  Mempelajari cara merakit dan memelihara PC, menginstalasi
+                  serta mengonfigurasi jaringan LAN/WAN menggunakan perangkat
+                  seperti MikroTik, serta mensimulasikan topologi jaringan
+                  dengan Cisco Packet Tracer. Materi juga mencakup dasar
+                  Internet of Things (IoT) dan keamanan jaringan.
                 </p>
                 <Accordion type="single" collapsible className="space-y-4">
                   <AccordionItem
-                    value="cloud"
+                    value="networking"
                     className="border rounded-lg px-4"
                   >
                     <AccordionTrigger className="hover:no-underline">
@@ -733,32 +733,34 @@ export default function Home() {
                         <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                           <Network className="w-5 h-5 text-blue-600" />
                         </div>
-                        <span className="font-semibold">Cloud Computing</span>
+                        <span className="font-semibold">Jaringan Komputer</span>
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-600 pt-4">
-                      Siswa nantinya akan belajar dan dituntut untuk bisa
-                      menggunakan teknologi komputer atau komputasi yang
-                      dimanfaatkan bersama dengan pengembangan berbasis
-                      Internet.
+                      Siswa belajar merancang, membangun, dan mengelola jaringan
+                      lokal (LAN) maupun luas (WAN), termasuk konfigurasi router
+                      MikroTik dan simulasi jaringan menggunakan Cisco Packet
+                      Tracer.
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem
-                    value="security"
+                    value="pc-assembly"
                     className="border rounded-lg px-4"
                   >
                     <AccordionTrigger className="hover:no-underline">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
-                          <Building className="w-5 h-5 text-yellow-600" />
+                        <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                          <Cpu className="w-5 h-5 text-purple-600" />
                         </div>
-                        <span className="font-semibold">Cyber Security</span>
+                        <span className="font-semibold">
+                          Perakitan & Perawatan PC
+                        </span>
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-600 pt-4">
-                      Aktivitas yang dilakukan sistem atau seseorang dalam
-                      rangka melindungi sistem komputer dari serangan. Biasanya
-                      serangan tersebut bersifat ilegal.
+                      Mempelajari komponen hardware komputer, teknik perakitan,
+                      instalasi sistem operasi, troubleshooting, serta perawatan
+                      berkala untuk menjaga performa PC.
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem
@@ -980,8 +982,6 @@ export default function Home() {
       </section> */}
       <AgendaHome />
 
-
-
       {/* Testimonials */}
       {/* <section id="testmonials" className="py-20">
         <div className="container mx-auto px-4">
@@ -1159,7 +1159,7 @@ export default function Home() {
 
       {/* Floating WhatsApp Button */}
       <motion.a
-        href="https://api.whatsapp.com/send?phone=6281223488999"
+        href="https://api.whatsapp.com/send?phone=6282272222804"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-8 right-8 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg z-50 transition-colors"
