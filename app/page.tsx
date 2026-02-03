@@ -478,13 +478,31 @@ export default function Home() {
         className="py-20 bg-gradient-to-br from-blue-50 to-white"
       >
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12">
+            <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="lg:order-first lg:col-span-1">
+              <span className="text-[#0552A2] font-semibold text-sm uppercase tracking-wide">
+                Kuy, nonton!
+              </span>
+              <h2 className="text-4xl font-bold mt-2 mb-6">
+                Video Profil Skagrimo
+              </h2>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                Video profil sekolah memperkenalkan kepada kalian hal-hal
+                berkaitan dengan lingkungan sekolah, fasilitas umum sekolah,
+                fasilitas pembelajaran, ruang belajar, kegiatan siswa dan masih
+                banyak lagi.
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                Biar kalian tidak penasaran apa saja yang ada di dalam SMK PGRI
+                KOTA MOJOKERTO, segera tonton video profilnya.
+              </p>
+            </motion.div>
             <motion.div
               {...fadeInUp}
-              className="relative group cursor-pointer"
+              className="relative group cursor-pointer lg:order-last lg:col-span-1"
               onClick={() =>
                 window.open(
-                  "https://www.youtube.com/watch?v=Kde6NvpPtJg",
+                  "https://www.youtube.com/watch?v=Kde6NvpPtJg  ",
                   "_blank",
                 )
               }
@@ -503,24 +521,6 @@ export default function Home() {
                   <Play className="w-8 h-8 text-white ml-1" fill="white" />
                 </motion.div>
               </div>
-            </motion.div>
-            <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
-              <span className="text-[#0552A2] font-semibold text-sm uppercase tracking-wide">
-                Kuy, nonton!
-              </span>
-              <h2 className="text-4xl font-bold mt-2 mb-6">
-                Video Profil Skagrimo
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                Video profil sekolah memperkenalkan kepada kalian hal-hal
-                berkaitan dengan lingkungan sekolah, fasilitas umum sekolah,
-                fasilitas pembelajaran, ruang belajar, kegiatan siswa dan masih
-                banyak lagi.
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                Biar kalian tidak penasaran apa saja yang ada di dalam SMK PGRI
-                KOTA MOJOKERTO, segera tonton video profilnya.
-              </p>
             </motion.div>
           </div>
         </div>
