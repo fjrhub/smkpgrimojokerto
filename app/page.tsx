@@ -479,7 +479,11 @@ export default function Home() {
       >
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
-            <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="lg:order-first lg:col-span-1">
+            <motion.div
+              {...fadeInUp}
+              transition={{ delay: 0.2 }}
+              className="lg:order-first lg:col-span-1"
+            >
               <span className="text-[#0552A2] font-semibold text-sm uppercase tracking-wide">
                 Kuy, nonton!
               </span>
@@ -1024,8 +1028,8 @@ export default function Home() {
               Berita Terbaru
             </h2>
             <p className="text-gray-600 text-lg">
-              Ikuti terus informasi dan berita-berita terbaru tentang SMK Telkom
-              Malang.
+              Ikuti terus informasi dan berita-berita terbaru tentang SMK PGRI
+              Kota Mojokerto.
             </p>
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
