@@ -526,9 +526,10 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Visi Misi */}
       <section
         id="visimisi"
-        className="py-20 bg-gradient-to-br from-gray-50 to-white"
+        className="py-20 bg-gradient-to-br from-blue-50 to-white"
       >
         <div className="container mx-auto px-4">
           {/* Judul Utama */}
@@ -545,7 +546,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Kontainer Flex untuk Visi dan Misi */}
+          {/* Kontainer Grid untuk Visi dan Misi */}
           <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Kartu Visi */}
             <motion.div
@@ -555,7 +556,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              <Card className="h-full bg-gradient-to-br from-blue-50 to-indigo-50 border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <Card className="h-full bg-gradient-to-br from-blue-50 to-blue-100 border-0 shadow-lg hover:shadow-xl transition-shadow">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-14 h-14 bg-[#0552A2] rounded-xl flex items-center justify-center">
@@ -566,7 +567,6 @@ export default function Home() {
                     </h3>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed italic">
-                    {/* Ganti teks ini dengan visi resmi SMK PGRI Kota Mojokerto */}
                     "Mewujudkan pendidikan kejuruan yang berstandar industri,
                     dan menghasilkan tamatan yang unggul, berkarakter,
                     berwawasan lingkungan, dan berdaya saing global"
@@ -583,12 +583,10 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <Card className="h-full bg-gradient-to-br from-orange-50 to-amber-50 border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <Card className="h-full bg-gradient-to-br from-blue-50 to-blue-100 border-0 shadow-lg hover:shadow-xl transition-shadow">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-14 h-14 bg-[#D97706] rounded-xl flex items-center justify-center">
-                      {" "}
-                      {/* Warna amber untuk misi */}
+                    <div className="w-14 h-14 bg-[#0552A2] rounded-xl flex items-center justify-center">
                       <Target className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-800">
@@ -596,9 +594,8 @@ export default function Home() {
                     </h3>
                   </div>
                   <ul className="space-y-4 text-gray-700">
-                    {/* Ganti item-item ini dengan misi resmi SMK PGRI Kota Mojokerto */}
                     <li className="flex items-start gap-3">
-                      <div className="mt-1 w-6 h-6 bg-[#D97706] rounded-full flex items-center justify-center flex-shrink-0">
+                      <div className="mt-1 w-6 h-6 bg-[#0552A2] rounded-full flex items-center justify-center flex-shrink-0">
                         <Lightbulb className="w-3 h-3 text-white" />
                       </div>
                       <span>
@@ -607,7 +604,7 @@ export default function Home() {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="mt-1 w-6 h-6 bg-[#D97706] rounded-full flex items-center justify-center flex-shrink-0">
+                      <div className="mt-1 w-6 h-6 bg-[#0552A2] rounded-full flex items-center justify-center flex-shrink-0">
                         <Users className="w-3 h-3 text-white" />
                       </div>
                       <span>
@@ -616,21 +613,12 @@ export default function Home() {
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="mt-1 w-6 h-6 bg-[#D97706] rounded-full flex items-center justify-center flex-shrink-0">
+                      <div className="mt-1 w-6 h-6 bg-[#0552A2] rounded-full flex items-center justify-center flex-shrink-0">
                         <GraduationCap className="w-3 h-3 text-white" />
                       </div>
                       <span>
                         Membangun kemitraan (Link and Mach) dengan industri
                         relevan.
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="mt-1 w-6 h-6 bg-[#D97706] rounded-full flex items-center justify-center flex-shrink-0">
-                        <Eye className="w-3 h-3 text-white rotate-45" />
-                      </div>
-                      <span>
-                        Menyelenggarakan membelajaran Link and Mach dengan
-                        kebutuhan industri.
                       </span>
                     </li>
                   </ul>
