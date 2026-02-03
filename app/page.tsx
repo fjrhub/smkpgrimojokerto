@@ -34,7 +34,11 @@ import {
   Settings,
   Thermometer,
   Droplet,
-  Store
+  Store,
+  Eye,
+  Target,
+  Lightbulb,
+  GraduationCap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -231,7 +235,7 @@ export default function Home() {
                 title="Tentang Kami"
                 items={[
                   { label: "Profil Sekolah", href: "#about" },
-                  { label: "Visi & Misi", href: "#" },
+                  { label: "Visi & Misi", href: "#visimisi" },
                   { label: "Fasilitas", href: "#" },
                   { label: "Prestasi", href: "#" },
                 ]}
@@ -522,6 +526,121 @@ export default function Home() {
         </div>
       </section>
 
+      <section
+        id="visimisi"
+        className="py-20 bg-gradient-to-br from-gray-50 to-white"
+      >
+        <div className="container mx-auto px-4">
+          {/* Judul Utama */}
+          <motion.div
+            {...fadeInUp}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-gray-800">
+              Visi & Misi Kami
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Menjadi pondasi dalam membentuk generasi penerus bangsa yang
+              unggul, religius, dan berdaya saing tinggi.
+            </p>
+          </motion.div>
+
+          {/* Kontainer Flex untuk Visi dan Misi */}
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Kartu Visi */}
+            <motion.div
+              variants={fadeInUp}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <Card className="h-full bg-gradient-to-br from-blue-50 to-indigo-50 border-0 shadow-lg hover:shadow-xl transition-shadow">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-14 h-14 bg-[#0552A2] rounded-xl flex items-center justify-center">
+                      <Eye className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-800">
+                      Visi Sekolah
+                    </h3>
+                  </div>
+                  <p className="text-gray-700 text-lg leading-relaxed italic">
+                    {/* Ganti teks ini dengan visi resmi SMK PGRI Kota Mojokerto */}
+                    "Mewujudkan pendidikan kejuruan yang berstandar industri,
+                    dan menghasilkan tamatan yang unggul, berkarakter,
+                    berwawasan lingkungan, dan berdaya saing global"
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Kartu Misi */}
+            <motion.div
+              variants={fadeInUp}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <Card className="h-full bg-gradient-to-br from-orange-50 to-amber-50 border-0 shadow-lg hover:shadow-xl transition-shadow">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-14 h-14 bg-[#D97706] rounded-xl flex items-center justify-center">
+                      {" "}
+                      {/* Warna amber untuk misi */}
+                      <Target className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-800">
+                      Misi Sekolah
+                    </h3>
+                  </div>
+                  <ul className="space-y-4 text-gray-700">
+                    {/* Ganti item-item ini dengan misi resmi SMK PGRI Kota Mojokerto */}
+                    <li className="flex items-start gap-3">
+                      <div className="mt-1 w-6 h-6 bg-[#D97706] rounded-full flex items-center justify-center flex-shrink-0">
+                        <Lightbulb className="w-3 h-3 text-white" />
+                      </div>
+                      <span>
+                        Mengembangkan kurikulum pembelajaran berbasis teaching
+                        vaktori (TeFa).
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="mt-1 w-6 h-6 bg-[#D97706] rounded-full flex items-center justify-center flex-shrink-0">
+                        <Users className="w-3 h-3 text-white" />
+                      </div>
+                      <span>
+                        Menyenggarakan pembelajaran berbasis teknologi dan
+                        informasi.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="mt-1 w-6 h-6 bg-[#D97706] rounded-full flex items-center justify-center flex-shrink-0">
+                        <GraduationCap className="w-3 h-3 text-white" />
+                      </div>
+                      <span>
+                        Membangun kemitraan (Link and Mach) dengan industri
+                        relevan.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="mt-1 w-6 h-6 bg-[#D97706] rounded-full flex items-center justify-center flex-shrink-0">
+                        <Eye className="w-3 h-3 text-white rotate-45" />
+                      </div>
+                      <span>
+                        Menyelenggarakan membelajaran Link and Mach dengan
+                        kebutuhan industri.
+                      </span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Student Statistics */}
       <section
         id="numbers"
@@ -625,85 +744,93 @@ export default function Home() {
             </motion.div>
           </div>
 
-{/* Praktek TBSM */}
-<motion.div {...fadeInUp} className="mb-20">
-  <div className="grid lg:grid-cols-2 gap-12 items-center">
-    <div>
-      <h2 className="text-4xl font-bold mb-6">
-        Praktek Teknik & Bisnis Sepeda Motor
-      </h2>
-      <p className="text-gray-600 mb-8">
-        Kegiatan praktek TBSM dilaksanakan untuk membekali siswa
-        <br />
-        dengan keterampilan sesuai standar bengkel profesional.
-      </p>
+          {/* Praktek TBSM */}
+          <motion.div {...fadeInUp} className="mb-20">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-4xl font-bold mb-6">
+                  Praktek Teknik & Bisnis Sepeda Motor
+                </h2>
+                <p className="text-gray-600 mb-8">
+                  Kegiatan praktek TBSM dilaksanakan untuk membekali siswa
+                  <br />
+                  dengan keterampilan sesuai standar bengkel profesional.
+                </p>
 
-      <Accordion type="single" collapsible className="space-y-4">
-        {/* Servis Berkala */}
-        <AccordionItem value="servis" className="border rounded-lg px-4">
-          <AccordionTrigger className="hover:no-underline">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                <Wrench className="w-5 h-5 text-green-600" />
+                <Accordion type="single" collapsible className="space-y-4">
+                  {/* Servis Berkala */}
+                  <AccordionItem
+                    value="servis"
+                    className="border rounded-lg px-4"
+                  >
+                    <AccordionTrigger className="hover:no-underline">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                          <Wrench className="w-5 h-5 text-green-600" />
+                        </div>
+                        <span className="font-semibold">
+                          Servis & Perawatan Berkala
+                        </span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600 pt-4">
+                      Praktek ganti oli, penyetelan rem, rantai, kopling, serta
+                      pemeriksaan kondisi sepeda motor secara menyeluruh.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  {/* Kelistrikan */}
+                  <AccordionItem
+                    value="kelistrikan"
+                    className="border rounded-lg px-4"
+                  >
+                    <AccordionTrigger className="hover:no-underline">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                          <Zap className="w-5 h-5 text-green-600" />
+                        </div>
+                        <span className="font-semibold">
+                          Sistem Kelistrikan Sepeda Motor
+                        </span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600 pt-4">
+                      Pemeriksaan sistem pengapian, starter elektrik, sistem
+                      pengisian, serta instalasi dan perawatan lampu.
+                    </AccordionContent>
+                  </AccordionItem>
+
+                  {/* Kesempatan Kerja */}
+                  <AccordionItem
+                    value="karir"
+                    className="border rounded-lg px-4"
+                  >
+                    <AccordionTrigger className="hover:no-underline">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                          <Store className="w-5 h-5 text-green-600" />
+                        </div>
+                        <span className="font-semibold">Kesempatan Kerja</span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600 pt-4">
+                      Lulusan TBSM memiliki peluang kerja sebagai mekanik
+                      bengkel, teknisi sepeda motor, service advisor, hingga
+                      membuka usaha bengkel secara mandiri.
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
               </div>
-              <span className="font-semibold">
-                Servis & Perawatan Berkala
-              </span>
-            </div>
-          </AccordionTrigger>
-          <AccordionContent className="text-gray-600 pt-4">
-            Praktek ganti oli, penyetelan rem, rantai, kopling,
-            serta pemeriksaan kondisi sepeda motor secara menyeluruh.
-          </AccordionContent>
-        </AccordionItem>
 
-        {/* Kelistrikan */}
-        <AccordionItem value="kelistrikan" className="border rounded-lg px-4">
-          <AccordionTrigger className="hover:no-underline">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                <Zap className="w-5 h-5 text-green-600" />
+              <div>
+                <img
+                  src="praktekTbsm.png"
+                  alt="Praktek TBSM"
+                  className="rounded-2xl shadow-xl"
+                />
               </div>
-              <span className="font-semibold">
-                Sistem Kelistrikan Sepeda Motor
-              </span>
             </div>
-          </AccordionTrigger>
-          <AccordionContent className="text-gray-600 pt-4">
-            Pemeriksaan sistem pengapian, starter elektrik,
-            sistem pengisian, serta instalasi dan perawatan lampu.
-          </AccordionContent>
-        </AccordionItem>
-
-        {/* Kesempatan Kerja */}
-        <AccordionItem value="karir" className="border rounded-lg px-4">
-          <AccordionTrigger className="hover:no-underline">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                <Store className="w-5 h-5 text-green-600" />
-              </div>
-              <span className="font-semibold">Kesempatan Kerja</span>
-            </div>
-          </AccordionTrigger>
-          <AccordionContent className="text-gray-600 pt-4">
-            Lulusan TBSM memiliki peluang kerja sebagai mekanik bengkel,
-            teknisi sepeda motor, service advisor, hingga membuka
-            usaha bengkel secara mandiri.
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </div>
-
-    <div>
-      <img
-        src="praktekTbsm.png"
-        alt="Praktek TBSM"
-        className="rounded-2xl shadow-xl"
-      />
-    </div>
-  </div>
-</motion.div>
-
+          </motion.div>
 
           {/* Teknik Komputer dan Jaringan Details */}
           <motion.div {...fadeInUp} className="mb-20">
@@ -1032,7 +1159,7 @@ export default function Home() {
         </div>
       </section> */}
 
-<Testimonials id="testmonials" />
+      <Testimonials id="testmonials" />
 
       <section className="py-10 bg-gray-50">
         <div className="w-full px-4">
