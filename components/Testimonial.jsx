@@ -1,6 +1,5 @@
 import React from 'react';
 
-// Inline CSS sebagai objek
 const styles = {
   section: {
     padding: '5rem 2rem',
@@ -77,7 +76,7 @@ const TestimonialCard = ({ name, role, year, message, avatar }) => {
       onMouseLeave={() => setHovered(false)}
     >
       <div style={styles.avatarContainer}>
-        <img src={avatar} alt={name} style={styles.avatar} />
+        <img src={avatar.trim()} alt={name} style={styles.avatar} />
       </div>
       <div style={styles.quoteIcon}>❝</div>
       <p style={styles.text}>{message}</p>
@@ -91,7 +90,8 @@ const TestimonialCard = ({ name, role, year, message, avatar }) => {
   );
 };
 
-const Testimonials = () => {
+// Accept id as a prop
+const Testimonials = ({ id }) => {
   const testimonials = [
     {
       id: 1,
@@ -99,7 +99,7 @@ const Testimonials = () => {
       role: "Frontend Developer di PT. Maju Jaya",
       year: 2023,
       message: "Ilmu dari SMK PGRI sangat berguna di dunia kerja. Terima kasih atas fondasi yang kuat!",
-      avatar: "https://images.pexels.com/photos/8199147/pexels-photo-8199147.jpeg"
+      avatar: "https://images.pexels.com/photos/8199147/pexels-photo-8199147.jpeg  "
     },
     {
       id: 2,
@@ -107,7 +107,7 @@ const Testimonials = () => {
       role: "Mahasiswa Teknik Informatika - ITS",
       year: 2022,
       message: "Pendidikan di SMK PGRI memberikan saya landasan yang kokoh untuk melanjutkan studi ke perguruan tinggi.",
-      avatar: "https://images.pexels.com/photos/29111517/pexels-photo-29111517.jpeg"
+      avatar: "https://images.pexels.com/photos/29111517/pexels-photo-29111517.jpeg  "
     },
     {
       id: 3,
@@ -115,12 +115,12 @@ const Testimonials = () => {
       role: "Freelance Designer",
       year: 2024,
       message: "Lingkungan belajar yang mendukung dan guru yang kompeten membuat saya percaya diri menghadapi dunia kerja.",
-      avatar: "https://images.pexels.com/photos/5611110/pexels-photo-5611110.jpeg"
+      avatar: "https://images.pexels.com/photos/5611110/pexels-photo-5611110.jpeg  "
     }
   ];
 
   return (
-    <section style={styles.section}>
+    <section id={id} style={styles.section}>
       <h2 style={styles.title}>Testimoni Alumni</h2>
       <div style={styles.grid}>
         {testimonials.map((t) => (

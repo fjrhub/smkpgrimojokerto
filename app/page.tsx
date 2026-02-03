@@ -1029,7 +1029,7 @@ export default function Home() {
         </div>
       </section> */}
 
-      <Testimonials />
+<Testimonials id="testmonials" />
 
       <section className="py-10 bg-gray-50">
         <div className="w-full px-4">
