@@ -350,11 +350,11 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative min-h-screen flex items-center overflow-hidden pt-20"
+        className="relative flex items-center overflow-hidden pt-0"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-50 -z-10" />
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -389,15 +389,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Moklet Section */}
-      <section id="about" className="py-20">
+      {/* Why Section */}
+      <section id="about" className="py-8 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             {...fadeInUp}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-8"
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-              Kenapa harus Skagrimo?
+              Kenapa Harus SMK PGRI Kota Mojokerto?
             </h2>
             <p className="text-gray-600 text-lg">
               Alasan kenapa kalian semua harus bergabung dengan SMK PGRI KOTA
@@ -1002,8 +1002,14 @@ export default function Home() {
       </section>
 
       {/* CTA Gallery (Minimalist) */}
-      <section className="py-12 text-[#0552A2] text-white text-center">
-        <h2 className="text-3xl font-bold">Galeri Mokleter</h2>
+      <section className="py-12 text-white text-center">
+        <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-black">
+          Fasilitas & Lab Komputer
+        </h2>
+        <p className="text-gray-600 text-lg">
+          Ikuti terus informasi dan berita-berita terbaru tentang SMK PGRI Kota
+          Mojokerto.
+        </p>
       </section>
 
       {/* Gallery (Minimalist) - MODIFIED */}
