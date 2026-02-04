@@ -1007,8 +1007,7 @@ export default function Home() {
           Fasilitas & Lab Komputer
         </h2>
         <p className="text-gray-600 text-lg">
-          Ikuti terus informasi dan berita-berita terbaru tentang SMK PGRI Kota
-          Mojokerto.
+          Fasilitas lab komputer lengkap untuk pembelajaran praktis siswa.
         </p>
       </section>
 
