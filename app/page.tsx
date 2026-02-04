@@ -64,7 +64,7 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [studentData, setStudentData] = useState({
-    tkj: 1060,
+    tkj: 200,
     tei: 334,
     tp: 109,
     tkr: 109,
@@ -151,24 +151,6 @@ export default function Home() {
       date: "05 Januari 2026",
     },
   ];
-
-  // const testimonials = [
-  //   {
-  //     image:
-  //       "https://images.pexels.com/photos/35439332/pexels-photo-35439332.jpeg",
-  //     quote:
-  //       "Kurikulum yang selalu up-to-date dan menyesuaikan kebutuhan pasar industri membuat lulusan SMK Telkom dapat bersaing dan diandalkan oleh perusahaan.",
-  //     name: "Iqbal Wahyu Septian",
-  //     position: "Telkom Akses Malang",
-  //   },
-  //   {
-  //     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2",
-  //     quote:
-  //       "Saya bangga menjadi bagian dari SMK Telkom Malang. Karena selalu mendukung dalam memberikan fasilitas dan kemudahan dalam menunjang pembelajaran serta menerapkan pendidikan attitude yang baik.",
-  //     name: "Dandy Purba Cantaka",
-  //     position: "SIP Jakarta",
-  //   },
-  // ];
 
   const partners = [
     "nale.png",
@@ -1079,93 +1061,9 @@ export default function Home() {
       </section>
 
       {/* School Agenda */}
-      {/* <section
-        id="agenda"
-        className="py-20 bg-gradient-to-br from-blue-50 to-white"
-      >
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div {...fadeInUp}>
-              <h2 className="text-4xl font-bold mb-6">Agenda Sekolah</h2>
-              <p className="text-gray-600 mb-8">
-                Kegiatan SMK Telkom Malang selama beberapa hari kedepan.
-              </p>
-              <div className="bg-blue-100 border-l-4 border-blue-500 p-4 rounded">
-                <p className="text-blue-800 text-center">
-                  Tidak ada agenda mendatang!
-                </p>
-              </div>
-              <div className="mt-8 flex items-start gap-4 p-6 border rounded-lg hover:border-blue-600 transition-colors cursor-pointer">
-                <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-6 h-6 text-gray-600" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-1">Semua Agenda</h3>
-                  <p className="text-gray-600 text-sm">
-                    Tampilkan semua agenda
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-            <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
-              <img
-                src="Agenda.jpg"
-                alt="Agenda"
-                className="rounded-2xl shadow-xl"
-              />
-            </motion.div>
-          </div>
-        </div>
-      </section> */}
       <AgendaHome />
 
       {/* Testimonials */}
-      {/* <section id="testmonials" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="overflow-hidden" ref={emblaRefTestimonials}>
-            <div className="flex">
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="flex-[0_0_100%] min-w-0 px-4">
-                  <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    <motion.div {...fadeInUp} className="order-2 lg:order-1">
-                      <div className="relative">
-                        <svg
-                          className="w-16 h-16 text-orange-200 mb-6"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                        </svg>
-                        <p className="text-xl text-gray-600 leading-relaxed mb-6">
-                          {testimonial.quote}
-                        </p>
-                        <p className="font-semibold text-gray-900">
-                          - {testimonial.name}
-                        </p>
-                        <p className="text-gray-500 text-sm">
-                          ({testimonial.position})
-                        </p>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      {...fadeInUp}
-                      transition={{ delay: 0.2 }}
-                      className="order-1 lg:order-2"
-                    >
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="rounded-2xl shadow-xl"
-                      />
-                    </motion.div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section> */}
-
       <Testimonials id="testmonials" />
 
       <section className="py-10 bg-gray-50">
@@ -1473,15 +1371,15 @@ function ProgramTimeline({ icon, title, color }: ProgramTimelineProps) {
 interface SocialIconProps {
   icon: ReactNode;
   dark?: boolean;
-  url?: string; // Tambahkan properti url
+  url?: string;
 }
 
 function SocialIcon({ icon, dark = false, url }: SocialIconProps) {
-  const href = url || "#"; // Gunakan URL yang diberikan, jika tidak ada gunakan "#"
+  const href = url || "#";
 
   return (
     <motion.a
-      href={href} // Gunakan href dari props
+      href={href}
       whileHover={{ scale: 1.2, rotate: 5 }}
       whileTap={{ scale: 0.9 }}
       className={`w-10 h-10 ${
@@ -1493,8 +1391,8 @@ function SocialIcon({ icon, dark = false, url }: SocialIconProps) {
           ? "text-gray-400 hover:text-white"
           : "text-gray-600 hover:text-white"
       } transition-colors`}
-      target={url ? "_blank" : undefined} // Tambahkan target _blank jika URL disediakan
-      rel={url ? "noopener noreferrer" : undefined} // Tambahkan rel jika target _blank
+      target={url ? "_blank" : undefined}
+      rel={url ? "noopener noreferrer" : undefined}
     >
       {icon}
     </motion.a>
