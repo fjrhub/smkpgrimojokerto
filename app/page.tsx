@@ -676,7 +676,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Program Keahlian */}
+       {/* Program Keahlian */}
       <section id="program" className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
@@ -688,12 +688,14 @@ export default function Home() {
                 mempersiapkan siswa dengan keterampilan praktis dan teori yang
                 relevan dengan industri.
               </p>
-              <Button
-                variant="outline"
-                className="border-[#0552A2] text-[#0552A2] hover:bg-blue-50"
-              >
-                Detail
-              </Button>
+              <a href="#tkj"> {/* 🔑 Sekarang mengarah ke #tkj */}
+                <Button
+                  variant="outline"
+                  className="border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition"
+                >
+                  Detail
+                </Button>
+              </a>
             </motion.div>
             <motion.div
               {...fadeInUp}
@@ -728,105 +730,10 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Praktek TBSM */}
+          {/* Teknik Komputer dan Jaringan - Gambar di KANAN, konten di KIRI */}
           <motion.div {...fadeInUp} className="mb-20">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 items-center" id="tkj" style={{ scrollMarginTop: '80px' }}>
               <div>
-                <h2 className="text-4xl font-bold mb-6">
-                  Praktek Teknik & Bisnis Sepeda Motor
-                </h2>
-                <p className="text-gray-600 mb-8">
-                  Kegiatan praktek TBSM dilaksanakan untuk membekali siswa
-                  <br />
-                  dengan keterampilan sesuai standar bengkel profesional.
-                </p>
-
-                <Accordion type="single" collapsible className="space-y-4">
-                  {/* Servis Berkala */}
-                  <AccordionItem
-                    value="servis"
-                    className="border rounded-lg px-4"
-                  >
-                    <AccordionTrigger className="hover:no-underline">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                          <Wrench className="w-5 h-5 text-green-600" />
-                        </div>
-                        <span className="font-semibold">
-                          Servis & Perawatan Berkala
-                        </span>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-gray-600 pt-4">
-                      Praktek ganti oli, penyetelan rem, rantai, kopling, serta
-                      pemeriksaan kondisi sepeda motor secara menyeluruh.
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  {/* Kelistrikan */}
-                  <AccordionItem
-                    value="kelistrikan"
-                    className="border rounded-lg px-4"
-                  >
-                    <AccordionTrigger className="hover:no-underline">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                          <Zap className="w-5 h-5 text-green-600" />
-                        </div>
-                        <span className="font-semibold">
-                          Sistem Kelistrikan Sepeda Motor
-                        </span>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-gray-600 pt-4">
-                      Pemeriksaan sistem pengapian, starter elektrik, sistem
-                      pengisian, serta instalasi dan perawatan lampu.
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  {/* Kesempatan Kerja */}
-                  <AccordionItem
-                    value="karir"
-                    className="border rounded-lg px-4"
-                  >
-                    <AccordionTrigger className="hover:no-underline">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                          <Store className="w-5 h-5 text-green-600" />
-                        </div>
-                        <span className="font-semibold">Kesempatan Kerja</span>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-gray-600 pt-4">
-                      Lulusan TBSM memiliki peluang kerja sebagai mekanik
-                      bengkel, teknisi sepeda motor, service advisor, hingga
-                      membuka usaha bengkel secara mandiri.
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </div>
-
-              <div>
-                <img
-                  src="praktekTbsm.png"
-                  alt="Praktek TBSM"
-                  className="rounded-2xl shadow-xl"
-                />
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Teknik Komputer dan Jaringan Details */}
-          <motion.div {...fadeInUp} className="mb-20">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="order-2 lg:order-1">
-                <img
-                  src="tkj2.jpg"
-                  alt="TKJ"
-                  className="rounded-2xl shadow-xl"
-                />
-              </div>
-              <div className="order-1 lg:order-2">
                 <h2 className="text-4xl font-bold mb-6">
                   Teknik Komputer dan Jaringan
                 </h2>
@@ -897,12 +804,27 @@ export default function Home() {
                   </AccordionItem>
                 </Accordion>
               </div>
+
+              <div>
+                <img
+                  src="tkj2.jpg"
+                  alt="TKJ"
+                  className="rounded-2xl shadow-xl"
+                />
+              </div>
             </div>
           </motion.div>
 
-          {/* Teknik Elektronika Industri Details */}
-          <motion.div {...fadeInUp}>
+          {/* Teknik Elektronika Industri - Gambar di KIRI, konten di KANAN */}
+          <motion.div {...fadeInUp} className="mb-20">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <img
+                  src="praktekTei.jpg"
+                  alt="Teknik Elektronika Industri"
+                  className="rounded-2xl shadow-xl"
+                />
+              </div>
               <div>
                 <h2 className="text-4xl font-bold mb-6">
                   Teknik Elektronika Industri
@@ -971,10 +893,85 @@ export default function Home() {
                   </AccordionItem>
                 </Accordion>
               </div>
+            </div>
+          </motion.div>
+
+          {/* Praktek TBSM - Gambar di KANAN, konten di KIRI */}
+          <motion.div {...fadeInUp} className="mb-20">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-4xl font-bold mb-6">
+                  Praktek Teknik & Bisnis Sepeda Motor
+                </h2>
+                <p className="text-gray-600 mb-8">
+                  Kegiatan praktek TBSM dilaksanakan untuk membekali siswa
+                  <br />
+                  dengan keterampilan sesuai standar bengkel profesional.
+                </p>
+                <Accordion type="single" collapsible className="space-y-4">
+                  <AccordionItem
+                    value="servis"
+                    className="border rounded-lg px-4"
+                  >
+                    <AccordionTrigger className="hover:no-underline">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                          <Wrench className="w-5 h-5 text-green-600" />
+                        </div>
+                        <span className="font-semibold">
+                          Servis & Perawatan Berkala
+                        </span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600 pt-4">
+                      Praktek ganti oli, penyetelan rem, rantai, kopling, serta
+                      pemeriksaan kondisi sepeda motor secara menyeluruh.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem
+                    value="kelistrikan"
+                    className="border rounded-lg px-4"
+                  >
+                    <AccordionTrigger className="hover:no-underline">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                          <Zap className="w-5 h-5 text-green-600" />
+                        </div>
+                        <span className="font-semibold">
+                          Sistem Kelistrikan Sepeda Motor
+                        </span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600 pt-4">
+                      Pemeriksaan sistem pengapian, starter elektrik, sistem
+                      pengisian, serta instalasi dan perawatan lampu.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem
+                    value="karir"
+                    className="border rounded-lg px-4"
+                  >
+                    <AccordionTrigger className="hover:no-underline">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                          <Store className="w-5 h-5 text-green-600" />
+                        </div>
+                        <span className="font-semibold">Kesempatan Kerja</span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600 pt-4">
+                      Lulusan TBSM memiliki peluang kerja sebagai mekanik
+                      bengkel, teknisi sepeda motor, service advisor, hingga
+                      membuka usaha bengkel secara mandiri.
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </div>
+
               <div>
                 <img
-                  src="praktekTei.jpg"
-                  alt="Teknik Elektronika Industri"
+                  src="praktekTbsm.png"
+                  alt="Praktek TBSM"
                   className="rounded-2xl shadow-xl"
                 />
               </div>
