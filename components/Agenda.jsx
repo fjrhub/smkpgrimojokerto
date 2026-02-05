@@ -15,14 +15,21 @@ const DUMMY_AGENDAS = [
     time: "Periode Maret – 11 Juli 2026", // periode, bukan jam
     location: "Online & Sekolah", // cara / tempat pendaftaran
   },
-{
-  id: 2,
-  title: "UKK Teori & Praktik Kejuruan Kelas XII",
-  date: "2026-02-04", 
-  time: "Pelaksanaan UKK Tahun Ajaran 2025/2026",
-  location: "SMK PGRI Kota Mojokerto",
-}
+  {
+    id: 2,
+    title: "Penilaian Sumatif Akhir Jenjang Kelas XII",
+    date: "2026-02-10",
+    time: "PSAJ - 14 Februari Tahun Ajaran 2025/2026",
+    location: "SMK PGRI Kota Mojokerto",
+  },
 
+  {
+    id: 3,
+    title: "UKK Teori & Praktik Kejuruan Kelas XII",
+    date: "2026-02-04",
+    time: "Pelaksanaan UKK Tahun Ajaran 2025/2026",
+    location: "SMK PGRI Kota Mojokerto",
+  },
 ];
 
 function formatDate(dateStr) {
@@ -45,7 +52,8 @@ export default function AgendaHome() {
               Agenda Sekolah
             </h2>
             <p className="text-slate-600 mb-8 max-w-md">
-              Kegiatan dan jadwal penting SMK PGRI Kota Mojokerto dalam beberapa hari ke depan.
+              Kegiatan dan jadwal penting SMK PGRI Kota Mojokerto dalam beberapa
+              hari ke depan.
             </p>
 
             {/* Agenda list */}
@@ -65,9 +73,7 @@ export default function AgendaHome() {
                     <p className="text-sm text-slate-500">
                       {formatDate(agenda.date)} • {agenda.time}
                     </p>
-                    <p className="text-sm text-slate-500">
-                      {agenda.location}
-                    </p>
+                    <p className="text-sm text-slate-500">{agenda.location}</p>
                   </div>
                 </div>
               ))}
