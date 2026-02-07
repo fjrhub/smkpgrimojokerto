@@ -95,27 +95,27 @@ const Testimonials = ({ id }) => {
   const testimonials = [
     {
       id: 1,
-      name: "Ahmad Fauzi",
-      role: "Frontend Developer di PT. Maju Jaya",
+      name: "Muhammad Yusuf Habibie",
+      role: "Teknisi NOC di PT. Mega Artha Lintas Data",
       year: 2023,
       message: "Ilmu dari SMK PGRI sangat berguna di dunia kerja. Terima kasih atas fondasi yang kuat!",
-      avatar: "https://images.pexels.com/photos/8199147/pexels-photo-8199147.jpeg  "
+      avatar: "testimoni1.png"
     },
     {
       id: 2,
-      name: "Siti Nurhaliza",
-      role: "Mahasiswa Teknik Informatika - ITS",
-      year: 2022,
+      name: "Wahyu Tri Wibowo",
+      role: "Replace & IB di PT. Anugrah Terang Persada",
+      year: 2025,
       message: "Pendidikan di SMK PGRI memberikan saya landasan yang kokoh untuk melanjutkan studi ke perguruan tinggi.",
-      avatar: "https://images.pexels.com/photos/29111517/pexels-photo-29111517.jpeg  "
+      avatar: "testimoni2.png"
     },
     {
       id: 3,
-      name: "Rizki Pratama",
-      role: "Freelance Designer",
+      name: "Aditya Putra Pratama",
+      role: "Lomba Tingkat JaTim Atswa Network & Sysadmin Skill Competition Bidang Simulator",
       year: 2024,
       message: "Lingkungan belajar yang mendukung dan guru yang kompeten membuat saya percaya diri menghadapi dunia kerja.",
-      avatar: "https://images.pexels.com/photos/5611110/pexels-photo-5611110.jpeg  "
+      avatar: "testimoni3.png"
     }
   ];
 
