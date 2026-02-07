@@ -332,7 +332,7 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative flex items-center overflow-hidden pt-0"
+        className="relative flex items-center overflow-hidden pt-20 md:pt-0"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-50 -z-10" />
         <div className="container mx-auto px-4">
@@ -676,7 +676,7 @@ export default function Home() {
         </div>
       </section>
 
-       {/* Program Keahlian */}
+      {/* Program Keahlian */}
       <section id="program" className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
@@ -688,7 +688,9 @@ export default function Home() {
                 mempersiapkan siswa dengan keterampilan praktis dan teori yang
                 relevan dengan industri.
               </p>
-              <a href="#tkj"> {/* 🔑 Sekarang mengarah ke #tkj */}
+              <a href="#tkj">
+                {" "}
+                {/* 🔑 Sekarang mengarah ke #tkj */}
                 <Button
                   variant="outline"
                   className="border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition"
@@ -732,7 +734,11 @@ export default function Home() {
 
           {/* Teknik Komputer dan Jaringan - Gambar di KANAN, konten di KIRI */}
           <motion.div {...fadeInUp} className="mb-20">
-            <div className="grid lg:grid-cols-2 gap-12 items-center" id="tkj" style={{ scrollMarginTop: '80px' }}>
+            <div
+              className="grid lg:grid-cols-2 gap-12 items-center"
+              id="tkj"
+              style={{ scrollMarginTop: "80px" }}
+            >
               <div>
                 <h2 className="text-4xl font-bold mb-6">
                   Teknik Komputer dan Jaringan
