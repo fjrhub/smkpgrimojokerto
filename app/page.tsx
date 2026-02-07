@@ -821,86 +821,87 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Teknik Elektronika Industri - Gambar di KIRI, konten di KANAN */}
-          <motion.div {...fadeInUp} className="mb-20">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <img
-                  src="praktekTei.jpg"
-                  alt="Teknik Elektronika Industri"
-                  className="rounded-2xl shadow-xl"
-                />
+{/* Teknik Elektronika Industri - Gambar di KIRI (desktop), di BAWAH teks (mobile) */}
+<motion.div {...fadeInUp} className="mb-20">
+  <div className="grid lg:grid-cols-2 gap-12 items-center">
+    
+    {/* TEKS */}
+    <div className="order-1 lg:order-2">
+      <h2 className="text-4xl font-bold mb-6">
+        Teknik Elektronika Industri
+      </h2>
+      <p className="text-gray-600 mb-8">
+        Mempelajari instalasi, perbaikan, dan pemeliharaan sistem
+        elektronika industri,
+        <br />
+        termasuk PLC, sensor, dan sistem kontrol otomatis.
+      </p>
+
+      <Accordion type="single" collapsible className="space-y-4">
+        <AccordionItem value="plc" className="border rounded-lg px-4">
+          <AccordionTrigger className="hover:no-underline">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                <Cpu className="w-5 h-5 text-purple-600" />
               </div>
-              <div>
-                <h2 className="text-4xl font-bold mb-6">
-                  Teknik Elektronika Industri
-                </h2>
-                <p className="text-gray-600 mb-8">
-                  Mempelajari instalasi, perbaikan, dan pemeliharaan sistem
-                  elektronika industri,
-                  <br />
-                  termasuk PLC, sensor, dan sistem kontrol otomatis.
-                </p>
-                <Accordion type="single" collapsible className="space-y-4">
-                  <AccordionItem value="plc" className="border rounded-lg px-4">
-                    <AccordionTrigger className="hover:no-underline">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                          <Cpu className="w-5 h-5 text-purple-600" />
-                        </div>
-                        <span className="font-semibold">
-                          PLC dan Otomatisasi
-                        </span>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-gray-600 pt-4">
-                      Siswa akan belajar memprogram dan mengoperasikan PLC
-                      (Programmable Logic Controller) untuk mengendalikan mesin
-                      dan proses industri.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem
-                    value="sensor"
-                    className="border rounded-lg px-4"
-                  >
-                    <AccordionTrigger className="hover:no-underline">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                          <Thermometer className="w-5 h-5 text-purple-600" />
-                        </div>
-                        <span className="font-semibold">
-                          Sensor dan Instrumentasi
-                        </span>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-gray-600 pt-4">
-                      Mempelajari berbagai jenis sensor, aktuator, dan sistem
-                      instrumentasi untuk monitoring dan kontrol proses
-                      industri.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem
-                    value="career-tei"
-                    className="border rounded-lg px-4"
-                  >
-                    <AccordionTrigger className="hover:no-underline">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                          <Users className="w-5 h-5 text-green-600" />
-                        </div>
-                        <span className="font-semibold">Kesempatan Kerja</span>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-gray-600 pt-4">
-                      Lulusan TEI banyak bekerja sebagai teknisi elektronika,
-                      engineer kontrol, atau berwirausaha di bidang instalasi
-                      dan perawatan sistem otomatisasi.
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </div>
+              <span className="font-semibold">PLC dan Otomatisasi</span>
             </div>
-          </motion.div>
+          </AccordionTrigger>
+          <AccordionContent className="text-gray-600 pt-4">
+            Siswa akan belajar memprogram dan mengoperasikan PLC
+            (Programmable Logic Controller) untuk mengendalikan mesin
+            dan proses industri.
+          </AccordionContent>
+        </AccordionItem>
+
+        <AccordionItem value="sensor" className="border rounded-lg px-4">
+          <AccordionTrigger className="hover:no-underline">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                <Thermometer className="w-5 h-5 text-purple-600" />
+              </div>
+              <span className="font-semibold">
+                Sensor dan Instrumentasi
+              </span>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent className="text-gray-600 pt-4">
+            Mempelajari berbagai jenis sensor, aktuator, dan sistem
+            instrumentasi untuk monitoring dan kontrol proses
+            industri.
+          </AccordionContent>
+        </AccordionItem>
+
+        <AccordionItem value="career-tei" className="border rounded-lg px-4">
+          <AccordionTrigger className="hover:no-underline">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                <Users className="w-5 h-5 text-green-600" />
+              </div>
+              <span className="font-semibold">Kesempatan Kerja</span>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent className="text-gray-600 pt-4">
+            Lulusan TEI banyak bekerja sebagai teknisi elektronika,
+            engineer kontrol, atau berwirausaha di bidang instalasi
+            dan perawatan sistem otomatisasi.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </div>
+
+    {/* GAMBAR */}
+    <div className="order-2 lg:order-1">
+      <img
+        src="praktekTei.jpg"
+        alt="Teknik Elektronika Industri"
+        className="rounded-2xl shadow-xl"
+      />
+    </div>
+
+  </div>
+</motion.div>
+
 
           {/* Praktek TBSM - Gambar di KANAN, konten di KIRI */}
           <motion.div {...fadeInUp} className="mb-20">
