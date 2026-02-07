@@ -57,14 +57,16 @@ export default function App() {
       <Navbar />
 
       {/* Gallery Section */}
-      <section
-        id="galeri"
-        className="pt-28 md:pt-32 pb-14 bg-gradient-to-b from-gray-50 to-white"
-      >
+      <section id="galeri" className="pt-28 md:pt-32 pb-14 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">
-            Galeri Sekolah
-          </h1>
+          <div className="text-center mb-10">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800">
+              Galeri Kegiatan dan Fasilitas Sekolah
+            </h1>
+            <p className="mt-3 text-gray-500 max-w-2xl mx-auto text-sm md:text-base">
+              Dokumentasi resmi berbagai kegiatan, fasilitas, dan prestasi sekolah sebagai bentuk transparansi dan informasi kepada masyarakat.
+            </p>
+          </div>
 
           {/* Minimal Filter */}
           <div className="flex justify-end mb-6 relative">
