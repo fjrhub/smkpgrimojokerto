@@ -92,7 +92,7 @@ export default function AgendaHome() {
           {/* Right image */}
           <div className="hidden lg:block">
             <img
-              src="Agenda.jpg"
+              src="GedungUtama.jpg"
               alt="Agenda Sekolah"
               className="rounded-2xl shadow-lg"
             />

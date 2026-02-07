@@ -9,27 +9,51 @@ const categories = ["Semua", "Kegiatan", "Fasilitas", "Prestasi"];
 const images = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1588072432836-e10032774350",
-    title: "Upacara Bendera",
-    category: "Kegiatan",
+    src: "FasilitasKantin.jpg",
+    title: "Kantin Sekolah",
+    category: "Fasilitas",
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1580582932707-520aed937b7b",
-    title: "Kegiatan Laboratorium",
+    src: "GedungUtama.jpg",
+    title: "Gedung Sekolah – Tampak Depan",
     category: "Fasilitas",
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1596495578065-6e0763fa1178",
-    title: "Lomba Antar Kelas",
-    category: "Prestasi",
+    src: "LingkunganSekolah.jpg",
+    title: "Gedung Sekolah Bertingkat",
+    category: "Fasilitas",
   },
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f",
-    title: "Perpustakaan Sekolah",
-    category: "Fasilitas",
+    src: "codingArduino.jpg",
+    title: "Setup Arduino Mobil",
+    category: "Kegiatan",
+  },
+  {
+    id: 5,
+    src: "codingWebSch.jpg",
+    title: "Pengembangan Website Sekolah dengan Next.js dan Vercel",
+    category: "Kegiatan",
+  },
+  {
+    id: 6,
+    src: "codingArduinoMobil.jpg",
+    title: "Pengembangan Sistem Kendali Mobil-Mobilan Berbasis Arduino",
+    category: "Kegiatan",
+  },
+  {
+    id: 7,
+    src: "konfMikrotik.jpg",
+    title: "Konfigurasi Jaringan Menggunakan Router MikroTik",
+    category: "Kegiatan",
+  },
+  {
+    id: 8,
+    src: "konfCisco.jpg",
+    title: "Simulasi Jaringan Menggunakan Cisco Packet Tracer",
+    category: "Kegiatan",
   },
 ];
 
@@ -46,9 +70,12 @@ export default function App() {
   }, []);
 
   const filteredImages = useMemo(() => {
-    return activeCategory === "Semua"
-      ? images
-      : images.filter((img) => img.category === activeCategory);
+    const data =
+      activeCategory === "Semua"
+        ? images
+        : images.filter((img) => img.category === activeCategory);
+
+    return [...data].sort((a, b) => b.id - a.id);
   }, [activeCategory]);
 
   return (
@@ -57,14 +84,19 @@ export default function App() {
       <Navbar />
 
       {/* Gallery Section */}
-      <section id="galeri" className="pt-28 md:pt-32 pb-14 bg-gradient-to-b from-gray-50 to-white">
+      <section
+        id="galeri"
+        className="pt-28 md:pt-32 pb-14 bg-gradient-to-b from-gray-50 to-white"
+      >
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
             <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800">
               Galeri Kegiatan dan Fasilitas Sekolah
             </h1>
             <p className="mt-3 text-gray-500 max-w-2xl mx-auto text-sm md:text-base">
-              Dokumentasi resmi berbagai kegiatan, fasilitas, dan prestasi sekolah sebagai bentuk transparansi dan informasi kepada masyarakat.
+              Dokumentasi resmi berbagai kegiatan, fasilitas, dan prestasi
+              sekolah sebagai bentuk transparansi dan informasi kepada
+              masyarakat.
             </p>
           </div>
 

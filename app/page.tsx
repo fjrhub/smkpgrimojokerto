@@ -118,17 +118,17 @@ export default function Home() {
 
   const galleryImages = [
     {
-      url: "LingkunganSekolah.jpg",
+      url: "lab1.png",
       title: "Lingkungan Belajar yang Nyaman ",
       link: "#",
     },
     {
-      url: "Agenda.jpg",
+      url: "GedungUtama.jpg",
       title: "Gedung Utama Sekolah",
       link: "#",
     },
     {
-      url: "Fasilitas_Kantin_Sekolah.jpg",
+      url: "lab2.png",
       title: "Fasilitas Kantin Sekolah",
       link: "#",
     },
@@ -813,7 +813,7 @@ export default function Home() {
 
               <div>
                 <img
-                  src="tkj2.jpg"
+                  src="codingArduino.jpg"
                   alt="TKJ"
                   className="rounded-2xl shadow-xl"
                 />
