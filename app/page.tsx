@@ -54,6 +54,8 @@ import TikTokIcon from "@/public/tiktok";
 import { ReactNode } from "react";
 import Testimonials from "@/components/Testimonial";
 import AgendaHome from "@/components/Agenda";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 interface MenuItem {
   label: string;
@@ -184,150 +186,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled ? "bg-white shadow-lg" : "bg-white/95 backdrop-blur-sm"
-        }`}
-      >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
-            {/* LOGO */}
-            <div className="flex items-center gap-3">
-              <img
-                src="logo-smk.png"
-                alt="Logo SMK PGRI KOTA MOJOKERTO"
-                className="w-11 h-11 md:w-10 md:h-10 object-contain"
-              />
-              <span className="text-base md:text-xl font-bold text-[#0552A2]">
-                SMK PGRI KOTA MOJOKERTO
-              </span>
-            </div>
-            {/* DESKTOP MENU */}
-            <div className="hidden lg:flex items-center space-x-5">
-              <DropdownMenu
-                title="Beranda"
-                items={[
-                  { label: "Sambutan Kepala Sekolah", href: "#sambutan" },
-                  { label: "Video Profil Sekolah", href: "#video" },
-                  { label: "Berita Terbaru", href: "#berita" },
-                  { label: "Agenda Sekolah", href: "#agenda" },
-                  { label: "Galeri Sekolah", href: "#galeri" },
-                ]}
-              />
-              <DropdownMenu
-                title="Tentang Kami"
-                items={[
-                  { label: "Profil Sekolah", href: "#about" },
-                  { label: "Visi & Misi", href: "#visimisi" },
-                  { label: "Fasilitas", href: "#" },
-                  { label: "Prestasi", href: "#" },
-                ]}
-              />
-              <DropdownMenu
-                title="Program"
-                items={[
-                  { label: "Profil Jurusan", href: "#program" },
-                  { label: "Ekstrakurikuler", href: "#" },
-                ]}
-              />
-              <DropdownMenu
-                title="Alumni"
-                items={[
-                  { label: "Testimoni Alumni", href: "#testmonials" },
-                  { label: "Profil Alumni", href: "#" },
-                ]}
-              />
-              <a
-                href="#contact"
-                className="text-gray-700 hover:text-[#0552A2] transition-colors"
-              >
-                Hubungi Kami
-              </a>
-              <Button className="bg-[#0552A2] hover:bg-[#003164]">PPDB</Button>
-              <div className="flex items-center space-x-3">
-                <SocialIcon
-                  icon={<Facebook size={18} />}
-                  url="https://facebook.com/skagrimo"
-                />
-                <SocialIcon
-                  icon={<Instagram size={18} />}
-                  url="https://www.instagram.com/skagrimo"
-                />
-                <SocialIcon
-                  icon={<TikTokIcon className="w-5 h-5" />}
-                  url="https://tiktok.com/@skagrimo"
-                />
-                <SocialIcon
-                  icon={<Youtube size={18} />}
-                  url="https://www.youtube.com/@skagrimo"
-                />
-              </div>
-            </div>
-            {/* MOBILE BUTTON */}
-            <button
-              className="lg:hidden text-gray-700 hover:text-[#0552A2]"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
-        </div>
-        {/* MOBILE MENU */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }} // Durasi animasi slide up/down
-              className="lg:hidden overflow-hidden" // Tambahkan overflow-hidden agar animasi height berjalan halus
-            >
-              <div className="bg-white border-t pt-4">
-                {" "}
-                {/* Wrapper konten menu */}
-                <div className="container mx-auto px-4 py-4 space-y-4">
-                  <MobileDropdown
-                    title="Beranda"
-                    items={[
-                      { label: "Sambutan Kepala Sekolah", href: "#sambutan" },
-                      { label: "Video Profil Sekolah", href: "#video" },
-                      { label: "Berita Terbaru", href: "#berita" },
-                    ]}
-                  />
-                  <MobileDropdown
-                    title="Tentang Kami"
-                    items={[
-                      { label: "Profil Sekolah", href: "#about" },
-                      { label: "Visi & Misi", href: "#" },
-                    ]}
-                  />
-                  <a
-                    href="#program"
-                    className="block text-gray-700 hover:text-[#0552A2]"
-                  >
-                    Program
-                  </a>
-                  <a
-                    href="#testmonials"
-                    className="block text-gray-700 hover:text-[#0552A2]"
-                  >
-                    Alumni
-                  </a>
-                  <a
-                    href="#contact"
-                    className="block text-gray-700 hover:text-[#0552A2]"
-                  >
-                    Hubungi Kami
-                  </a>
-                  <Button className="w-full mb-3 bg-[#0552A2] hover:bg-[#003164]">
-                    PPDB
-                  </Button>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <section
