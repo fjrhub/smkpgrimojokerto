@@ -163,38 +163,38 @@ export default function Navbar() {
             <DropdownMenu
               title="Beranda"
               items={[
-                { label: "Sambutan Kepala Sekolah", href: "#sambutan" },
-                { label: "Video Profil Sekolah", href: "#video" },
-                { label: "Berita Terbaru", href: "#berita" },
-                { label: "Agenda Sekolah", href: "#agenda" },
-                { label: "Galeri Sekolah", href: "#galeri" },
+                { label: "Sambutan Kepala Sekolah", href: "/#sambutan" },
+                { label: "Video Profil Sekolah", href: "/#video" },
+                { label: "Berita Terbaru", href: "/#berita" },
+                { label: "Agenda Sekolah", href: "/#agenda" },
+                { label: "Galeri Sekolah", href: "/#galeri" },
               ]}
             />
             <DropdownMenu
               title="Tentang Kami"
               items={[
-                { label: "Profil Sekolah", href: "#about" },
-                { label: "Visi & Misi", href: "#visimisi" },
-                { label: "Fasilitas", href: "#" },
-                { label: "Prestasi", href: "#" },
+                { label: "Profil Sekolah", href: "/#about" },
+                { label: "Visi & Misi", href: "/#visimisi" },
+                { label: "Fasilitas", href: "/#" },
+                { label: "Prestasi", href: "/#" },
               ]}
             />
             <DropdownMenu
               title="Program"
               items={[
-                { label: "Profil Jurusan", href: "#program" },
-                { label: "Ekstrakurikuler", href: "#" },
+                { label: "Profil Jurusan", href: "#/program" },
+                { label: "Ekstrakurikuler", href: "/#" },
               ]}
             />
             <DropdownMenu
               title="Alumni"
               items={[
-                { label: "Testimoni Alumni", href: "#testmonials" },
-                { label: "Profil Alumni", href: "#" },
+                { label: "Testimoni Alumni", href: "/#testmonials" },
+                { label: "Profil Alumni", href: "/#" },
               ]}
             />
             <a
-              href="#contact"
+              href="/#contact"
               className="text-gray-700 hover:text-[#0552A2] transition-colors"
             >
               Hubungi Kami
@@ -245,32 +245,32 @@ export default function Navbar() {
                 <MobileDropdown
                   title="Beranda"
                   items={[
-                    { label: "Sambutan Kepala Sekolah", href: "#sambutan" },
-                    { label: "Video Profil Sekolah", href: "#video" },
-                    { label: "Berita Terbaru", href: "#berita" },
+                    { label: "Sambutan Kepala Sekolah", href: "/#sambutan" },
+                    { label: "Video Profil Sekolah", href: "/#video" },
+                    { label: "Berita Terbaru", href: "/#berita" },
                   ]}
                 />
                 <MobileDropdown
                   title="Tentang Kami"
                   items={[
-                    { label: "Profil Sekolah", href: "#about" },
-                    { label: "Visi & Misi", href: "#" },
+                    { label: "Profil Sekolah", href: "/#about" },
+                    { label: "Visi & Misi", href: "/#" },
                   ]}
                 />
                 <a
-                  href="#program"
+                  href="/#program"
                   className="block text-gray-700 hover:text-[#0552A2]"
                 >
                   Program
                 </a>
                 <a
-                  href="#testmonials"
+                  href="/#testmonials"
                   className="block text-gray-700 hover:text-[#0552A2]"
                 >
                   Alumni
                 </a>
                 <a
-                  href="#contact"
+                  href="/#contact"
                   className="block text-gray-700 hover:text-[#0552A2]"
                 >
                   Hubungi Kami

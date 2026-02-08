@@ -95,13 +95,13 @@ export default function Footer() {
               <h4 className="font-semibold text-lg mb-4">Menu Utama</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <a href="#" className="hover:text-blue-500 transition-colors">
+                  <a href="/#" className="hover:text-blue-500 transition-colors">
                     Beranda
                   </a>
                 </li>
                 <li>
                   <a
-                    href="#about"
+                    href="/#about"
                     className="hover:text-blue-500 transition-colors"
                   >
                     Tentang Kami
@@ -109,14 +109,14 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="#program"
+                    href="/#program"
                     className="hover:text-blue-500 transition-colors"
                   >
                     Profil Jurusan
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blue-500 transition-colors">
+                  <a href="/#" className="hover:text-blue-500 transition-colors">
                     PPDB
                   </a>
                 </li>
@@ -126,22 +126,22 @@ export default function Footer() {
               <h4 className="font-semibold text-lg mb-4">Hubungi Kami</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <a href="#" className="hover:text-blue-500 transition-colors">
+                  <a href="/#" className="hover:text-blue-500 transition-colors">
                     FAQ
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blue-500 transition-colors">
+                  <a href="/#" className="hover:text-blue-500 transition-colors">
                     Layanan Orang Tua
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blue-500 transition-colors">
+                  <a href="/#" className="hover:text-blue-500 transition-colors">
                     Kotak Pertanyaan
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blue-500 transition-colors">
+                  <a href="/#" className="hover:text-blue-500 transition-colors">
                     Pusat Bantuan
                   </a>
                 </li>
