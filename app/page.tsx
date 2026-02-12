@@ -118,7 +118,7 @@ export default function Home() {
     Autoplay({ delay: 2000 }),
   ]);
 
-  const galleryImages = [
+  const facilityImages = [
     {
       url: "lab1.png",
       title: "Lingkungan Belajar yang Nyaman ",
@@ -846,7 +846,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Gallery (Minimalist) */}
+      {/* Fasilitas (Minimalist) */}
       <section className="py-12 text-white text-center">
         <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-black">
           Fasilitas & Lab Komputer
@@ -856,10 +856,10 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Gallery (Minimalist) - MODIFIED */}
+      {/* Fasilitas (Minimalist) - MODIFIED */}
       <section id="galeri" className="py-0 bg-gray-900">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
-          {galleryImages.slice(0, visibleCount).map((image, index) => (
+          {facilityImages.slice(0, visibleCount).map((image, index) => (
             <div key={index} className="relative group">
               <img
                 src={image.url}
