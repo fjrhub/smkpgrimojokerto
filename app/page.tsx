@@ -66,11 +66,11 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [studentData, setStudentData] = useState({
-    tkj: 200,
-    tei: 334,
-    tp: 109,
-    tkr: 109,
-    tbsm: 500,
+    tkj: 160,
+    tei: 108,
+    tp: 150,
+    tkr: 103,
+    tbsm: 200,
   });
 
   const { scrollY } = useScroll();
@@ -486,7 +486,7 @@ export default function Home() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-              Siswa Kami Lebih dari 600+
+              Siswa Kami Lebih dari 700+
             </h2>
             <p className="text-orange-100 text-lg">
               Mayoritas siswa kami tidak hanya dari Mojokerto, namun juga dari
