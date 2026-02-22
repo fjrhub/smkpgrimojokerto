@@ -856,9 +856,20 @@ export default function Home() {
         <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-black">
           Fasilitas & Lab Komputer
         </h2>
-        <p className="text-gray-600 text-lg">
+        <p className="text-gray-600 text-lg mb-4">
           Fasilitas lab komputer lengkap untuk pembelajaran praktis siswa.
         </p>
+
+        {/* PERFECT SIZED BUTTON - Minimal but Usable */}
+        <a
+          href="/gallery"
+          className="inline-flex items-center text-sm font-medium text-[#0552A2] bg-[#0552A2]/10 hover:bg-[#0552A2]/15 px-4 py-1.5 rounded-md transition-all duration-200 hover:shadow-[0_1px_2px_rgba(5,82,162,0.15)] hover:translate-y-[-0.5px] group"
+        >
+          <span className="tracking-wide">Lihat semua galeri</span>
+          <span className="ml-2 text-[0.85em] transition-transform group-hover:translate-x-1">
+            →
+          </span>
+        </a>
       </section>
 
       {/* Fasilitas (Minimalist) - MODIFIED */}
@@ -872,7 +883,7 @@ export default function Home() {
                 loading="lazy"
                 className="w-full h-64 object-cover"
               />
-              <div className="absolute inset-0 bg-black/30 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute inset-0 bg-black/30 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <h3 className="text-white text-lg font-medium">
                   {image.title}
                 </h3>
