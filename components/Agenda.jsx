@@ -43,7 +43,7 @@ function formatDate(dateStr) {
 
 export default function AgendaHome() {
   return (
-    <section id="agenda" className="py-16 bg-white">
+    <section id="agenda" className="py-16 bg-white scroll-mt-24">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left content */}
