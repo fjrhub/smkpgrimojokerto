@@ -231,7 +231,7 @@ export default function Home() {
       </section>
 
       {/* Why Section */}
-      <section id="about" className="py-8 bg-white">
+      <section id="about" className="py-8 bg-white scroll-mt-24">
         <div className="container mx-auto px-4">
           <motion.div
             {...fadeInUp}
