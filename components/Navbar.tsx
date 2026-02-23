@@ -182,7 +182,7 @@ export default function Navbar() {
             <DropdownMenu
               title="Program"
               items={[
-                { label: "Profil Jurusan", href: "#/program" },
+                { label: "Profil Jurusan", href: "/#program" },
                 { label: "Ekstrakurikuler", href: "/#" },
               ]}
             />
