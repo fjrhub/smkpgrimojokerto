@@ -852,7 +852,7 @@ export default function Home() {
       </section>
 
       {/* Fasilitas (Minimalist) */}
-      <section className="py-12 text-white text-center">
+      <section id="galeri" className="py-12 text-white text-center">
         <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-black">
           Fasilitas & Lab Komputer
         </h2>
@@ -873,7 +873,7 @@ export default function Home() {
       </section>
 
       {/* Fasilitas (Minimalist) - MODIFIED */}
-      <section id="galeri" className="py-0 bg-gray-900">
+      <section className="py-0 bg-gray-900">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
           {facilityImages.slice(0, visibleCount).map((image, index) => (
             <div key={index} className="relative group">
