@@ -175,7 +175,7 @@ export default function Navbar() {
               items={[
                 { label: "Profil Sekolah", href: "/#about" },
                 { label: "Visi & Misi", href: "/#visimisi" },
-                { label: "Fasilitas", href: "/#" },
+                { label: "Fasilitas", href: "/#galeri" },
                 { label: "Prestasi", href: "/#" },
               ]}
             />
@@ -183,14 +183,14 @@ export default function Navbar() {
               title="Program"
               items={[
                 { label: "Profil Jurusan", href: "/#program" },
-                { label: "Ekstrakurikuler", href: "/#" },
+                { label: "Ekstrakurikuler", href: "/#testmonials" },
               ]}
             />
             <DropdownMenu
               title="Alumni"
               items={[
                 { label: "Testimoni Alumni", href: "/#testmonials" },
-                { label: "Profil Alumni", href: "/#" },
+                { label: "Profil Alumni", href: "/#testmonials"},
               ]}
             />
             <a
@@ -254,7 +254,7 @@ export default function Navbar() {
                   title="Tentang Kami"
                   items={[
                     { label: "Profil Sekolah", href: "/#about" },
-                    { label: "Visi & Misi", href: "/#" },
+                    { label: "Visi & Misi", href: "/#visimisi" },
                   ]}
                 />
                 <a
