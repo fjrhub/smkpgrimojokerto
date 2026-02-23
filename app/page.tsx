@@ -317,7 +317,7 @@ export default function Home() {
       {/* Video Profile */}
       <section
         id="video"
-        className="py-20 bg-gradient-to-br from-blue-50 to-white"
+        className="py-20 bg-gradient-to-br from-blue-50 to-white scroll-mt-20"
       >
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
