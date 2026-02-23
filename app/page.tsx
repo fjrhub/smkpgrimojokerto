@@ -852,7 +852,7 @@ export default function Home() {
       </section>
 
       {/* Fasilitas (Minimalist) */}
-      <section id="galeri" className="py-12 text-white text-center">
+      <section id="galeri" className="py-12 text-white text-center scroll-mt-20">
         <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-black">
           Fasilitas & Lab Komputer
         </h2>
