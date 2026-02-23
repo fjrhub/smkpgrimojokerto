@@ -375,7 +375,7 @@ export default function Home() {
       {/* Visi Misi */}
       <section
         id="visimisi"
-        className="py-20 bg-gradient-to-br from-blue-50 to-white"
+        className="py-20 bg-gradient-to-br from-blue-50 to-white scroll-mt-20"
       >
         <div className="container mx-auto px-4">
           {/* Judul Utama */}
