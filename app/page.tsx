@@ -409,13 +409,13 @@ export default function Home() {
                       <Eye className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-800">
-                      Visi Sekolah
+                      Visi Kami
                     </h3>
                   </div>
                   <p className="text-gray-700 text-lg leading-relaxed italic">
-                    "Mewujudkan pendidikan kejuruan yang berstandar industri,
-                    dan menghasilkan tamatan yang unggul, berkarakter,
-                    berwawasan lingkungan, dan berdaya saing global"
+                    "Menjadi pusat pendidikan terdepan dalam bidang Teknik
+                    Komputer dan Jaringan, menghasilkan lulusan yang kompeten,
+                    inovatif, dan siap menghadapi tantangan era digital."
                   </p>
                 </CardContent>
               </Card>
@@ -436,7 +436,7 @@ export default function Home() {
                       <Target className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-800">
-                      Misi Sekolah
+                      Misi Kami
                     </h3>
                   </div>
                   <ul className="space-y-4 text-gray-700">
@@ -445,8 +445,8 @@ export default function Home() {
                         <Lightbulb className="w-3 h-3 text-white" />
                       </div>
                       <span>
-                        Mengembangkan kurikulum pembelajaran berbasis teaching
-                        vaktori (TeFa).
+                        Menyediakan pendidikan bertkualitas tinggi di bidang
+                        TKJ.
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
@@ -454,8 +454,8 @@ export default function Home() {
                         <Users className="w-3 h-3 text-white" />
                       </div>
                       <span>
-                        Menyenggarakan pembelajaran berbasis teknologi dan
-                        informasi.
+                        Meningkatkan ketrampilan praktis siswa sesuai kebutuhan
+                        industri.
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
@@ -463,8 +463,7 @@ export default function Home() {
                         <GraduationCap className="w-3 h-3 text-white" />
                       </div>
                       <span>
-                        Membangun kemitraan (Link and Mach) dengan industri
-                        relevan.
+                        Membentuk lulusan yang berakhlak mulia dan siap kerja.
                       </span>
                     </li>
                   </ul>
@@ -852,7 +851,10 @@ export default function Home() {
       </section>
 
       {/* Fasilitas (Minimalist) */}
-      <section id="galeri" className="py-12 text-white text-center scroll-mt-20">
+      <section
+        id="galeri"
+        className="py-12 text-white text-center scroll-mt-20"
+      >
         <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-black">
           Fasilitas & Lab Komputer
         </h2>
