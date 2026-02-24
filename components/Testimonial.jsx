@@ -120,7 +120,11 @@ const Testimonials = ({ id }) => {
   ];
 
   return (
-    <section id={id} style={styles.section}>
+    <section 
+      id={id} 
+      className="scroll-mt-20" 
+      style={styles.section}
+    >
       <h2 style={styles.title}>Testimoni Alumni</h2>
       <div style={styles.grid}>
         {testimonials.map((t) => (

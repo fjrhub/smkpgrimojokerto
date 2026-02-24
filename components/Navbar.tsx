@@ -176,14 +176,14 @@ export default function Navbar() {
                 { label: "Profil Sekolah", href: "/#about" },
                 { label: "Visi & Misi", href: "/#visimisi" },
                 { label: "Fasilitas", href: "/#galeri" },
-                { label: "Prestasi", href: "/#" },
+                { label: "Prestasi", href: "/#testmonials" },
               ]}
             />
             <DropdownMenu
               title="Program"
               items={[
                 { label: "Profil Jurusan", href: "/#program" },
-                { label: "Ekstrakurikuler", href: "/#testmonials" },
+                { label: "Ekstrakurikuler", href: "/#" },
               ]}
             />
             <DropdownMenu
