@@ -1,7 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Facebook, Instagram, Youtube, MessageSquare } from "lucide-react";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Facebook,
+  Instagram,
+  Youtube,
+  MessageSquare,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TikTokIcon from "@/public/tiktok";
 
@@ -190,7 +198,7 @@ export default function Navbar() {
               title="Alumni"
               items={[
                 { label: "Testimoni Alumni", href: "/#testmonials" },
-                { label: "Profil Alumni", href: "/#testmonials"},
+                { label: "Profil Alumni", href: "/#testmonials" },
               ]}
             />
             <a
@@ -255,6 +263,7 @@ export default function Navbar() {
                   items={[
                     { label: "Profil Sekolah", href: "/#about" },
                     { label: "Visi & Misi", href: "/#visimisi" },
+                    { label: "Fasilitas", href: "/#galeri" },
                   ]}
                 />
                 <a
