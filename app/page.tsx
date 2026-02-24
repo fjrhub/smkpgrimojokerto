@@ -536,7 +536,7 @@ export default function Home() {
       </section>
 
       {/* Program Keahlian */}
-      <section id="program" className="py-20">
+      <section id="program" className="py-20 scroll-mt-10">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
             <motion.div {...fadeInUp}>
