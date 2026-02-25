@@ -39,6 +39,8 @@ import {
   Target,
   Lightbulb,
   GraduationCap,
+  Camera,
+  Video,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -168,6 +170,25 @@ export default function Home() {
     "plc.png",
     "maxx.png",
     "mitsubishi.png",
+  ];
+
+  const extracurriculars = [
+    {
+      icon: <Camera className="w-8 h-8" />,
+      title: "Fotografi",
+      description:
+        "Pelatihan teknik fotografi, komposisi, lighting, dan editing foto profesional.",
+      color: "bg-indigo-600",
+      image: "backtoschool.jpg",
+    },
+    {
+      icon: <Video className="w-8 h-8" />,
+      title: "Videografi",
+      description:
+        "Pelatihan produksi video, sinematografi, storytelling, dan editing video.",
+      color: "bg-purple-600",
+      image: "backtoschool.jpg",
+    },
   ];
 
   const fadeInUp = {
@@ -850,6 +871,78 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Extracurricular Section */}
+      <section
+        id="ekstrakurikuler"
+        className="from-blue-50 to-white scroll-mt-32"
+      >
+        <div className="container mx-auto px-4">
+          <motion.div
+            {...fadeInUp}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-gray-800">
+              Ekstrakurikuler
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Kembangkan bakat dan minatmu melalui berbagai kegiatan
+              ekstrakurikuler yang mendukung prestasi non-akademik.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          >
+            {extracurriculars.map((item, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              >
+                <Card className="h-full overflow-hidden hover:shadow-xl transition-shadow border-0 bg-white group">
+                  {/* Image Container */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    {/* Overlay Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    {/* Icon Badge */}
+                    <div
+                      className={`absolute top-4 right-4 w-12 h-12 ${item.color} rounded-xl flex items-center justify-center text-white shadow-lg`}
+                    >
+                      {item.icon}
+                    </div>
+                  </div>
+                  {/* Content */}
+                  <div className="p-5">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-[#0552A2] transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* CTA Button */}
+          <motion.div
+            {...fadeInUp}
+            transition={{ delay: 0.3 }}
+            className="text-center mt-12"
+          ></motion.div>
+        </div>
+      </section>
+
       {/* Fasilitas (Minimalist) */}
       <section
         id="galeri"
@@ -1075,7 +1168,7 @@ export default function Home() {
 
       {/* Floating WhatsApp Button */}
       <motion.a
-        href="https://api.whatsapp.com/send?phone=6282272222804"
+        href="https://api.whatsapp.com/send?phone=62"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-8 right-8 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg z-50 transition-colors"
