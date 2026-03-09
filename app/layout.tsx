@@ -10,6 +10,10 @@ export const metadata = {
     "SMK PGRI Kota Mojokerto merupakan sekolah menengah kejuruan yang menyediakan berbagai program keahlian seperti Teknik Pemesinan, Teknik dan Bisnis Sepeda Motor, Teknik Elektronika Industri, Teknik Komputer dan Jaringan, serta Teknik Kendaraan Ringan untuk menyiapkan lulusan siap kerja dan berkompetensi.",
   keywords:
     "smk pgri kota mojokerto, smk pgri mojokerto, sekolah kejuruan mojokerto, teknik pemesinan, tp, teknik dan bisnis sepeda motor, tbsm, teknik elektronika industri, tei, teknik komputer dan jaringan, tkj, teknik kendaraan ringan, tkr, smk teknik mojokerto",
+
+  verification: {
+    google: "9Yb383aYD6UVgbrTf-I8YUfvXoPRXL-b-ny4MhSCSGY"
+  }
 };
 
 export default function RootLayout({
