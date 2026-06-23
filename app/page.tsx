@@ -235,6 +235,7 @@ export default function Home() {
               <Button
                 size="lg"
                 className="bg-[#0552A2] hover:bg-[#003164] text-lg px-8"
+                onClick={() => window.open("https://api.whatsapp.com/send?phone=6282272222804", "_blank")}
               >
                 Join Now
               </Button>
