@@ -179,7 +179,7 @@ export default function Home() {
       description:
         "Pelatihan teknik fotografi, komposisi, lighting, dan editing foto profesional.",
       color: "bg-indigo-600",
-      image: "backtoschool.jpg",
+      image: "fotografi.jpg",
     },
     {
       icon: <Video className="w-8 h-8" />,
@@ -187,7 +187,7 @@ export default function Home() {
       description:
         "Pelatihan produksi video, sinematografi, storytelling, dan editing video.",
       color: "bg-purple-600",
-      image: "backtoschool.jpg",
+      image: "videografi.jpg",
     },
   ];
 
@@ -1168,7 +1168,7 @@ export default function Home() {
 
       {/* Floating WhatsApp Button */}
       <motion.a
-        href="https://api.whatsapp.com/send?phone=62"
+        href="https://api.whatsapp.com/send?phone=6282272222804"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-8 right-8 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg z-50 transition-colors"
